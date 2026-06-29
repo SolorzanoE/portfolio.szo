@@ -5,7 +5,7 @@ import { dataTechnologies } from "@/data/dataTechnologies"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
 
-const areas = ["Todos", "Backend", "Frontend", "Mobile", "Database"]
+const areas = ["Todos", "Backend", "Frontend", "Mobile", "Database", "Language", "Tool"]
 
 const Technology = () => {
   const [selectedChip, setSelectedChip] = useState("Todos")
@@ -90,7 +90,13 @@ const Technology = () => {
                     sx={{
                       width: "70%",
                       height: "70%",
-                      objectFit: "contain"
+                      objectFit: "contain",
+                      ...(data.invertOnDark && {
+                        filter: (theme) =>
+                          theme.palette.mode === "dark"
+                            ? "invert(1) brightness(1.8)"
+                            : "none"
+                      })
                     }}
                   />
                 ) : (
