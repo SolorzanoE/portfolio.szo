@@ -12,7 +12,10 @@ import { dataSection } from "@/data/dataSection";
 import SectionHeader from "@/components/SectionHeader";
 
 function Experiencie() {
-  return (
+  const sortExperience = dataExperiencie
+    .sort((a, b) => a.date <= (b.date))
+
+ return (
     <Stack
       id={dataSection.experience.id}
       sx={{
@@ -31,7 +34,7 @@ function Experiencie() {
           }
         }}
       >
-        {dataExperiencie.map((data, idx) => (
+        {sortExperience.map((data, idx) => (
           <TimelineItem key={data.title ?? idx}>
             <TimelineSeparator>
               <TimelineDot

@@ -2,7 +2,12 @@ import { Box, Chip, Paper, Stack, Typography } from "@mui/material"
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 
 function ExperiencieCard({ data = {} }) {
-  const { title, company, date, description, technologies = [] } = data
+  const { title, company, description, technologies = [] } = data
+
+  const startDate = data.startDate
+    .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
+  const endDate = data.endDate
+    .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
 
   return (
     <Paper
@@ -90,7 +95,7 @@ function ExperiencieCard({ data = {} }) {
               whiteSpace: "nowrap"
             }}
           >
-            {date || "Fecha"}
+            {`${startDate || 'Fecha'}`} - {`${endDate || 'Fecha'}`}
           </Box>
         </Stack>
 
