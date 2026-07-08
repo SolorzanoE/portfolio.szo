@@ -12,7 +12,6 @@ const TechnologyChip = ({ label, onClick, selected }) => {
         paddingInline: 0.5,
         fontSize: "0.78rem",
         letterSpacing: "0.08em",
-        textTransform: "uppercase",
         borderColor: "divider",
         color: selected ? "primary.contrastText" : "text.primary",
         bgcolor: selected ? "primary.main" : "transparent",

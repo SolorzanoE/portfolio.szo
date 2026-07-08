@@ -9,6 +9,10 @@ const frontend = [
   {
     name: "React",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+  },
+  {
+    name: "Material UI",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
   }
 ]
 
@@ -27,6 +31,23 @@ const database = [
   {
     name: "PostgreSQL",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+  }
+]
+
+const service = [
+  {
+    name: "Vercel",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg",
+    invertOnDark: true
+  },
+  {
+    name: "Render",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/render.svg",
+    invertOnDark: true
+  },
+  {
+    name: "Cloudflare",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
   }
 ]
 
@@ -92,11 +113,6 @@ const tool = [
     name: "ClickUp",
     image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/clickup.svg",
     invertOnDark: true
-  },
-  {
-    name: "Vercel",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg",
-    invertOnDark: true
   }
 ]
 
@@ -108,6 +124,7 @@ export const dataTechnologies = [
   ...frontend.map(e => ({ ...e, area: "Frontend" })),
   ...mobile.map(e => ({ ...e, area: "Mobile" })),
   ...database.map(e => ({ ...e, area: "Database" })),
+  ...service.map(e => ({ ...e, area: "Service" })),
   ...language.map(e => ({ ...e, area: "Language" })),
   ...tool.map(e => ({ ...e, area: "Tool" }))
 ]

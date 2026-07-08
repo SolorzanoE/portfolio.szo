@@ -5,7 +5,11 @@ import { dataTechnologies } from "@/data/dataTechnologies"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
 
-const areas = ["Todos", "Backend", "Frontend", "Mobile", "Database", "Language", "Tool"]
+const areas = [
+  "Todos", "Backend", "Frontend", 
+  "Mobile", "Database", "Service", 
+  "Language", "Tool"
+]
 
 const Technology = () => {
   const [selectedChip, setSelectedChip] = useState("Todos")
