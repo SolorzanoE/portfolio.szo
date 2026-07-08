@@ -13,7 +13,7 @@ const AboutMe = () => {
     >
       <SectionHeader eyebrow="Sobre mí" title="Mi" italicWord="historia" />
 
-      <Grid container spacing={{ xs: 4, md: 8 }} alignItems="flex-start">
+      <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
         <Grid size={{ xs: 12, md: 7 }}>
           <Stack spacing={3}>
             <Typography
@@ -23,10 +23,10 @@ const AboutMe = () => {
                 lineHeight: 1.7
               }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-              vel lobortis velit. Donec vitae urna imperdiet, iaculis libero a,
-              dignissim eros. Morbi sed euismod ante. Pellentesque a leo at nunc
-              mattis aliquam.
+              Soy estudiante de último semestre en <strong>Ingeniería en Desarrollo y 
+              Tecnologías de Software</strong>. A lo largo de mi formación, he consolidado mi 
+              perfil técnico y de liderazgo participando activamente en 
+              hackathones de alto nivel organizados por <strong>Enactus y Apple</strong>.
             </Typography>
             <Typography
               sx={{
@@ -35,10 +35,9 @@ const AboutMe = () => {
                 lineHeight: 1.7
               }}
             >
-              Integer id leo at enim aliquam varius. Aliquam erat volutpat. Ut a
-              maximus eros. Suspendisse a augue at purus pharetra vulputate sed
-              eget odio. In viverra pellentesque suscipit. Nulla dignissim lacus
-              non porta consequat.
+              Cuento con experiencia practica como <strong>Desarrollador de Software Freelance
+              Subcontratado</strong>, colaborando de manera externa con empresas en la toma de decisiones 
+              técnicas y el desarrollo de productos bajo entornos colaborativos.
             </Typography>
             <Typography
               sx={{
@@ -47,8 +46,9 @@ const AboutMe = () => {
                 lineHeight: 1.7
               }}
             >
-              Proin et semper elit. In tristique bibendum magna, id sollicitudin
-              mauris ullamcorper eget. Nam dictum sed erat vel auctor.
+              Actualmente, me encuentro diseñando y construyendo un <strong>sistema de 
+              soporte de servicios</strong> a traves de tickets, 
+              aplicando buenas prácticas de arquitectura y desarrollo de software.
             </Typography>
           </Stack>
         </Grid>
