@@ -16,13 +16,11 @@ export const dataProject = [
     image: serviicyImage,
     technologies: ["Spring Boot", "PostgreSQL", "TypeScript", "React", "Vite"],
     //demoUrl: "1",
-    repoUrl: ""
   },
   {
     title: "Data tracking Cacao",
-    description: "",
+    description: "Sistema de gestión de variables para la trazabilidad del proceso de poscosecha del cacao.",
     image: cacaoImage,
     technologies: ["Java", "PostgreSQL"],
-    repoUrl: ""
   }
 ]
