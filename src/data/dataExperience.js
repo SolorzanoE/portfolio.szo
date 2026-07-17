@@ -23,12 +23,12 @@ export const dataExperiencie = [
     description: "", 
     technologies: ["React", "JavaScript", "MUI", "Web"]
   },
-  {
+  /*{
     title: "Residencia profesional",
     company: "Compusur",
     startDate: new Date(),
     endDate: new Date(), 
     description: "", 
     technologies: ["Spring Framework", "PostgreSQL", "React", "TypeScript", "MUI", "Web"]
-  }
+  }*/
 ]
