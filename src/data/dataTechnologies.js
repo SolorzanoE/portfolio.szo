@@ -2,10 +2,27 @@ const backend = [
   {
     name: "Spring Boot",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+  },
+  {
+    name: "Spring Security",
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springsecurity.svg",
+    invertOnDark: true
+  },
+  {
+    name: "Apache HTTP Server",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg"
   }
 ]
 
 const frontend = [
+  {
+    name: "HTML5",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+  },
+  {
+    name: "CSS3",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+  },
   {
     name: "React",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
@@ -53,6 +70,10 @@ const service = [
 
 const language = [
   {
+    name: "SQL",
+    image: "/sql.svg"
+  },
+  {
     name: "Java",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
   },
@@ -75,6 +96,10 @@ const language = [
 ]
 
 const tool = [
+  {
+    name: "Linux",
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+  },
   {
     name: "GitHub",
     image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
@@ -117,7 +142,7 @@ const tool = [
 ]
 
 /**
- * @type {Array<{name: string, image: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Language" | "Tool"}>}
+ * @type {Array<{name: string, image: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool"}>}
  */
 export const dataTechnologies = [
   ...backend.map(e => ({ ...e, area: "Backend" })),
