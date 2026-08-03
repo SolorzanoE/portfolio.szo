@@ -54,7 +54,7 @@ const database = [
 const service = [
   {
     name: "Supabase",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/supabase.svg"
+    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
   },
   {
     name: "Vercel",
@@ -102,7 +102,7 @@ const language = [
 const tool = [
   {
     name: "Prettier",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/prettier.svg"
+    image: "https://prettier.io/icon.png"
   },
   {
     name: "Linux",
