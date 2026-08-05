@@ -58,7 +58,7 @@ const AboutMe = () => {
             sx={{
               position: "relative",
               padding: { xs: 3, md: 4 },
-              borderRadius: 3,
+              borderRadius: 1.7,
               border: "1px solid",
               borderColor: "divider",
               bgcolor: "background.paper",

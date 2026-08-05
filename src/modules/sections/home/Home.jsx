@@ -39,7 +39,7 @@ function Home() {
             alignSelf: "flex-start",
             paddingInline: 1.5,
             paddingBlock: 0.75,
-            borderRadius: 999,
+            borderRadius: 1.2,
             border: "1px solid",
             borderColor: "divider",
             bgcolor: (t) =>

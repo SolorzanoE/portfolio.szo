@@ -15,7 +15,7 @@ function ExperiencieCard({ data = {} }) {
       sx={{
         paddingY: { xs: 2.5, md: 3 },
         paddingX: { xs: 2.5, md: 3.5 },
-        borderRadius: 3,
+        borderRadius: 1.7,
         border: "1px solid",
         borderColor: "divider",
         bgcolor: "background.paper",
@@ -42,7 +42,7 @@ function ExperiencieCard({ data = {} }) {
               sx={{
                 width: 44,
                 height: 44,
-                borderRadius: 2,
+                borderRadius: 1,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -85,7 +85,7 @@ function ExperiencieCard({ data = {} }) {
             sx={{
               paddingInline: 1.25,
               paddingBlock: 0.5,
-              borderRadius: 999,
+              borderRadius: 1,
               border: "1px solid",
               borderColor: "divider",
               fontFamily: "'JetBrains Mono', monospace",
@@ -118,7 +118,7 @@ function ExperiencieCard({ data = {} }) {
                 size="small"
                 variant="outlined"
                 sx={{
-                  borderRadius: 999,
+                  borderRadius: 0.7,
                   borderColor: "divider",
                   color: "text.secondary",
                   fontSize: "0.7rem",

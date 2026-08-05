@@ -8,7 +8,7 @@ const TechnologyChip = ({ label, onClick, selected }) => {
       onClick={onClick}
       variant={selected ? "filled" : "outlined"}
       sx={{
-        borderRadius: 1,
+        borderRadius: 0.7,
         paddingInline: 0.5,
         fontSize: "0.78rem",
         letterSpacing: "0.08em",
