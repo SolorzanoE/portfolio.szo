@@ -21,7 +21,6 @@ function Header() {
 
   return (
     <AppBar
-      position="sticky"
       elevation={0}
       sx={(theme) => ({
         bgcolor: theme.palette.mode === "dark"
@@ -96,7 +95,7 @@ function Header() {
           sx={{
             display: { xs: "none", md: "flex" },
             padding: "4px",
-            borderRadius: 999,
+            borderRadius: 1.5,
             border: "1px solid",
             borderColor: "divider",
             bgcolor: (t) =>
