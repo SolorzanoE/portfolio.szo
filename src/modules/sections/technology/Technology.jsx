@@ -1,4 +1,4 @@
-import { Box, Grid, Stack, Typography } from "@mui/material"
+import { Box, Grid, Stack, Typography, useTheme } from "@mui/material"
 import TechnologyChip from "./TechnologyChip"
 import { useState } from "react"
 import { dataTechnologies } from "@/data/dataTechnologies"
@@ -12,6 +12,7 @@ const areas = [
 ]
 
 const Technology = () => {
+  const theme = useTheme()
   const [selectedChip, setSelectedChip] = useState("Todos")
 
   const handleClick = (item) => setSelectedChip(item)
@@ -89,13 +90,17 @@ const Technology = () => {
                 {data.image ? (
                   <Box
                     component="img"
-                    src={data.image}
+                    src={theme.palette.mode === "dark" && data.imageDark
+                      ? data.imageDark
+                      : data.image}
                     alt={data.name}
+                    loading="lazy"
+                    decoding="async"
                     sx={{
                       width: "70%",
                       height: "70%",
                       objectFit: "contain",
-                      ...(data.invertOnDark && {
+                      ...(data.invertOnDark && !data.imageDark && {
                         filter: (theme) =>
                           theme.palette.mode === "dark"
                             ? "invert(1) brightness(1.8)"

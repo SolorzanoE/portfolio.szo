@@ -1,156 +1,207 @@
+import apacheIcon from "@/assets/technologies/backend/apache.svg?no-inline"
+import springBootIcon from "@/assets/technologies/backend/spring-boot.svg?no-inline"
+import springSecurityIcon from "@/assets/technologies/backend/spring-security.svg?no-inline"
+import postgresqlIcon from "@/assets/technologies/database/postgresql.svg?no-inline"
+import css3Icon from "@/assets/technologies/frontend/css3.svg?no-inline"
+import html5Icon from "@/assets/technologies/frontend/html5.svg?no-inline"
+import materialUiIcon from "@/assets/technologies/frontend/material-ui.svg?no-inline"
+import nextjsOnDarkIcon from "@/assets/technologies/frontend/nextjs-on-dark.svg?no-inline"
+import nextjsOnLightIcon from "@/assets/technologies/frontend/nextjs-on-light.svg?no-inline"
+import tailwindCssIcon from "@/assets/technologies/frontend/tailwindcss.svg?no-inline"
+import cIcon from "@/assets/technologies/language/c.svg?no-inline"
+import javaIcon from "@/assets/technologies/language/java.svg?no-inline"
+import javascriptIcon from "@/assets/technologies/language/javascript.svg?no-inline"
+import sqlIcon from "@/assets/technologies/language/sql.svg?no-inline"
+import typescriptIcon from "@/assets/technologies/language/typescript.svg?no-inline"
+import cloudflareIcon from "@/assets/technologies/service/cloudflare.svg?no-inline"
+import renderIcon from "@/assets/technologies/service/render.svg?no-inline"
+import supabaseIcon from "@/assets/technologies/service/supabase.svg?no-inline"
+import vercelOnDarkIcon from "@/assets/technologies/service/vercel-on-dark.svg?no-inline"
+import vercelOnLightIcon from "@/assets/technologies/service/vercel-on-light.svg?no-inline"
+import reactIcon from "@/assets/technologies/shared/react.svg?no-inline"
+import swiftIcon from "@/assets/technologies/shared/swift.svg?no-inline"
+import clickUpIcon from "@/assets/technologies/tool/clickup.svg?no-inline"
+import dockerIcon from "@/assets/technologies/tool/docker.svg?no-inline"
+import drawIoIcon from "@/assets/technologies/tool/drawio.svg?no-inline"
+import figmaIcon from "@/assets/technologies/tool/figma.svg?no-inline"
+import gitIcon from "@/assets/technologies/tool/git.svg?no-inline"
+import githubOnDarkIcon from "@/assets/technologies/tool/github-on-dark.svg?no-inline"
+import githubOnLightIcon from "@/assets/technologies/tool/github-on-light.svg?no-inline"
+import intellijIcon from "@/assets/technologies/tool/intellij.svg?no-inline"
+import linearOnDarkIcon from "@/assets/technologies/tool/linear-on-dark.svg?no-inline"
+import linearOnLightIcon from "@/assets/technologies/tool/linear-on-light.svg?no-inline"
+import linuxIcon from "@/assets/technologies/tool/linux.svg?no-inline"
+import postmanIcon from "@/assets/technologies/tool/postman.svg?no-inline"
+import prettierIcon from "@/assets/technologies/tool/prettier.png?no-inline"
+import vscodeIcon from "@/assets/technologies/tool/vscode.svg?no-inline"
+
 const backend = [
   {
     name: "Spring Boot",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg"
+    image: springBootIcon
   },
   {
     name: "Spring Security",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/springsecurity.svg",
+    image: springSecurityIcon,
     invertOnDark: true
   },
   {
     name: "Apache HTTP Server",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apache/apache-original.svg"
+    image: apacheIcon
   }
 ]
 
 const frontend = [
   {
     name: "HTML5",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+    image: html5Icon
   },
   {
     name: "CSS3",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+    image: css3Icon
   },
   {
     name: "React",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    image: reactIcon
+  },
+  {
+    name: "Next.js",
+    image: nextjsOnLightIcon,
+    imageDark: nextjsOnDarkIcon
+  },
+  {
+    name: "Tailwind CSS",
+    image: tailwindCssIcon
   },
   {
     name: "Material UI",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/materialui/materialui-original.svg"
+    image: materialUiIcon
   }
 ]
 
 const mobile = [
   {
     name: "React Native",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    image: reactIcon
   },
   {
     name: "SwiftUI",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+    image: swiftIcon
   }
 ]
 
 const database = [
   {
     name: "PostgreSQL",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+    image: postgresqlIcon
   }
 ]
 
 const service = [
   {
     name: "Supabase",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg"
+    image: supabaseIcon
   },
   {
     name: "Vercel",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/vercel.svg",
-    invertOnDark: true
+    image: vercelOnLightIcon,
+    imageDark: vercelOnDarkIcon
   },
   {
     name: "Render",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/render.svg",
+    image: renderIcon,
     invertOnDark: true
   },
   {
     name: "Cloudflare",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+    image: cloudflareIcon
   }
 ]
 
 const language = [
   {
     name: "SQL",
-    image: "/sql.svg"
+    image: sqlIcon
   },
   {
     name: "Java",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+    image: javaIcon
   },
   {
     name: "C",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg"
+    image: cIcon
   },
   {
     name: "JavaScript",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    image: javascriptIcon
   },
   {
     name: "TypeScript",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    image: typescriptIcon
   },
   {
     name: "Swift",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg"
+    image: swiftIcon
   }
 ]
 
 const tool = [
   {
     name: "Prettier",
-    image: "https://prettier.io/icon.png"
+    image: prettierIcon
   },
   {
     name: "Linux",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+    image: linuxIcon
   },
   {
     name: "GitHub",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-    invertOnDark: true
+    image: githubOnLightIcon,
+    imageDark: githubOnDarkIcon
   },
   {
     name: "Git",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+    image: gitIcon
   },
   {
     name: "IntelliJ IDEA",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg"
+    image: intellijIcon
   },
   {
     name: "VSCode",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg"
+    image: vscodeIcon
   },
   {
     name: "Postman",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg"
+    image: postmanIcon
   },
   {
     name: "Docker",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg"
+    image: dockerIcon
   },
   {
     name: "Figma",
-    image: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+    image: figmaIcon
   },
   {
     name: "Draw.io",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/diagramsdotnet.svg",
+    image: drawIoIcon,
     invertOnDark: true
   },
   {
     name: "ClickUp",
-    image: "https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/clickup.svg",
+    image: clickUpIcon,
     invertOnDark: true
+  },
+  {
+    name: "Linear",
+    image: linearOnLightIcon,
+    imageDark: linearOnDarkIcon
   }
 ]
 
 /**
- * @type {Array<{name: string, image: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool"}>}
+ * @type {Array<{name: string, image: string, imageDark?: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool"}>}
  */
 export const dataTechnologies = [
   ...backend.map(e => ({ ...e, area: "Backend" })),

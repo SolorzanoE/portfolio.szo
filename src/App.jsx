@@ -5,6 +5,7 @@ import AboutMe from "@/modules/sections/about-me/AboutMe"
 import Experiencie from "@/modules/sections/experience/Experiencie"
 import Proyect from "@/modules/sections/project/Project"
 import Technology from "./modules/sections/technology/Technology"
+import Footer from "@/components/Footer"
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
         <Experiencie />
         <Proyect />
         <Technology />
+        <Footer />
       </Container>
     </Box>
   )
