@@ -1,6 +1,6 @@
-import inventoryImage from "@/assets/inventory-image.png";
-import serviicyImage from "@/assets/serviicy-image.png"
-import cacaoImage from "@/assets/cacao-image.png"
+import inventoryImage from "@/assets/projects/inventory-image.png";
+import serviicyImage from "@/assets/projects/serviicy-image.png"
+import cacaoImage from "@/assets/projects/cacao-image.png"
 
 export const dataProject = [
   {
