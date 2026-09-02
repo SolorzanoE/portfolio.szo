@@ -45,26 +45,16 @@ function Header() {
       >
         <Stack direction="row" spacing={1.2} alignItems="center">
           <Box
+            component="img"
+            src={globalMode === "dark" ? "/brand-icon-dark.svg" : "/brand-icon-light.svg"}
+            alt="szo"
             sx={{
               width: 28,
               height: 28,
               borderRadius: "8px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              background: (t) =>
-                t.palette.mode === "dark"
-                  ? "linear-gradient(135deg, #22D3EE 0%, #0EA5E9 100%)"
-                  : "linear-gradient(135deg, #0891B2 0%, #0284C7 100%)",
-              color: "#FAFAFA",
-              fontFamily: "'Inter Tight', sans-serif",
-              fontWeight: 700,
-              fontSize: "0.85rem",
-              letterSpacing: "-0.02em"
+              display: "block"
             }}
-          >
-            E
-          </Box>
+          />
           <Typography
             sx={{
               fontFamily: "'Inter Tight', sans-serif",
