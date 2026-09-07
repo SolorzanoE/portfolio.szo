@@ -1,4 +1,4 @@
-import { Box, Chip, IconButton, Paper, Stack, Typography } from "@mui/material"
+import { Box, Button, Chip, IconButton, Paper, Stack, Typography } from "@mui/material"
 import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"
 import GitHubIcon from "@mui/icons-material/GitHub"
 
@@ -11,6 +11,8 @@ const ProjectCard = ({ data = {} }) => {
     demoUrl,
     repoUrl
   } = data
+
+  const primaryUrl = demoUrl || repoUrl
 
   return (
     <Paper
@@ -90,49 +92,28 @@ const ProjectCard = ({ data = {} }) => {
             Vista previa
           </Box>
         )}
-
-        {(demoUrl || repoUrl) && (
-          <Stack
-            direction="row"
-            spacing={0.75}
-            sx={{ position: "absolute", top: 12, right: 12 }}
-          >
-            {repoUrl && (
-              <IconButton
-                size="small"
-                href={repoUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Repositorio"
-                sx={{
-                  width: 34,
-                  height: 34,
-                  bgcolor: "background.paper",
-                  border: "1px solid",
-                  borderColor: "divider",
-                  color: "text.primary",
-                  "&:hover": {
-                    color: "secondary.main",
-                    borderColor: "secondary.main"
-                  }
-                }}
-              >
-                <GitHubIcon sx={{ fontSize: 16 }} />
-              </IconButton>
-            )}
-          </Stack>
-        )}
       </Box>
 
       <Stack spacing={1.75} sx={{ padding: { xs: 2.5, md: 3 }, flex: 1 }}>
         <Stack direction="row" alignItems="flex-start" justifyContent="space-between" spacing={2}>
           <Typography
+            component={primaryUrl ? "a" : "h3"}
+            href={primaryUrl || undefined}
+            target={primaryUrl ? "_blank" : undefined}
+            rel={primaryUrl ? "noreferrer" : undefined}
             sx={{
               fontFamily: "'Inter Tight', sans-serif",
               fontSize: "1.2rem",
               fontWeight: 600,
               letterSpacing: "-0.02em",
-              lineHeight: 1.3
+              lineHeight: 1.3,
+              textDecoration: "none",
+              color: "inherit",
+              cursor: primaryUrl ? "pointer" : "default",
+              transition: "color 0.2s ease",
+              "&:hover": primaryUrl ? {
+                color: "secondary.main"
+              } : {}
             }}
           >
             {title || "Título del proyecto"}
@@ -148,8 +129,8 @@ const ProjectCard = ({ data = {} }) => {
             sx={{
               flexShrink: 0,
               display: demoUrl ? "inherit" : "none",
-              width: 25,
-              height: 25,
+              width: 28,
+              height: 28,
               border: "1px solid",
               borderColor: "divider",
               color: "text.primary",
@@ -202,6 +183,70 @@ const ProjectCard = ({ data = {} }) => {
             </Typography>
           )}
         </Stack>
+
+        {(demoUrl || repoUrl) && (
+          <Stack direction="row" spacing={1} sx={{ paddingTop: 1 }}>
+            {repoUrl && (
+              <Button
+                size="small"
+                variant="outlined"
+                href={repoUrl}
+                target="_blank"
+                rel="noreferrer"
+                startIcon={<GitHubIcon sx={{ fontSize: 16 }} />}
+                sx={{
+                  fontSize: "0.75rem",
+                  py: 0.6,
+                  px: 1.5,
+                  minHeight: 36,
+                  borderRadius: 999,
+                  borderColor: "divider",
+                  color: "text.secondary",
+                  textTransform: "none",
+                  transition: "all 0.2s ease",
+                  "&:hover": {
+                    borderColor: "secondary.main",
+                    color: "secondary.main",
+                    bgcolor: (t) =>
+                      t.palette.mode === "dark"
+                        ? "rgba(34,211,238,0.06)"
+                        : "rgba(8,145,178,0.05)"
+                  }
+                }}
+              >
+                Ver código
+              </Button>
+            )}
+            {demoUrl && (
+              <Button
+                size="small"
+                variant="contained"
+                disableElevation
+                href={demoUrl}
+                target="_blank"
+                rel="noreferrer"
+                endIcon={<ArrowOutwardIcon sx={{ fontSize: 14 }} />}
+                sx={{
+                  fontSize: "0.75rem",
+                  py: 0.6,
+                  px: 1.5,
+                  minHeight: 36,
+                  borderRadius: 999,
+                  bgcolor: "primary.main",
+                  color: "primary.contrastText",
+                  textTransform: "none",
+                  transition: "opacity 0.2s ease",
+                  "&:hover": {
+                    bgcolor: "primary.main",
+                    opacity: 0.88
+                  }
+                }}
+              >
+                Demo en vivo
+              </Button>
+            )}
+          </Stack>
+        )}
       </Stack>
     </Paper>
   )

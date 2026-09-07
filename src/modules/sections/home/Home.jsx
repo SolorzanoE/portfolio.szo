@@ -130,6 +130,8 @@ function Home() {
               paddingInline: 2.5,
               paddingBlock: 1.25,
               fontSize: "0.88rem",
+              borderRadius: 999,
+              minHeight: 44,
               "&:hover": {
                 bgcolor: "primary.main",
                 opacity: 0.92
@@ -137,6 +139,31 @@ function Home() {
             }}
           >
             Contáctame
+          </Button>
+
+          <Button
+            variant="outlined"
+            href={`#${dataSection.project.id}`}
+            sx={{
+              borderColor: "divider",
+              color: "text.primary",
+              paddingInline: 2.5,
+              paddingBlock: 1.25,
+              fontSize: "0.88rem",
+              borderRadius: 999,
+              minHeight: 44,
+              transition: "all 0.2s ease",
+              "&:hover": {
+                borderColor: "secondary.main",
+                bgcolor: (t) =>
+                  t.palette.mode === "dark"
+                    ? "rgba(34,211,238,0.06)"
+                    : "rgba(8,145,178,0.05)",
+                color: "secondary.main"
+              }
+            }}
+          >
+            Ver proyectos
           </Button>
 
           <Stack direction="row" spacing={1}>
@@ -148,8 +175,8 @@ function Home() {
                 rel="noreferrer"
                 aria-label={data.label}
                 sx={{
-                  width: 42,
-                  height: 42,
+                  width: { xs: 44, sm: 42 },
+                  height: { xs: 44, sm: 42 },
                   border: "1px solid",
                   borderColor: "divider",
                   color: "text.primary",

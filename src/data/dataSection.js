@@ -18,5 +18,9 @@ export const dataSection = {
   technology: {
     id: "technology",
     name: "Tecnologías"
+  },
+  contact: {
+    id: "contact",
+    name: "Contacto"
   }
 }
