@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client'
 import App from '@/App'
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
+import { DesignSystemProvider } from '@/context/DesignSystemContext'
 
 const display = "'Inter Tight', 'Inter', system-ui, sans-serif"
 const sans = "'Inter', system-ui, -apple-system, sans-serif"
@@ -104,6 +105,8 @@ const theme = createTheme({
 createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={theme} defaultMode="system">
     <CssBaseline />
-    <App />
+    <DesignSystemProvider>
+      <App />
+    </DesignSystemProvider>
   </ThemeProvider>,
 )

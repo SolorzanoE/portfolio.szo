@@ -10,8 +10,14 @@ import { dataExperiencie } from "@/data/dataExperience";
 import ExperiencieCard from "./ExperienceCard";
 import { dataSection } from "@/data/dataSection";
 import SectionHeader from "@/components/SectionHeader";
+import { useDesignSystem } from "@/context/DesignSystemContext";
+import { useTheme } from "@mui/material";
 
 function Experiencie() {
+  const theme = useTheme();
+  const { isScandinavian, getTokens } = useDesignSystem();
+  const tokens = getTokens(theme.palette.mode);
+
   const sortExperience = dataExperiencie
     .sort((a, b) => a.date <= (b.date))
 
@@ -39,11 +45,13 @@ function Experiencie() {
             <TimelineSeparator>
               <TimelineDot
                 sx={{
-                  bgcolor: "background.paper",
+                  bgcolor: isScandinavian ? tokens.surface : "background.paper",
                   border: "1px solid",
-                  borderColor: "secondary.main",
-                  boxShadow: (t) =>
-                    `0 0 0 4px ${t.palette.mode === "dark" ? "rgba(34,211,238,0.12)" : "rgba(8,145,178,0.10)"}`,
+                  borderColor: isScandinavian ? tokens.border : "secondary.main",
+                  boxShadow: isScandinavian
+                    ? "none"
+                    : (t) =>
+                        `0 0 0 4px ${t.palette.mode === "dark" ? "rgba(34,211,238,0.12)" : "rgba(8,145,178,0.10)"}`,
                   width: 14,
                   height: 14,
                   margin: 0,
@@ -53,14 +61,14 @@ function Experiencie() {
                     position: "absolute",
                     inset: 3,
                     borderRadius: "50%",
-                    bgcolor: "secondary.main"
+                    bgcolor: isScandinavian ? tokens.primaryInk : "secondary.main"
                   }
                 }}
               />
               {idx < dataExperiencie.length - 1 && (
                 <TimelineConnector
                   sx={{
-                    bgcolor: "divider",
+                    bgcolor: isScandinavian ? tokens.border : "divider",
                     width: "1px"
                   }}
                 />
