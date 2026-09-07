@@ -1,41 +1,25 @@
-import { createContext, useContext, useState, useEffect } from "react"
+import { createContext, useContext, useEffect } from "react"
 
 const DesignSystemContext = createContext({
-  isScandinavian: false,
-  variant: "quiet", // 'quiet' | 'editorial' | 'utilitarian'
+  isScandinavian: true,
+  variant: "editorial",
   toggleScandinavian: () => {},
   setVariant: () => {},
   getTokens: () => ({})
 })
 
 export const DesignSystemProvider = ({ children }) => {
-  const [isScandinavian, setIsScandinavian] = useState(() => {
-    const saved = localStorage.getItem("portfolio_design_system")
-    return saved !== null ? saved === "scandinavian" : true
-  })
-  
-  const [variant, setVariantState] = useState(() => {
-    return localStorage.getItem("portfolio_scandinavian_variant") || "editorial"
-  })
+  const isScandinavian = true
+  const variant = "editorial"
 
   useEffect(() => {
-    localStorage.setItem(
-      "portfolio_design_system",
-      isScandinavian ? "scandinavian" : "original"
-    )
-  }, [isScandinavian])
+    // Clear any obsolete test overrides
+    localStorage.removeItem("portfolio_design_system")
+    localStorage.removeItem("portfolio_scandinavian_variant")
+  }, [])
 
-  useEffect(() => {
-    localStorage.setItem("portfolio_scandinavian_variant", variant)
-  }, [variant])
-
-  const toggleScandinavian = () => {
-    setIsScandinavian((prev) => !prev)
-  }
-
-  const setVariant = (newVariant) => {
-    setVariantState(newVariant)
-  }
+  const toggleScandinavian = () => {}
+  const setVariant = () => {}
 
   const getTokens = (mode = "light") => {
     const isDark = mode === "dark"

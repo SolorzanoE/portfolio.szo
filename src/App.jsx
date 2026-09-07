@@ -7,7 +7,6 @@ import Proyect from "@/modules/sections/project/Project"
 import Technology from "./modules/sections/technology/Technology"
 import Contact from "@/modules/sections/contact/Contact"
 import Footer from "@/components/Footer"
-import ScandinavianSwitcher from "@/components/ScandinavianSwitcher"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 function App() {
@@ -71,7 +70,6 @@ function App() {
         <Contact />
         <Footer />
       </Container>
-      <ScandinavianSwitcher />
     </Box>
   )
 }
