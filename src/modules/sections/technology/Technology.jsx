@@ -67,12 +67,15 @@ const Technology = () => {
                 border: "1px solid",
                 borderColor: isScandinavian ? tokens.border : "divider",
                 bgcolor: isScandinavian ? tokens.surface : "background.paper",
-                transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
+                transition: "border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease",
                 "&:hover": {
                   borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
-                  transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-1px)") : "translateY(-3px)",
+                  bgcolor: isScandinavian
+                    ? (theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.015)")
+                    : "background.paper",
+                  transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-2px)") : "translateY(-3px)",
                   boxShadow: isScandinavian
-                    ? (theme.palette.mode === "dark" ? "0 8px 20px -12px rgba(0,0,0,0.5)" : "0 6px 16px -10px rgba(0,0,0,0.06)")
+                    ? (theme.palette.mode === "dark" ? "none" : "0 8px 20px -12px rgba(0,0,0,0.08)")
                     : "0 18px 30px -22px rgba(0,0,0,0.5)"
                 }
               }}
