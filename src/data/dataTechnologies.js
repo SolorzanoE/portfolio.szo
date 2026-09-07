@@ -20,6 +20,7 @@ import vercelOnDarkIcon from "@/assets/technologies/service/vercel-on-dark.svg?n
 import vercelOnLightIcon from "@/assets/technologies/service/vercel-on-light.svg?no-inline"
 import reactIcon from "@/assets/technologies/shared/react.svg?no-inline"
 import swiftIcon from "@/assets/technologies/shared/swift.svg?no-inline"
+import azureDevopsIcon from "@/assets/technologies/tool/azure-devops.svg?no-inline"
 import clickUpIcon from "@/assets/technologies/tool/clickup.svg?no-inline"
 import dockerIcon from "@/assets/technologies/tool/docker.svg?no-inline"
 import drawIoIcon from "@/assets/technologies/tool/drawio.svg?no-inline"
@@ -158,6 +159,10 @@ const tool = [
     name: "GitHub",
     image: githubOnLightIcon,
     imageDark: githubOnDarkIcon
+  },
+  {
+    name: "Azure DevOps",
+    image: azureDevopsIcon
   },
   {
     name: "Git",
