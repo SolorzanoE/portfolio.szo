@@ -1,10 +1,15 @@
-import { Box, Button, Paper, Stack, Typography } from "@mui/material"
+import { Box, Button, Paper, Stack, Typography, useTheme } from "@mui/material"
 import { EmailOutlined, GitHub, LinkedIn, ArrowOutward } from "@mui/icons-material"
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
+import { useDesignSystem } from "@/context/DesignSystemContext"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
 
 function Contact() {
+  const theme = useTheme()
+  const { isScandinavian, variant, getTokens } = useDesignSystem()
+  const tokens = getTokens(theme.palette.mode)
+
   return (
     <Stack
       id={dataSection.contact.id}
@@ -18,28 +23,30 @@ function Contact() {
         elevation={0}
         sx={{
           padding: { xs: 3.5, sm: 5, md: 6 },
-          borderRadius: 2,
+          borderRadius: isScandinavian ? 1.5 : 2,
           border: "1px solid",
-          borderColor: "divider",
-          bgcolor: "background.paper",
+          borderColor: isScandinavian ? tokens.border : "divider",
+          bgcolor: isScandinavian ? tokens.surface : "background.paper",
           position: "relative",
           overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            right: 0,
-            width: 340,
-            height: 340,
-            background: (t) =>
-              t.palette.mode === "dark"
-                ? "radial-gradient(circle at 100% 0%, rgba(34,211,238,0.14), transparent 70%)"
-                : "radial-gradient(circle at 100% 0%, rgba(8,145,178,0.10), transparent 70%)",
-            pointerEvents: "none"
-          }
+          ...(!isScandinavian && {
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              top: 0,
+              right: 0,
+              width: 320,
+              height: 320,
+              background: (t) =>
+                t.palette.mode === "dark"
+                  ? "radial-gradient(circle at 100% 0%, rgba(34,211,238,0.12), transparent 70%)"
+                  : "radial-gradient(circle at 100% 0%, rgba(8,145,178,0.08), transparent 70%)",
+              pointerEvents: "none"
+            }
+          })
         }}
       >
-        <Stack spacing={4} sx={{ maxWidth: 720, position: "relative", zIndex: 1 }}>
+        <Stack spacing={4} sx={{ maxWidth: 720 }}>
           <Stack spacing={1.5}>
             <Box
               sx={{
@@ -49,13 +56,10 @@ function Contact() {
                 alignSelf: "flex-start",
                 paddingInline: 1.5,
                 paddingBlock: 0.6,
-                borderRadius: 1.2,
+                borderRadius: isScandinavian ? 1 : 1.2,
                 border: "1px solid",
-                borderColor: "divider",
-                bgcolor: (t) =>
-                  t.palette.mode === "dark"
-                    ? "rgba(34,211,238,0.06)"
-                    : "rgba(8,145,178,0.05)"
+                borderColor: isScandinavian ? tokens.border : "divider",
+                bgcolor: isScandinavian ? tokens.washFill : "transparent"
               }}
             >
               <Box
@@ -63,7 +67,7 @@ function Contact() {
                   width: 7,
                   height: 7,
                   borderRadius: "50%",
-                  bgcolor: "secondary.main",
+                  bgcolor: isScandinavian ? tokens.primaryInk : "success.main",
                   animation: "pulseDot 2s ease-in-out infinite"
                 }}
               />
@@ -72,7 +76,7 @@ function Contact() {
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "0.72rem",
                   letterSpacing: "0.05em",
-                  color: "text.secondary"
+                  color: isScandinavian ? tokens.mutedInk : "text.secondary"
                 }}
               >
                 Respuesta habitual en menos de 24 horas
@@ -86,7 +90,8 @@ function Contact() {
                 fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.75rem" },
                 fontWeight: 500,
                 letterSpacing: "-0.03em",
-                lineHeight: 1.15
+                lineHeight: 1.15,
+                color: isScandinavian ? tokens.primaryInk : "inherit"
               }}
             >
               ¿Tienes un proyecto en mente o una propuesta técnica?
@@ -96,7 +101,7 @@ function Contact() {
               sx={{
                 fontSize: { xs: "0.98rem", md: "1.08rem" },
                 lineHeight: 1.7,
-                color: "text.secondary",
+                color: isScandinavian ? tokens.secondaryInk : "text.secondary",
                 maxWidth: 620
               }}
             >
@@ -117,21 +122,20 @@ function Contact() {
               startIcon={<EmailOutlined fontSize="small" />}
               endIcon={<ArrowOutward fontSize="small" />}
               sx={{
-                bgcolor: "primary.main",
-                color: "primary.contrastText",
+                bgcolor: isScandinavian ? tokens.primaryInk : "primary.main",
+                color: isScandinavian ? tokens.canvas : "primary.contrastText",
                 paddingInline: 3,
                 paddingBlock: 1.35,
                 fontSize: "0.9rem",
-                borderRadius: 999,
+                borderRadius: isScandinavian ? 1 : 999,
                 minHeight: 44,
-                transition: "opacity 0.2s ease, transform 0.2s ease",
+                transition: "opacity 0.2s ease, background-color 0.2s ease",
                 "&:hover": {
-                  bgcolor: "primary.main",
-                  opacity: 0.92,
-                  transform: "translateY(-1px)"
+                  bgcolor: isScandinavian ? tokens.primaryInk : "primary.main",
+                  opacity: isScandinavian ? 0.88 : 0.9
                 },
                 "&:active": {
-                  opacity: 0.85
+                  opacity: 0.8
                 }
               }}
             >
@@ -145,22 +149,18 @@ function Contact() {
               rel="noreferrer"
               startIcon={<LinkedIn fontSize="small" />}
               sx={{
-                borderColor: "divider",
-                color: "text.primary",
+                borderColor: isScandinavian ? tokens.border : "divider",
+                color: isScandinavian ? tokens.primaryInk : "text.primary",
                 paddingInline: 2.5,
                 paddingBlock: 1.35,
                 fontSize: "0.88rem",
-                borderRadius: 999,
+                borderRadius: isScandinavian ? 1 : 999,
                 minHeight: 44,
                 transition: "all 0.2s ease",
                 "&:hover": {
-                  borderColor: "secondary.main",
-                  bgcolor: (t) =>
-                    t.palette.mode === "dark"
-                      ? "rgba(34,211,238,0.06)"
-                      : "rgba(8,145,178,0.05)",
-                  color: "secondary.main",
-                  transform: "translateY(-1px)"
+                  borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
+                  bgcolor: isScandinavian ? tokens.hoverFill : "transparent",
+                  color: isScandinavian ? tokens.primaryInk : "secondary.main"
                 }
               }}
             >
@@ -174,22 +174,18 @@ function Contact() {
               rel="noreferrer"
               startIcon={<GitHub fontSize="small" />}
               sx={{
-                borderColor: "divider",
-                color: "text.primary",
+                borderColor: isScandinavian ? tokens.border : "divider",
+                color: isScandinavian ? tokens.primaryInk : "text.primary",
                 paddingInline: 2.5,
                 paddingBlock: 1.35,
                 fontSize: "0.88rem",
-                borderRadius: 999,
+                borderRadius: isScandinavian ? 1 : 999,
                 minHeight: 44,
                 transition: "all 0.2s ease",
                 "&:hover": {
-                  borderColor: "secondary.main",
-                  bgcolor: (t) =>
-                    t.palette.mode === "dark"
-                      ? "rgba(34,211,238,0.06)"
-                      : "rgba(8,145,178,0.05)",
-                  color: "secondary.main",
-                  transform: "translateY(-1px)"
+                  borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
+                  bgcolor: isScandinavian ? tokens.hoverFill : "transparent",
+                  color: isScandinavian ? tokens.primaryInk : "secondary.main"
                 }
               }}
             >

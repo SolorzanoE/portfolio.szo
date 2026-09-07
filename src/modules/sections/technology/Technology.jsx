@@ -4,6 +4,7 @@ import { useState } from "react"
 import { dataTechnologies } from "@/data/dataTechnologies"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
+import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const areas = [
   "Todos", "Backend", "Frontend", 
@@ -13,6 +14,8 @@ const areas = [
 
 const Technology = () => {
   const theme = useTheme()
+  const { isScandinavian, variant, getTokens } = useDesignSystem()
+  const tokens = getTokens(theme.palette.mode)
   const [selectedChip, setSelectedChip] = useState("Todos")
 
   const handleClick = (item) => setSelectedChip(item)
@@ -31,7 +34,7 @@ const Technology = () => {
 
       <Stack
         direction="row"
-        spacing={1.5}
+        spacing={1.25}
         flexWrap="wrap"
         useFlexGap
         sx={{ marginBottom: { xs: 4, md: 6 } }}
@@ -60,15 +63,17 @@ const Technology = () => {
                 paddingBlock: 3,
                 paddingInline: 2,
                 height: "100%",
-                borderRadius: 1,
+                borderRadius: isScandinavian ? 0.8 : 1,
                 border: "1px solid",
-                borderColor: "divider",
-                bgcolor: "background.paper",
-                transition: "border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease",
+                borderColor: isScandinavian ? tokens.border : "divider",
+                bgcolor: isScandinavian ? tokens.surface : "background.paper",
+                transition: "border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
                 "&:hover": {
-                  borderColor: "secondary.main",
-                  transform: "translateY(-3px)",
-                  boxShadow: "0 18px 30px -22px rgba(0,0,0,0.5)"
+                  borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
+                  transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-1px)") : "translateY(-3px)",
+                  boxShadow: isScandinavian
+                    ? (theme.palette.mode === "dark" ? "0 8px 20px -12px rgba(0,0,0,0.5)" : "0 6px 16px -10px rgba(0,0,0,0.06)")
+                    : "0 18px 30px -22px rgba(0,0,0,0.5)"
                 }
               }}
             >
@@ -79,11 +84,13 @@ const Technology = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  borderRadius: "50%",
-                  bgcolor: (theme) =>
-                    theme.palette.mode === "dark"
-                      ? "rgba(243,238,227,0.04)"
-                      : "rgba(10,10,10,0.04)",
+                  borderRadius: isScandinavian ? 1 : "50%",
+                  bgcolor: isScandinavian
+                    ? tokens.hoverFill
+                    : (theme =>
+                        theme.palette.mode === "dark"
+                          ? "rgba(243,238,227,0.04)"
+                          : "rgba(10,10,10,0.04)"),
                   overflow: "hidden"
                 }}
               >
@@ -111,10 +118,11 @@ const Technology = () => {
                 ) : (
                   <Typography
                     sx={{
-                      fontFamily: "'Cormorant Garamond', serif",
-                      fontStyle: "italic",
+                      fontFamily: isScandinavian ? "'Inter Tight', sans-serif" : "'Cormorant Garamond', serif",
+                      fontStyle: isScandinavian ? "normal" : "italic",
                       fontSize: "1.3rem",
-                      color: "secondary.main"
+                      fontWeight: isScandinavian ? 600 : 400,
+                      color: isScandinavian ? tokens.secondaryInk : "secondary.main"
                     }}
                   >
                     {data.name?.charAt(0) ?? "·"}
@@ -125,7 +133,8 @@ const Technology = () => {
                 sx={{
                   fontSize: "0.85rem",
                   letterSpacing: "0.04em",
-                  textAlign: "center"
+                  textAlign: "center",
+                  color: isScandinavian ? tokens.primaryInk : "inherit"
                 }}
               >
                 {data.name}
@@ -133,9 +142,9 @@ const Technology = () => {
               <Typography
                 variant="caption"
                 sx={{
-                  color: "text.secondary",
-                  letterSpacing: "0.15em",
-                  textTransform: "uppercase",
+                  color: isScandinavian ? tokens.mutedInk : "text.secondary",
+                  letterSpacing: isScandinavian ? "0.08em" : "0.15em",
+                  textTransform: isScandinavian ? "none" : "uppercase",
                   fontSize: "0.65rem"
                 }}
               >
