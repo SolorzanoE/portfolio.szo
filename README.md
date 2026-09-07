@@ -9,24 +9,30 @@
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Material UI](https://img.shields.io/badge/Material_UI-7.3-007FFF?style=flat&logo=mui&logoColor=white)](https://mui.com/)
 [![Design System](https://img.shields.io/badge/Design_System-Scandinavian_Editorial-000000?style=flat)](https://github.com/SolorzanoE/portfolio.szo)
-[![Site Looker Atter](https://img.shields.io/badge/Visual_Snapshots-Site_Looker_Atter-2b2620?style=flat&logo=safari&logoColor=white)](https://sitelookeratter.com)
+[![Site Looker Atter](https://img.shields.io/badge/Visual_Snapshot-Site_Looker_Atter-2b2620?style=flat&logo=safari&logoColor=white)](https://sitelookeratter.com)
 [![WCAG AA](https://img.shields.io/badge/Accessibility-WCAG_AA_Pass-success?style=flat)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 
 <br />
 
-<img width="100%" alt="Eduardo Solórzano - Portafolio Editorial" src="https://github.com/user-attachments/assets/9844b9e3-7134-4c7c-8d54-5cba5f311e1c" />
+[![Eduardo Solórzano - Portafolio](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2)](https://portfolio-nu-murex-90.vercel.app)
+
+<sub>Captura en tiempo real generada automáticamente con [Site Looker Atter](https://sitelookeratter.com) desde el despliegue en producción</sub>
+
+<br />
+
+[Ver Portafolio en Vivo](https://portfolio-nu-murex-90.vercel.app)
 
 </div>
 
 ---
 
-## ✦ Visión General
+## Visión General
 
 Este repositorio contiene el portafolio profesional de **Eduardo Solórzano**, Ingeniero de Software Full Stack. La interfaz fue construida desde cero priorizando la sobriedad, la excelencia tipográfica y la legibilidad absoluta, fusionando la estética nórdica con fundamentos de psicología visual humana.
 
 ---
 
-## 🏛️ Sistema de Diseño: Scandinavian Editorial
+## Sistema de Diseño: Scandinavian Editorial
 
 El diseño se rige de forma exclusiva por la variante **Editorial** del sistema de diseño escandinavo:
 
@@ -40,9 +46,15 @@ El diseño se rige de forma exclusiva por la variante **Editorial** del sistema 
   * En modo oscuro, eliminación de sombras negras invisibles a favor de respuesta sutil de superficie (`rgba(255, 255, 255, 0.03)`).
 * **Accesibilidad Garantizada**: Cumplimiento riguroso de contraste WCAG AA (ratio superior a **19.8:1** en texto y canvas).
 
+### Comparativa de Temas
+
+| Modo Claro | Modo Oscuro |
+| :---: | :---: |
+| [![Modo Claro](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&scale=2)](https://portfolio-nu-murex-90.vercel.app) | [![Modo Oscuro](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2)](https://portfolio-nu-murex-90.vercel.app) |
+
 ---
 
-## 🧠 Principios UX Aplicados (Laws of UX)
+## Principios UX Aplicados (Laws of UX)
 
 La arquitectura de la interfaz integra principios de diseño cognitivo respaldados por [Laws of UX](https://lawsofux.com/es/):
 
@@ -53,21 +65,21 @@ La arquitectura de la interfaz integra principios de diseño cognitivo respaldad
 
 ---
 
-## 📸 Capturas y Vista Previa con Site Looker Atter
+## Capturas y Vista Previa con Site Looker Atter
 
-Para auditorías visuales, generación de previews dinámicos y extracción automatizada de contenido sin necesidad de levantar instancias pesadas de navegadores headless en CI/CD, este proyecto aprovecha **[Site Looker Atter](https://sitelookeratter.com)**.
+Para mantener actualizado este README y realizar auditorías visuales sin levantar navegadores headless pesados en CI/CD, este proyecto utiliza **[Site Looker Atter](https://sitelookeratter.com)** como motor de renderizado y captura.
 
-### ¿Qué es Site Looker Atter?
+### Qué es Site Looker Atter
 [Site Looker Atter](https://sitelookeratter.com) es una API pública y gratuita (sin registro requerido) construida sobre Bun que permite capturar cualquier sitio web como imagen (PNG, JPEG, WebP, PDF) y extraer su contenido limpio en formato Markdown, JSON o texto plano, eliminando banners de cookies, anuncios y widgets molestos.
 
 ### Casos de Uso en este Repositorio
 
 #### 1. Generación de Snapshot Dinámico en Tiempo Real (Retina 2x)
-Puedes obtener una captura limpia y nítida de cualquier despliegue del portafolio o de los proyectos listados con una simple petición `GET`:
+Las imágenes del portafolio en este README se alimentan directamente de la API de Site Looker Atter:
 
 ```bash
 # Captura completa en modo oscuro con resolución Retina 2x
-curl "https://api.sitelookeratter.com/screenshot?url=https://github.com/SolorzanoE/portfolio.szo&dark=true&scale=2&format=png" -o preview-dark.png
+curl "https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2&format=png" -o preview-dark.png
 ```
 
 #### 2. Extracción de Contenido para Modelos de Lenguaje (LLMs)
@@ -75,7 +87,7 @@ Permite extraer el contenido textual estructurado del portafolio directamente en
 
 ```bash
 # Extracción de contenido en formato Markdown estructurado
-curl "https://api.sitelookeratter.com/extract?url=https://github.com/SolorzanoE/portfolio.szo&format=markdown"
+curl "https://api.sitelookeratter.com/extract?url=https://portfolio-nu-murex-90.vercel.app&format=markdown"
 ```
 
 #### 3. Servidor MCP para Agentes de IA
@@ -86,22 +98,22 @@ https://api.sitelookeratter.com/mcp
 
 ---
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 | Capa | Tecnología |
 | :--- | :--- |
 | **Frontend Core** | [React 19](https://react.dev/) + [Vite 7](https://vitejs.dev/) |
 | **Componentes UI** | [Material UI v7](https://mui.com/) + [@emotion/react](https://emotion.sh/) |
 | **Tipografía** | Instrument Serif, Inter Tight, JetBrains Mono |
-| **Testing & Auditoría UX** | [Playwright](https://playwright.dev/) + Scripts de auditoría de croma y densidad |
+| **Testing y Auditoría UX** | [Playwright](https://playwright.dev/) + Scripts de auditoría de croma y densidad |
 | **Herramientas de Captura** | [Site Looker Atter](https://sitelookeratter.com) |
 
 ---
 
-## 🚀 Instalación y Desarrollo Local
+## Instalación y Desarrollo Local
 
 ### Prerrequisitos
-* Node.js $\ge 18.x$
+* Node.js >= 18.x
 * npm o pnpm
 
 ### Pasos
@@ -135,7 +147,7 @@ https://api.sitelookeratter.com/mcp
 
 ---
 
-## 📬 Contacto
+## Contacto
 
 * **Nombre**: Eduardo Solórzano
 * **Correo**: [eduardo.solorzano.dev@gmail.com](mailto:eduardo.solorzano.dev@gmail.com)
