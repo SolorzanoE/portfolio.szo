@@ -4,6 +4,7 @@ import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
+import MotionFade from "@/components/motion/MotionFade"
 
 function Contact() {
   const theme = useTheme()
@@ -19,9 +20,10 @@ function Contact() {
     >
       <SectionHeader eyebrow="Contacto" title="¿Trabajamos" italicWord="juntos?" />
 
-      <Paper
-        elevation={0}
-        sx={{
+      <MotionFade delay={0.1}>
+        <Paper
+          elevation={0}
+          sx={{
           padding: { xs: 3.5, sm: 5, md: 6 },
           borderRadius: isScandinavian ? 1.5 : 2,
           border: "1px solid",
@@ -194,7 +196,8 @@ function Contact() {
           </Stack>
         </Stack>
       </Paper>
-    </Stack>
+    </MotionFade>
+  </Stack>
   )
 }
 

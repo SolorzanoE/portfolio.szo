@@ -10,6 +10,7 @@ import { dataExperiencie } from "@/data/dataExperience";
 import ExperiencieCard from "./ExperienceCard";
 import { dataSection } from "@/data/dataSection";
 import SectionHeader from "@/components/SectionHeader";
+import MotionFade from "@/components/motion/MotionFade";
 import { useDesignSystem } from "@/context/DesignSystemContext";
 import { useTheme } from "@mui/material";
 
@@ -81,7 +82,9 @@ function Experiencie() {
                 paddingTop: 0
               }}
             >
-              <ExperiencieCard data={data} />
+              <MotionFade delay={idx * 0.08}>
+                <ExperiencieCard data={data} />
+              </MotionFade>
             </TimelineContent>
           </TimelineItem>
         ))}

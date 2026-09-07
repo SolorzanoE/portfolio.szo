@@ -5,6 +5,7 @@ import { dataTechnologies } from "@/data/dataTechnologies"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"
 import { useDesignSystem } from "@/context/DesignSystemContext"
+import { motion, AnimatePresence } from "framer-motion"
 
 const areas = [
   "Todos", "Backend", "Frontend", 
@@ -54,8 +55,18 @@ const Technology = () => {
         columns={{ xs: 2, sm: 3, md: 4, lg: 5 }}
         spacing={{ xs: 2, md: 3 }}
       >
-        {filterTechnology.map((data) => (
-          <Grid key={data.name} size={1}>
+        <AnimatePresence mode="popLayout">
+          {filterTechnology.map((data) => (
+            <Grid
+              key={data.name}
+              size={1}
+              component={motion.div}
+              layout
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            >
             <Stack
               spacing={1.5}
               alignItems="center"
@@ -155,7 +166,8 @@ const Technology = () => {
               </Typography>
             </Stack>
           </Grid>
-        ))}
+          ))}
+        </AnimatePresence>
       </Grid>
     </Stack>
   )

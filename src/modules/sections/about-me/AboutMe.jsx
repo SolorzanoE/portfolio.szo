@@ -3,6 +3,7 @@ import { dataSection } from "@/data/dataSection"
 import { Box, Grid, Stack, Typography, useTheme } from "@mui/material"
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
 import { useDesignSystem } from "@/context/DesignSystemContext"
+import MotionFade from "@/components/motion/MotionFade"
 
 const AboutMe = () => {
   const theme = useTheme()
@@ -18,7 +19,8 @@ const AboutMe = () => {
     >
       <SectionHeader eyebrow="Sobre mí" title="Mi" italicWord="historia" />
 
-      <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
+      <MotionFade delay={0.1}>
+        <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
         <Grid size={{ xs: 12, md: 7 }}>
           <Stack spacing={3}>
             <Typography
@@ -120,7 +122,8 @@ const AboutMe = () => {
           </Box>
         </Grid>
       </Grid>
-    </Stack>
+    </MotionFade>
+  </Stack>
   )
 }
 

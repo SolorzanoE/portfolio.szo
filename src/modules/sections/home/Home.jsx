@@ -4,6 +4,7 @@ import { Box, Button, IconButton, Stack, Typography, useTheme } from "@mui/mater
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
 import profile from "@/assets/profile.png"
 import { useDesignSystem } from "@/context/DesignSystemContext"
+import { motion } from "framer-motion"
 
 const links = [
   { icon: <GitHub fontSize="small" />, link: GITHUB_URL, label: "GitHub" },
@@ -37,6 +38,10 @@ function Home() {
         }}
       >
         <Box
+          component={motion.div}
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           sx={{
             display: "inline-flex",
             alignItems: "center",
@@ -75,6 +80,10 @@ function Home() {
 
         <Typography
           variant="h1"
+          component={motion.h1}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           sx={{
             fontSize: { xs: "2.75rem", sm: "3.75rem", md: "5rem", lg: "5.75rem" },
             fontWeight: 500,
@@ -97,6 +106,10 @@ function Home() {
         </Typography>
 
         <Typography
+          component={motion.p}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
           sx={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: { xs: "0.78rem", md: "0.85rem" },
@@ -109,6 +122,10 @@ function Home() {
         </Typography>
 
         <Typography
+          component={motion.p}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           sx={{
             color: isScandinavian ? tokens.secondaryInk : "text.secondary",
             fontSize: { xs: "1rem", md: "1.1rem" },
@@ -121,6 +138,10 @@ function Home() {
         </Typography>
 
         <Stack
+          component={motion.div}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
           direction={{ xs: "column", sm: "row" }}
           spacing={1.5}
           sx={{ paddingTop: 1, alignItems: { xs: "stretch", sm: "center" } }}
@@ -210,6 +231,10 @@ function Home() {
       </Stack>
 
       <Box
+        component={motion.div}
+        initial={{ opacity: 0, scale: 0.94 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
         sx={{
           position: "relative",
           width: { xs: "72%", sm: "48%", md: "38%" },
