@@ -1,6 +1,6 @@
 import { dataSection } from "@/data/dataSection"
 import { EmailOutlined, GitHub, LinkedIn, ArrowDownward, ArrowOutward } from "@mui/icons-material"
-import { Box, Button, IconButton, Stack, Typography, useTheme } from "@mui/material"
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material"
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
 import profile from "@/assets/profile.png"
 import { useDesignSystem } from "@/context/DesignSystemContext"
@@ -13,9 +13,7 @@ const links = [
 ]
 
 function Home() {
-  const theme = useTheme()
-  const { isScandinavian, variant, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, variant, tokens } = useDesignSystem()
 
   return (
     <Stack
@@ -51,10 +49,8 @@ function Home() {
             paddingBlock: 0.75,
             borderRadius: isScandinavian ? 1 : 1.2,
             border: "1px solid",
-            borderColor: isScandinavian ? tokens.border : "divider",
-            bgcolor: isScandinavian
-              ? tokens.surface
-              : (t => t.palette.mode === "dark" ? "rgba(250,250,250,0.03)" : "rgba(9,9,11,0.025)")
+            borderColor: tokens.border,
+            bgcolor: isScandinavian ? tokens.surface : tokens.surfaceSubtle
           }}
         >
           <Box
@@ -62,7 +58,7 @@ function Home() {
               width: 7,
               height: 7,
               borderRadius: "50%",
-              bgcolor: isScandinavian ? tokens.primaryInk : "success.main",
+              bgcolor: tokens.badges.availableDot,
               animation: "pulseDot 2s ease-in-out infinite"
             }}
           />
@@ -71,7 +67,7 @@ function Home() {
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "0.72rem",
               letterSpacing: "0.06em",
-              color: isScandinavian ? tokens.mutedInk : "text.secondary"
+              color: tokens.mutedInk
             }}
           >
             Disponible para nuevos proyectos
@@ -88,7 +84,7 @@ function Home() {
             fontSize: { xs: "2.75rem", sm: "3.75rem", md: "5rem", lg: "5.75rem" },
             fontWeight: 500,
             letterSpacing: "-0.035em",
-            color: isScandinavian ? tokens.primaryInk : "inherit"
+            color: tokens.primaryInk
           }}
         >
           Eduardo{" "}
@@ -98,7 +94,7 @@ function Home() {
               fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
               fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
               fontWeight: 400,
-              color: isScandinavian ? tokens.primaryInk : "secondary.main"
+              color: isScandinavian ? tokens.primaryInk : tokens.accent.main
             }}
           >
             Solórzano
@@ -115,7 +111,7 @@ function Home() {
             fontSize: { xs: "0.78rem", md: "0.85rem" },
             letterSpacing: isScandinavian ? "0.08em" : "0.14em",
             textTransform: isScandinavian ? "none" : "uppercase",
-            color: isScandinavian ? tokens.mutedInk : "text.secondary"
+            color: tokens.mutedInk
           }}
         >
           Full Stack Engineer
@@ -127,7 +123,7 @@ function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
           sx={{
-            color: isScandinavian ? tokens.secondaryInk : "text.secondary",
+            color: tokens.secondaryInk,
             fontSize: { xs: "1rem", md: "1.1rem" },
             maxWidth: 560,
             lineHeight: 1.65
@@ -152,10 +148,8 @@ function Home() {
             href={`mailto:${EMAIL_ADDRESS}`}
             endIcon={<ArrowOutward fontSize="small" />}
             sx={{
-              bgcolor: isScandinavian ? tokens.primaryInk : "primary.main",
-              color: isScandinavian
-                ? tokens.canvas
-                : "primary.contrastText",
+              bgcolor: tokens.accent.main,
+              color: tokens.accent.contrast,
               paddingInline: 2.5,
               paddingBlock: 1.25,
               fontSize: "0.88rem",
@@ -163,8 +157,8 @@ function Home() {
               minHeight: 44,
               transition: "opacity 0.2s ease, background-color 0.2s ease",
               "&:hover": {
-                bgcolor: isScandinavian ? tokens.primaryInk : "primary.main",
-                opacity: isScandinavian ? 0.88 : 0.9
+                bgcolor: tokens.accent.main,
+                opacity: 0.88
               },
               "&:active": {
                 opacity: 0.8
@@ -178,8 +172,8 @@ function Home() {
             variant="outlined"
             href={`#${dataSection.project.id}`}
             sx={{
-              borderColor: isScandinavian ? tokens.border : "divider",
-              color: isScandinavian ? tokens.primaryInk : "text.primary",
+              borderColor: tokens.border,
+              color: tokens.primaryInk,
               paddingInline: 2.5,
               paddingBlock: 1.25,
               fontSize: "0.88rem",
@@ -187,9 +181,9 @@ function Home() {
               minHeight: 44,
               transition: "all 0.2s ease",
               "&:hover": {
-                borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
-                bgcolor: isScandinavian ? tokens.hoverFill : (t => t.palette.mode === "dark" ? "rgba(34,211,238,0.06)" : "rgba(8,145,178,0.05)"),
-                color: isScandinavian ? tokens.primaryInk : "secondary.main"
+                borderColor: tokens.strongBorder,
+                bgcolor: tokens.interactive.accentHover,
+                color: isScandinavian ? tokens.primaryInk : tokens.accent.main
               }
             }}
           >
@@ -208,18 +202,18 @@ function Home() {
                   width: { xs: 44, sm: 42 },
                   height: { xs: 44, sm: 42 },
                   border: "1px solid",
-                  borderColor: isScandinavian ? tokens.border : "divider",
-                  color: isScandinavian ? tokens.primaryInk : "text.primary",
+                  borderColor: tokens.border,
+                  color: tokens.primaryInk,
                   borderRadius: isScandinavian ? 1 : 999,
                   transition: "all 0.2s ease",
                   "&:hover": {
-                    color: isScandinavian ? tokens.primaryInk : "secondary.main",
-                    borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
+                    color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
+                    borderColor: tokens.strongBorder,
                     transform: isScandinavian ? "none" : "translateY(-2px)",
-                    bgcolor: isScandinavian ? tokens.hoverFill : "transparent"
+                    bgcolor: tokens.hoverFill
                   },
                   "&:active": {
-                    bgcolor: isScandinavian ? tokens.pressedFill : "transparent"
+                    bgcolor: tokens.pressedFill
                   }
                 }}
               >
@@ -251,10 +245,7 @@ function Home() {
                 position: "absolute",
                 inset: -1,
                 borderRadius: "50%",
-                background: (t) =>
-                  t.palette.mode === "dark"
-                    ? "linear-gradient(135deg, rgba(34,211,238,0.55), rgba(56,189,248,0.2) 40%, transparent 70%)"
-                    : "linear-gradient(135deg, rgba(8,145,178,0.45), rgba(2,132,199,0.15) 40%, transparent 70%)",
+                background: tokens.gradients.profileAccent,
                 filter: "blur(0.5px)"
               }}
             />
@@ -268,7 +259,7 @@ function Home() {
                 height: 72,
                 borderRadius: "50%",
                 border: "1px solid",
-                borderColor: "secondary.main",
+                borderColor: tokens.accent.main,
                 display: { xs: "none", sm: "block" }
               }}
             />
@@ -284,12 +275,12 @@ function Home() {
             paddingBlock: 0.5,
             borderRadius: isScandinavian ? 1 : 999,
             border: "1px solid",
-            borderColor: isScandinavian ? tokens.border : "divider",
-            bgcolor: isScandinavian ? tokens.surface : "background.paper",
+            borderColor: tokens.border,
+            bgcolor: tokens.surface,
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "0.7rem",
             letterSpacing: "0.08em",
-            color: isScandinavian ? tokens.secondaryInk : "text.secondary",
+            color: tokens.secondaryInk,
             display: { xs: "none", sm: "inline-flex" },
             zIndex: 2
           }}
@@ -307,10 +298,8 @@ function Home() {
             objectFit: "cover",
             borderRadius: isScandinavian ? (variant === "utilitarian" ? 2 : "50%") : "50%",
             border: "1px solid",
-            borderColor: isScandinavian ? tokens.border : "divider",
-            boxShadow: isScandinavian
-              ? "0 10px 30px -15px rgba(0,0,0,0.3)"
-              : "0 40px 80px -40px rgba(0,0,0,0.55)"
+            borderColor: tokens.border,
+            boxShadow: tokens.shadows.profile
           }}
         />
       </Box>
@@ -325,7 +314,7 @@ function Home() {
           flexDirection: "column",
           alignItems: "center",
           gap: 1,
-          color: isScandinavian ? tokens.mutedInk : "text.secondary",
+          color: tokens.mutedInk,
           opacity: isScandinavian ? 1 : 0.7
         }}
       >

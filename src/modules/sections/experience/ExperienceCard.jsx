@@ -1,12 +1,10 @@
-import { Box, Chip, Paper, Stack, Typography, useTheme } from "@mui/material"
+import { Box, Chip, Paper, Stack, Typography } from "@mui/material"
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 function ExperiencieCard({ data = {} }) {
   const { title, company, description, technologies = [] } = data
-  const theme = useTheme()
-  const { isScandinavian, variant, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, variant, tokens } = useDesignSystem()
 
   const startDate = data.startDate
     .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
@@ -21,15 +19,13 @@ function ExperiencieCard({ data = {} }) {
         paddingX: { xs: 2.5, md: 3.5 },
         borderRadius: isScandinavian ? 1.2 : 1.7,
         border: "1px solid",
-        borderColor: isScandinavian ? tokens.border : "divider",
-        bgcolor: isScandinavian ? tokens.surface : "background.paper",
+        borderColor: tokens.border,
+        bgcolor: tokens.surface,
         transition: "border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
         "&:hover": {
-          borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
+          borderColor: tokens.strongBorder,
           transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-1px)") : "translateY(-2px)",
-          boxShadow: isScandinavian
-            ? (theme.palette.mode === "dark" ? "0 10px 25px -15px rgba(0,0,0,0.5)" : "0 8px 20px -12px rgba(0,0,0,0.08)")
-            : (t => t.palette.mode === "dark" ? "0 24px 40px -28px rgba(0,0,0,0.65)" : "0 18px 40px -24px rgba(8,145,178,0.18)")
+          boxShadow: tokens.shadows.cardHover
         }
       }}
     >
@@ -45,17 +41,15 @@ function ExperiencieCard({ data = {} }) {
               sx={{
                 width: 44,
                 height: 44,
-                borderRadius: isScandinavian ? 1 : 1,
+                borderRadius: 1,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 border: "1px solid",
-                borderColor: isScandinavian ? tokens.border : "divider",
-                color: isScandinavian ? tokens.secondaryInk : "secondary.main",
+                borderColor: tokens.border,
+                color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
                 flexShrink: 0,
-                bgcolor: isScandinavian
-                  ? tokens.hoverFill
-                  : (t => t.palette.mode === "dark" ? "rgba(34,211,238,0.06)" : "rgba(8,145,178,0.05)")
+                bgcolor: isScandinavian ? tokens.hoverFill : tokens.interactive.accentHover
               }}
             >
               <MapsHomeWorkOutlinedIcon fontSize="small" />
@@ -67,7 +61,7 @@ function ExperiencieCard({ data = {} }) {
                   fontSize: "1.15rem",
                   fontWeight: 600,
                   letterSpacing: "-0.02em",
-                  color: isScandinavian ? tokens.primaryInk : "inherit"
+                  color: tokens.primaryInk
                 }}
               >
                 {title || "Título del puesto"}
@@ -75,7 +69,7 @@ function ExperiencieCard({ data = {} }) {
               <Typography
                 sx={{
                   fontSize: "0.92rem",
-                  color: isScandinavian ? tokens.secondaryInk : "secondary.main",
+                  color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
                   fontWeight: 500
                 }}
               >
@@ -90,11 +84,11 @@ function ExperiencieCard({ data = {} }) {
               paddingBlock: 0.5,
               borderRadius: isScandinavian ? 0.8 : 1,
               border: "1px solid",
-              borderColor: isScandinavian ? tokens.border : "divider",
-              bgcolor: isScandinavian ? "transparent" : "inherit",
+              borderColor: tokens.border,
+              bgcolor: "transparent",
               fontFamily: "'JetBrains Mono', monospace",
               fontSize: "0.7rem",
-              color: isScandinavian ? tokens.mutedInk : "text.secondary",
+              color: tokens.mutedInk,
               letterSpacing: "0.05em",
               whiteSpace: "nowrap"
             }}
@@ -105,7 +99,7 @@ function ExperiencieCard({ data = {} }) {
 
         <Typography
           sx={{
-            color: isScandinavian ? tokens.secondaryInk : "text.secondary",
+            color: tokens.secondaryInk,
             fontSize: "0.95rem",
             lineHeight: 1.7
           }}
@@ -123,9 +117,9 @@ function ExperiencieCard({ data = {} }) {
                 variant="outlined"
                 sx={{
                   borderRadius: isScandinavian ? 0.8 : 0.7,
-                  borderColor: isScandinavian ? tokens.border : "divider",
-                  color: isScandinavian ? tokens.mutedInk : "text.secondary",
-                  bgcolor: isScandinavian ? tokens.washFill : "transparent",
+                  borderColor: tokens.border,
+                  color: tokens.mutedInk,
+                  bgcolor: tokens.washFill,
                   fontSize: "0.7rem",
                   height: 24,
                   transition: "all 0.2s ease",

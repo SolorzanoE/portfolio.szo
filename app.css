@@ -16,12 +16,12 @@ body::-webkit-scrollbar {
 }
 
 ::selection {
-  background-color: rgba(34, 211, 238, 0.28);
+  background-color: var(--color-selection, rgba(34, 211, 238, 0.28));
   color: inherit;
 }
 
 .scandinavian-mode ::selection {
-  background-color: rgba(128, 128, 128, 0.25);
+  background-color: var(--color-selection-scandinavian, rgba(128, 128, 128, 0.25));
   color: inherit;
 }
 

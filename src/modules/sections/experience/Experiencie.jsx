@@ -12,12 +12,9 @@ import { dataSection } from "@/data/dataSection";
 import SectionHeader from "@/components/SectionHeader";
 import MotionFade from "@/components/motion/MotionFade";
 import { useDesignSystem } from "@/context/DesignSystemContext";
-import { useTheme } from "@mui/material";
 
 function Experiencie() {
-  const theme = useTheme();
-  const { isScandinavian, getTokens } = useDesignSystem();
-  const tokens = getTokens(theme.palette.mode);
+  const { isScandinavian, tokens } = useDesignSystem();
 
   const sortExperience = dataExperiencie
     .sort((a, b) => a.date <= (b.date))
@@ -46,13 +43,10 @@ function Experiencie() {
             <TimelineSeparator>
               <TimelineDot
                 sx={{
-                  bgcolor: isScandinavian ? tokens.surface : "background.paper",
+                  bgcolor: tokens.surface,
                   border: "1px solid",
-                  borderColor: isScandinavian ? tokens.border : "secondary.main",
-                  boxShadow: isScandinavian
-                    ? "none"
-                    : (t) =>
-                        `0 0 0 4px ${t.palette.mode === "dark" ? "rgba(34,211,238,0.12)" : "rgba(8,145,178,0.10)"}`,
+                  borderColor: isScandinavian ? tokens.border : tokens.accent.main,
+                  boxShadow: isScandinavian ? "none" : tokens.accent.glow,
                   width: 14,
                   height: 14,
                   margin: 0,
@@ -62,14 +56,14 @@ function Experiencie() {
                     position: "absolute",
                     inset: 3,
                     borderRadius: "50%",
-                    bgcolor: isScandinavian ? tokens.primaryInk : "secondary.main"
+                    bgcolor: tokens.accent.main
                   }
                 }}
               />
               {idx < dataExperiencie.length - 1 && (
                 <TimelineConnector
                   sx={{
-                    bgcolor: isScandinavian ? tokens.border : "divider",
+                    bgcolor: tokens.border,
                     width: "1px"
                   }}
                 />

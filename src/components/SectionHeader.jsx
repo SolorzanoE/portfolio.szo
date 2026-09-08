@@ -1,10 +1,8 @@
-import { Box, Stack, Typography, useTheme } from "@mui/material"
+import { Box, Stack, Typography } from "@mui/material"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
-  const { isScandinavian, variant, getTokens } = useDesignSystem()
-  const theme = useTheme()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, variant, tokens } = useDesignSystem()
   const isCenter = align === "center"
 
   if (isScandinavian) {
@@ -99,16 +97,15 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
         direction="row"
         spacing={1.5}
         alignItems="center"
-        sx={{ color: "secondary.main" }}
+        sx={{ color: tokens.accent.main }}
       >
         <Box
           sx={{
             width: 8,
             height: 8,
             borderRadius: "50%",
-            bgcolor: "secondary.main",
-            boxShadow: (theme) =>
-              `0 0 0 4px ${theme.palette.mode === "dark" ? "rgba(34,211,238,0.15)" : "rgba(8,145,178,0.12)"}`
+            bgcolor: tokens.accent.main,
+            boxShadow: tokens.accent.glow
           }}
         />
         <Typography variant="overline">{eyebrow}</Typography>
@@ -117,7 +114,8 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
         variant="h2"
         sx={{
           fontSize: { xs: "2.25rem", sm: "2.75rem", md: "3.5rem" },
-          fontWeight: 500
+          fontWeight: 500,
+          color: tokens.primaryInk
         }}
       >
         {title}
@@ -128,7 +126,7 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
               fontFamily: "'Instrument Serif', serif",
               fontStyle: "italic",
               fontWeight: 400,
-              color: "secondary.main",
+              color: tokens.accent.main,
               paddingLeft: "0.25em"
             }}
           >

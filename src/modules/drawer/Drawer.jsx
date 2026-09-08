@@ -1,13 +1,11 @@
 import { dataSection } from "@/data/dataSection"
-import { Box, IconButton, List, ListItemButton, Stack, Typography, useTheme } from "@mui/material"
+import { Box, IconButton, List, ListItemButton, Stack, Typography } from "@mui/material"
 import CloseIcon from "@mui/icons-material/CloseOutlined"
 import DrawerLayout from "@mui/material/Drawer"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const Drawer = ({ open, close }) => {
-  const theme = useTheme()
-  const { isScandinavian, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, tokens } = useDesignSystem()
 
   return (
     <DrawerLayout
@@ -18,9 +16,9 @@ const Drawer = ({ open, close }) => {
         paper: {
           sx: {
             width: { xs: "85vw", sm: 340 },
-            bgcolor: isScandinavian ? tokens.canvas : "background.default",
+            bgcolor: tokens.canvas,
             borderLeft: "1px solid",
-            borderColor: isScandinavian ? tokens.border : "divider",
+            borderColor: tokens.border,
             backgroundImage: "none"
           }
         }
@@ -41,10 +39,16 @@ const Drawer = ({ open, close }) => {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                bgcolor: isScandinavian ? tokens.secondaryInk : "secondary.main"
+                bgcolor: isScandinavian ? tokens.secondaryInk : tokens.accent.main
               }}
             />
-            <Typography variant="overline" sx={{ color: isScandinavian ? tokens.secondaryInk : "text.secondary", textTransform: isScandinavian ? "none" : "uppercase" }}>
+            <Typography
+              variant="overline"
+              sx={{
+                color: isScandinavian ? tokens.secondaryInk : tokens.mutedInk,
+                textTransform: isScandinavian ? "none" : "uppercase"
+              }}
+            >
               Navegación
             </Typography>
           </Stack>
@@ -56,11 +60,11 @@ const Drawer = ({ open, close }) => {
               width: 36,
               height: 36,
               border: "1px solid",
-              borderColor: isScandinavian ? tokens.border : "divider",
-              color: isScandinavian ? tokens.primaryInk : "text.primary",
+              borderColor: tokens.border,
+              color: tokens.primaryInk,
               "&:hover": {
-                bgcolor: isScandinavian ? tokens.hoverFill : "transparent",
-                borderColor: isScandinavian ? tokens.strongBorder : "secondary.main"
+                bgcolor: tokens.hoverFill,
+                borderColor: tokens.strongBorder
               }
             }}
           >
@@ -80,11 +84,11 @@ const Drawer = ({ open, close }) => {
                 paddingInline: 0,
                 paddingBlock: 2,
                 borderBottom: "1px solid",
-                borderColor: isScandinavian ? tokens.border : "divider",
+                borderColor: tokens.border,
                 transition: "padding-left 0.25s ease, color 0.25s ease",
                 "&:hover": {
                   bgcolor: "transparent",
-                  color: isScandinavian ? tokens.primaryInk : "secondary.main",
+                  color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
                   paddingLeft: 1
                 }
               }}
@@ -93,7 +97,7 @@ const Drawer = ({ open, close }) => {
                 <Typography
                   variant="caption"
                   sx={{
-                    color: isScandinavian ? tokens.mutedInk : "text.secondary",
+                    color: tokens.mutedInk,
                     fontSize: "0.75rem"
                   }}
                 >
@@ -105,7 +109,7 @@ const Drawer = ({ open, close }) => {
                     fontSize: "1.5rem",
                     fontWeight: 500,
                     letterSpacing: "-0.02em",
-                    color: isScandinavian ? tokens.primaryInk : "inherit"
+                    color: tokens.primaryInk
                   }}
                 >
                   {dataSection[key].name}

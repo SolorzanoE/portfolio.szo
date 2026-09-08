@@ -1,4 +1,4 @@
-import { AppBar, Box, Button, IconButton, Stack, Toolbar, Typography, useColorScheme, useTheme } from "@mui/material"
+import { AppBar, Box, Button, IconButton, Stack, Toolbar, Typography, useColorScheme } from "@mui/material"
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';
 import { MenuOutlined } from "@mui/icons-material";
@@ -9,9 +9,7 @@ import { useDesignSystem } from "@/context/DesignSystemContext";
 
 function Header() {
   const { mode, setMode, systemMode } = useColorScheme()
-  const theme = useTheme()
-  const { isScandinavian, variant, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, variant, tokens } = useDesignSystem()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -26,16 +24,14 @@ function Header() {
   return (
     <AppBar
       elevation={0}
-      sx={(theme) => ({
-        bgcolor: isScandinavian
-          ? (theme.palette.mode === "dark" ? "rgba(10, 10, 10, 0.85)" : "rgba(255, 255, 255, 0.85)")
-          : (theme.palette.mode === "dark" ? "rgba(9, 9, 11, 0.65)" : "rgba(250, 250, 250, 0.72)"),
-        color: isScandinavian ? tokens.primaryInk : "text.primary",
+      sx={{
+        bgcolor: tokens.overlay.header,
+        color: tokens.primaryInk,
         backdropFilter: "saturate(180%) blur(16px)",
         WebkitBackdropFilter: "saturate(180%) blur(16px)",
         borderBottom: "1px solid",
-        borderColor: isScandinavian ? tokens.border : "divider"
-      })}
+        borderColor: tokens.border
+      }}
     >
       <Drawer open={isOpen} close={handleCloseDrawer} />
       <Toolbar
@@ -65,7 +61,7 @@ function Header() {
               fontWeight: 600,
               fontSize: "1rem",
               letterSpacing: "-0.02em",
-              color: isScandinavian ? tokens.primaryInk : "inherit"
+              color: tokens.primaryInk
             }}
           >
             Solórzano
@@ -75,7 +71,7 @@ function Header() {
                 fontFamily: isScandinavian && variant !== "editorial" ? "'Inter Tight', sans-serif" : "'Instrument Serif', serif",
                 fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
                 fontWeight: isScandinavian ? 600 : 800,
-                color: isScandinavian ? tokens.secondaryInk : "secondary.main",
+                color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
                 marginLeft: "0.2em"
               }}
             >
@@ -92,13 +88,8 @@ function Header() {
             padding: "4px",
             borderRadius: 1.5,
             border: "1px solid",
-            borderColor: isScandinavian ? tokens.border : "divider",
-            bgcolor: (t) =>
-              isScandinavian
-                ? "transparent"
-                : (t.palette.mode === "dark"
-                    ? "rgba(250,250,250,0.02)"
-                    : "rgba(9,9,11,0.02)")
+            borderColor: tokens.border,
+            bgcolor: isScandinavian ? "transparent" : tokens.surfaceSubtle
           }}
         >
           {Object.keys(dataSection).map(key => (
@@ -108,7 +99,7 @@ function Header() {
               draggable={false}
               href={`#${dataSection[key].id}`}
               sx={{
-                color: isScandinavian ? tokens.secondaryInk : "text.secondary",
+                color: tokens.secondaryInk,
                 paddingInline: 1.75,
                 paddingBlock: 0.6,
                 fontSize: "0.82rem",
@@ -117,8 +108,8 @@ function Header() {
                 bgcolor: "transparent",
                 transition: "color 0.2s ease, background-color 0.2s ease",
                 "&:hover": {
-                  bgcolor: isScandinavian ? tokens.hoverFill : (t => t.palette.mode === "dark" ? "rgba(250,250,250,0.06)" : "rgba(9,9,11,0.05)"),
-                  color: isScandinavian ? tokens.primaryInk : "text.primary"
+                  bgcolor: tokens.interactive.navHover,
+                  color: tokens.primaryInk
                 }
               }}
             >
@@ -136,12 +127,12 @@ function Header() {
               width: 36,
               height: 36,
               border: "1px solid",
-              borderColor: isScandinavian ? tokens.border : "divider",
-              color: isScandinavian ? tokens.primaryInk : "text.primary",
+              borderColor: tokens.border,
+              color: tokens.primaryInk,
               "&:hover": {
-                color: isScandinavian ? tokens.primaryInk : "secondary.main",
-                borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
-                bgcolor: isScandinavian ? tokens.hoverFill : "transparent"
+                color: tokens.interactive.iconHoverColor,
+                borderColor: tokens.strongBorder,
+                bgcolor: tokens.hoverFill
               }
             }}
           >
@@ -155,12 +146,12 @@ function Header() {
               width: 36,
               height: 36,
               border: "1px solid",
-              borderColor: isScandinavian ? tokens.border : "divider",
-              color: isScandinavian ? tokens.primaryInk : "text.primary",
+              borderColor: tokens.border,
+              color: tokens.primaryInk,
               "&:hover": {
-                color: isScandinavian ? tokens.primaryInk : "secondary.main",
-                borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
-                bgcolor: isScandinavian ? tokens.hoverFill : "transparent"
+                color: tokens.interactive.iconHoverColor,
+                borderColor: tokens.strongBorder,
+                bgcolor: tokens.hoverFill
               }
             }}
           >

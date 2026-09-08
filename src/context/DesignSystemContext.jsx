@@ -1,14 +1,19 @@
-import { createContext, useContext, useEffect } from "react"
+import { createContext, useContext, useEffect, useMemo } from "react"
+import { useTheme } from "@mui/material"
+import { getColorTokens, primitives } from "@/design-system/tokens"
 
 const DesignSystemContext = createContext({
   isScandinavian: true,
   variant: "editorial",
   toggleScandinavian: () => {},
   setVariant: () => {},
-  getTokens: () => ({})
+  tokens: getColorTokens("light", true),
+  getTokens: () => getColorTokens("light", true),
+  primitives
 })
 
 export const DesignSystemProvider = ({ children }) => {
+  const theme = useTheme()
   const isScandinavian = true
   const variant = "editorial"
 
@@ -21,23 +26,13 @@ export const DesignSystemProvider = ({ children }) => {
   const toggleScandinavian = () => {}
   const setVariant = () => {}
 
-  const getTokens = (mode = "light") => {
-    const isDark = mode === "dark"
-    return {
-      canvas: isDark ? "#0A0A0A" : "#FFFFFF",
-      surface: isDark ? "#121212" : "#FFFFFF",
-      primaryInk: isDark ? "#FFFFFF" : "#000000",
-      secondaryInk: isDark ? "rgba(255, 255, 255, 0.56)" : "rgba(0, 0, 0, 0.68)",
-      mutedInk: isDark ? "rgba(255, 255, 255, 0.50)" : "rgba(0, 0, 0, 0.56)",
-      tertiaryInk: isDark ? "rgba(255, 255, 255, 0.36)" : "rgba(0, 0, 0, 0.44)",
-      border: isDark ? "rgba(255, 255, 255, 0.12)" : "rgba(0, 0, 0, 0.10)",
-      strongBorder: isDark ? "rgba(255, 255, 255, 0.24)" : "rgba(0, 0, 0, 0.20)",
-      hoverFill: isDark ? "rgba(255, 255, 255, 0.09)" : "rgba(0, 0, 0, 0.05)",
-      pressedFill: isDark ? "rgba(255, 255, 255, 0.14)" : "rgba(0, 0, 0, 0.09)",
-      washFill: isDark ? "rgba(255, 255, 255, 0.04)" : "rgba(0, 0, 0, 0.025)",
-      accent: isDark ? "#FFFFFF" : "#000000"
-    }
+  const getTokens = (mode = theme.palette.mode || "light") => {
+    return getColorTokens(mode, isScandinavian)
   }
+
+  const tokens = useMemo(() => {
+    return getColorTokens(theme.palette.mode || "light", isScandinavian)
+  }, [theme.palette.mode, isScandinavian])
 
   return (
     <DesignSystemContext.Provider
@@ -46,7 +41,9 @@ export const DesignSystemProvider = ({ children }) => {
         variant,
         toggleScandinavian,
         setVariant,
-        getTokens
+        tokens,
+        getTokens,
+        primitives
       }}
     >
       {children}

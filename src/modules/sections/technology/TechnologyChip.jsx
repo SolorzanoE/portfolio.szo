@@ -1,10 +1,8 @@
-import { Chip, useTheme } from "@mui/material"
+import { Chip } from "@mui/material"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const TechnologyChip = ({ label, onClick, selected }) => {
-  const theme = useTheme()
-  const { isScandinavian, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, tokens } = useDesignSystem()
 
   if (isScandinavian) {
     return (
@@ -21,20 +19,20 @@ const TechnologyChip = ({ label, onClick, selected }) => {
           fontSize: "0.78rem",
           fontWeight: selected ? 600 : 500,
           letterSpacing: "0.04em",
-          borderColor: selected ? tokens.primaryInk : tokens.border,
-          color: selected ? tokens.canvas : tokens.secondaryInk,
-          bgcolor: selected ? tokens.primaryInk : "transparent",
+          borderColor: selected ? tokens.accent.main : tokens.border,
+          color: selected ? tokens.accent.contrast : tokens.secondaryInk,
+          bgcolor: selected ? tokens.accent.main : "transparent",
           cursor: "pointer",
           transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
           "&:hover, &.MuiChip-clickable:hover": {
-            bgcolor: selected ? tokens.primaryInk : tokens.hoverFill,
-            borderColor: selected ? tokens.primaryInk : tokens.strongBorder,
-            color: selected ? tokens.canvas : tokens.primaryInk,
+            bgcolor: selected ? tokens.accent.main : tokens.interactive.chipHover,
+            borderColor: selected ? tokens.accent.main : tokens.strongBorder,
+            color: selected ? tokens.accent.contrast : tokens.primaryInk,
             opacity: selected ? 0.88 : 1,
             transform: "translateY(-1px)"
           },
           "&:active, &.MuiChip-clickable:active": {
-            bgcolor: selected ? tokens.primaryInk : tokens.pressedFill,
+            bgcolor: selected ? tokens.accent.main : tokens.pressedFill,
             transform: "scale(0.97)"
           }
         }}
@@ -55,20 +53,17 @@ const TechnologyChip = ({ label, onClick, selected }) => {
         fontFamily: "'Inter Tight', sans-serif",
         fontSize: "0.78rem",
         letterSpacing: "0.06em",
-        borderColor: selected ? "primary.main" : "divider",
-        color: selected ? "primary.contrastText" : "text.primary",
-        bgcolor: selected ? "primary.main" : "transparent",
+        borderColor: selected ? tokens.accent.main : tokens.border,
+        color: selected ? tokens.accent.contrast : tokens.primaryInk,
+        bgcolor: selected ? tokens.accent.main : "transparent",
         cursor: "pointer",
         transition: "all 0.25s ease",
         "&:hover, &.MuiChip-clickable:hover": {
           bgcolor: selected
-            ? "primary.main"
-            : (t) =>
-                t.palette.mode === "dark"
-                  ? "rgba(34, 211, 238, 0.08)"
-                  : "rgba(8, 145, 178, 0.06)",
-          borderColor: selected ? "primary.main" : "secondary.main",
-          color: selected ? "primary.contrastText" : "secondary.main",
+            ? tokens.accent.main
+            : tokens.interactive.chipHover,
+          borderColor: selected ? tokens.accent.main : tokens.accent.main,
+          color: selected ? tokens.accent.contrast : tokens.accent.main,
           opacity: selected ? 0.9 : 1,
           transform: "translateY(-1px)"
         },

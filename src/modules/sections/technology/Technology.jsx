@@ -15,8 +15,7 @@ const areas = [
 
 const Technology = () => {
   const theme = useTheme()
-  const { isScandinavian, variant, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { isScandinavian, variant, tokens } = useDesignSystem()
   const [selectedChip, setSelectedChip] = useState("Todos")
 
   const handleClick = (item) => setSelectedChip(item)
@@ -76,18 +75,14 @@ const Technology = () => {
                 height: "100%",
                 borderRadius: isScandinavian ? 0.8 : 1,
                 border: "1px solid",
-                borderColor: isScandinavian ? tokens.border : "divider",
-                bgcolor: isScandinavian ? tokens.surface : "background.paper",
+                borderColor: tokens.border,
+                bgcolor: tokens.surface,
                 transition: "border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease",
                 "&:hover": {
-                  borderColor: isScandinavian ? tokens.strongBorder : "secondary.main",
-                  bgcolor: isScandinavian
-                    ? (theme.palette.mode === "dark" ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.015)")
-                    : "background.paper",
+                  borderColor: tokens.strongBorder,
+                  bgcolor: tokens.interactive.cardHover,
                   transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-2px)") : "translateY(-3px)",
-                  boxShadow: isScandinavian
-                    ? (theme.palette.mode === "dark" ? "none" : "0 8px 20px -12px rgba(0,0,0,0.08)")
-                    : "0 18px 30px -22px rgba(0,0,0,0.5)"
+                  boxShadow: tokens.shadows.techHover
                 }
               }}
             >
@@ -99,12 +94,7 @@ const Technology = () => {
                   alignItems: "center",
                   justifyContent: "center",
                   borderRadius: isScandinavian ? 1 : "50%",
-                  bgcolor: isScandinavian
-                    ? tokens.hoverFill
-                    : (theme =>
-                        theme.palette.mode === "dark"
-                          ? "rgba(243,238,227,0.04)"
-                          : "rgba(10,10,10,0.04)"),
+                  bgcolor: tokens.interactive.iconBg,
                   overflow: "hidden"
                 }}
               >
@@ -136,7 +126,7 @@ const Technology = () => {
                       fontStyle: isScandinavian ? "normal" : "italic",
                       fontSize: "1.3rem",
                       fontWeight: isScandinavian ? 600 : 400,
-                      color: isScandinavian ? tokens.secondaryInk : "secondary.main"
+                      color: isScandinavian ? tokens.secondaryInk : tokens.accent.main
                     }}
                   >
                     {data.name?.charAt(0) ?? "·"}
@@ -148,7 +138,7 @@ const Technology = () => {
                   fontSize: "0.85rem",
                   letterSpacing: "0.04em",
                   textAlign: "center",
-                  color: isScandinavian ? tokens.primaryInk : "inherit"
+                  color: tokens.primaryInk
                 }}
               >
                 {data.name}
@@ -156,7 +146,7 @@ const Technology = () => {
               <Typography
                 variant="caption"
                 sx={{
-                  color: isScandinavian ? tokens.mutedInk : "text.secondary",
+                  color: tokens.mutedInk,
                   letterSpacing: isScandinavian ? "0.08em" : "0.15em",
                   textTransform: isScandinavian ? "none" : "uppercase",
                   fontSize: "0.65rem"

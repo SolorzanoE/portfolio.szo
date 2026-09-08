@@ -1,10 +1,8 @@
-import { Box, Typography, useTheme } from "@mui/material"
+import { Box, Typography } from "@mui/material"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const Footer = () => {
-  const theme = useTheme()
-  const { isScandinavian, getTokens } = useDesignSystem()
-  const tokens = getTokens(theme.palette.mode)
+  const { tokens } = useDesignSystem()
 
   return (
     <Box
@@ -12,7 +10,7 @@ const Footer = () => {
       aria-label="Avisos legales"
       sx={{
         borderTop: "1px solid",
-        borderColor: isScandinavian ? tokens.border : "divider",
+        borderColor: tokens.border,
         paddingBlock: { xs: 2.5, md: 3 }
       }}
     >
@@ -22,7 +20,7 @@ const Footer = () => {
           display: "block",
           maxWidth: 760,
           marginInline: "auto",
-          color: isScandinavian ? tokens.mutedInk : "text.disabled",
+          color: tokens.mutedInk,
           fontSize: "0.625rem",
           lineHeight: 1.55,
           letterSpacing: "0.01em",
