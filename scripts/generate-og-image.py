@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Fetch and update Open Graph preview image from Site Looker Atter API:
-https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2
+https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2
 """
 
 import os
@@ -10,7 +10,8 @@ import urllib.request
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUTPUT_IMAGE = os.path.join(ROOT_DIR, "public", "og-image.png")
-API_URL = "https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2"
+API_URL = "https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2"
+
 
 def download_og_image():
     print(f"Fetching live snapshot from Site Looker Atter API: {API_URL}...")

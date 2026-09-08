@@ -14,13 +14,13 @@
 
 <br />
 
-[![Eduardo Solórzano - Portafolio](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2)](https://portfolio-nu-murex-90.vercel.app)
+[![Eduardo Solórzano - Portafolio](https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2)](https://solorzanoszo.vercel.app)
 
 <sub>Captura en tiempo real generada automáticamente con [Site Looker Atter](https://sitelookeratter.com) desde el despliegue en producción</sub>
 
 <br />
 
-[Ver Portafolio en Vivo](https://portfolio-nu-murex-90.vercel.app)
+[Ver Portafolio en Vivo](https://solorzanoszo.vercel.app)
 
 </div>
 
@@ -50,7 +50,7 @@ El diseño se rige de forma exclusiva por la variante **Editorial** del sistema 
 
 | Modo Claro | Modo Oscuro |
 | :---: | :---: |
-| [![Modo Claro](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&scale=2)](https://portfolio-nu-murex-90.vercel.app) | [![Modo Oscuro](https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2)](https://portfolio-nu-murex-90.vercel.app) |
+| [![Modo Claro](https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&scale=2)](https://solorzanoszo.vercel.app) | [![Modo Oscuro](https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2)](https://solorzanoszo.vercel.app) |
 
 ---
 
@@ -79,7 +79,7 @@ Las imágenes del portafolio en este README se alimentan directamente de la API 
 
 ```bash
 # Captura completa en modo oscuro con resolución Retina 2x
-curl "https://api.sitelookeratter.com/screenshot?url=https://portfolio-nu-murex-90.vercel.app&dark=true&scale=2&format=png" -o preview-dark.png
+curl "https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2&format=png" -o preview-dark.png
 ```
 
 #### 2. Extracción de Contenido para Modelos de Lenguaje (LLMs)
@@ -87,7 +87,7 @@ Permite extraer el contenido textual estructurado del portafolio directamente en
 
 ```bash
 # Extracción de contenido en formato Markdown estructurado
-curl "https://api.sitelookeratter.com/extract?url=https://portfolio-nu-murex-90.vercel.app&format=markdown"
+curl "https://api.sitelookeratter.com/extract?url=https://solorzanoszo.vercel.app&format=markdown"
 ```
 
 #### 3. Servidor MCP para Agentes de IA
