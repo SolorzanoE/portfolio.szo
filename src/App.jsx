@@ -8,6 +8,7 @@ import Technology from "./modules/sections/technology/Technology"
 import Contact from "@/modules/sections/contact/Contact"
 import Footer from "@/components/Footer"
 import { useDesignSystem } from "@/context/DesignSystemContext"
+import { Analytics } from "@vercel/analytics/next"
 
 function App() {
   const { isScandinavian, getTokens } = useDesignSystem()
@@ -52,6 +53,7 @@ function App() {
         }
       }}
     >
+      <Analytics />
       <Header />
       <Container
         maxWidth="lg"
