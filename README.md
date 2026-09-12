@@ -12,6 +12,10 @@
 
 <br />
 
+[![Vista previa del portafolio](./public/og-image.png)](https://solorzanoszo.vercel.app)
+
+<br />
+
 [Ver Portafolio en Vivo](https://solorzanoszo.vercel.app)
 
 </div>
@@ -44,6 +48,7 @@ El diseño se rige de forma exclusiva por la variante **Editorial** del sistema 
 | **Frontend Core** | [React 19](https://react.dev/) + [Vite 7](https://vitejs.dev/) |
 | **Componentes UI** | [Material UI v7](https://mui.com/) + [@emotion/react](https://emotion.sh/) |
 | **Tipografía** | Instrument Serif, Inter Tight, JetBrains Mono |
+| **Vista previa** | Site Looker Atter (`npm run og:generate`) |
 
 ---
 
