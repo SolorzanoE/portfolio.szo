@@ -13,7 +13,7 @@ const links = [
 ]
 
 function Home() {
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   return (
     <Stack
@@ -47,10 +47,10 @@ function Home() {
             alignSelf: "flex-start",
             paddingInline: 1.5,
             paddingBlock: 0.75,
-            borderRadius: isScandinavian ? 1 : 1.2,
+            borderRadius: 1,
             border: "1px solid",
             borderColor: tokens.border,
-            bgcolor: isScandinavian ? tokens.surface : tokens.surfaceSubtle
+            bgcolor: tokens.surface
           }}
         >
           <Box
@@ -91,10 +91,10 @@ function Home() {
           <Box
             component="span"
             sx={{
-              fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
-              fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
+              fontFamily: "'Instrument Serif', serif",
+              fontStyle: "italic",
               fontWeight: 400,
-              color: isScandinavian ? tokens.primaryInk : tokens.accent.main
+              color: tokens.primaryInk
             }}
           >
             Solórzano
@@ -109,8 +109,8 @@ function Home() {
           sx={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: { xs: "0.78rem", md: "0.85rem" },
-            letterSpacing: isScandinavian ? "0.08em" : "0.14em",
-            textTransform: isScandinavian ? "none" : "uppercase",
+            letterSpacing: "0.08em",
+            textTransform: "none",
             color: tokens.mutedInk
           }}
         >
@@ -153,7 +153,7 @@ function Home() {
               paddingInline: 2.5,
               paddingBlock: 1.25,
               fontSize: "0.88rem",
-              borderRadius: isScandinavian ? 1 : 999,
+              borderRadius: 1,
               minHeight: 44,
               transition: "opacity 0.2s ease, background-color 0.2s ease",
               "&:hover": {
@@ -177,13 +177,13 @@ function Home() {
               paddingInline: 2.5,
               paddingBlock: 1.25,
               fontSize: "0.88rem",
-              borderRadius: isScandinavian ? 1 : 999,
+              borderRadius: 1,
               minHeight: 44,
               transition: "all 0.2s ease",
               "&:hover": {
                 borderColor: tokens.strongBorder,
                 bgcolor: tokens.interactive.accentHover,
-                color: isScandinavian ? tokens.primaryInk : tokens.accent.main
+                color: tokens.primaryInk
               }
             }}
           >
@@ -204,12 +204,12 @@ function Home() {
                   border: "1px solid",
                   borderColor: tokens.border,
                   color: tokens.primaryInk,
-                  borderRadius: isScandinavian ? 1 : 999,
+                  borderRadius: 1,
                   transition: "all 0.2s ease",
                   "&:hover": {
-                    color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
+                    color: tokens.primaryInk,
                     borderColor: tokens.strongBorder,
-                    transform: isScandinavian ? "none" : "translateY(-2px)",
+                    transform: "none",
                     bgcolor: tokens.hoverFill
                   },
                   "&:active": {
@@ -237,34 +237,6 @@ function Home() {
           flexShrink: 0
         }}
       >
-        {!isScandinavian && (
-          <>
-            <Box
-              aria-hidden
-              sx={{
-                position: "absolute",
-                inset: -1,
-                borderRadius: "50%",
-                background: tokens.gradients.profileAccent,
-                filter: "blur(0.5px)"
-              }}
-            />
-            <Box
-              aria-hidden
-              sx={{
-                position: "absolute",
-                top: -16,
-                right: -16,
-                width: 72,
-                height: 72,
-                borderRadius: "50%",
-                border: "1px solid",
-                borderColor: tokens.accent.main,
-                display: { xs: "none", sm: "block" }
-              }}
-            />
-          </>
-        )}
         <Box
           aria-hidden
           sx={{
@@ -273,7 +245,7 @@ function Home() {
             left: -14,
             paddingInline: 1.25,
             paddingBlock: 0.5,
-            borderRadius: isScandinavian ? 1 : 999,
+            borderRadius: 1,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: tokens.surface,
@@ -296,7 +268,7 @@ function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            borderRadius: isScandinavian ? (variant === "utilitarian" ? 2 : "50%") : "50%",
+            borderRadius: "50%",
             border: "1px solid",
             borderColor: tokens.border,
             boxShadow: tokens.shadows.profile
@@ -315,15 +287,15 @@ function Home() {
           alignItems: "center",
           gap: 1,
           color: tokens.mutedInk,
-          opacity: isScandinavian ? 1 : 0.7
+          opacity: 1
         }}
       >
         <Typography
           sx={{
             fontFamily: "'JetBrains Mono', monospace",
             fontSize: "0.7rem",
-            letterSpacing: isScandinavian ? "0.1em" : "0.25em",
-            textTransform: isScandinavian ? "none" : "uppercase"
+            letterSpacing: "0.1em",
+            textTransform: "none"
           }}
         >
           Scroll

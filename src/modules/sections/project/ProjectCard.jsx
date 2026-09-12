@@ -14,15 +14,16 @@ const ProjectCard = ({ data = {} }) => {
     repoUrl
   } = data
 
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
   const primaryUrl = demoUrl || repoUrl
+  const isContainedImage = imageFit === "contain"
 
   return (
     <Paper
       elevation={0}
       sx={{
         height: "100%",
-        borderRadius: isScandinavian ? 1.2 : 2,
+        borderRadius: 1.2,
         border: "1px solid",
         borderColor: tokens.border,
         bgcolor: tokens.surface,
@@ -32,17 +33,17 @@ const ProjectCard = ({ data = {} }) => {
         transition: "border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
         "&:hover": {
           borderColor: tokens.strongBorder,
-          transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-2px)") : "translateY(-4px)",
+          transform: "translateY(-2px)",
           boxShadow: tokens.shadows.projectHover
         },
         "&:hover .project-cover": {
-          transform: isScandinavian ? "scale(1.02)" : "scale(1.05)"
+          transform: "scale(1.02)"
         },
         "&:hover .project-arrow": {
-          transform: isScandinavian ? "translate(2px, -2px)" : "translate(3px, -3px)",
-          color: isScandinavian ? tokens.primaryInk : tokens.accent.contrast,
-          borderColor: isScandinavian ? tokens.strongBorder : tokens.accent.main,
-          bgcolor: isScandinavian ? tokens.hoverFill : tokens.accent.main
+          transform: "translate(2px, -2px)",
+          color: tokens.primaryInk,
+          borderColor: tokens.strongBorder,
+          bgcolor: tokens.hoverFill
         }
       }}
     >
@@ -54,7 +55,29 @@ const ProjectCard = ({ data = {} }) => {
           overflow: "hidden",
           bgcolor: tokens.surfaceSubtle,
           borderBottom: "1px solid",
-          borderColor: tokens.border
+          borderColor: tokens.border,
+          ...(isContainedImage && {
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: -24,
+              backgroundImage: `url(${image})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              filter: "blur(18px)",
+              opacity: 0.42,
+              transform: "scale(1.08)",
+              zIndex: 0
+            },
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              backgroundColor: tokens.surfaceSubtle,
+              opacity: 0.18,
+              zIndex: 0
+            }
+          })
         }}
       >
         {image ? (
@@ -69,7 +92,8 @@ const ProjectCard = ({ data = {} }) => {
               width: "100%",
               height: "100%",
               objectFit: imageFit,
-              bgcolor: imageFit === "contain" ? tokens.surfaceSubtle : "transparent",
+              position: isContainedImage ? "relative" : "static",
+              zIndex: isContainedImage ? 1 : "auto",
               transition: "transform 0.5s ease"
             }}
           />
@@ -83,8 +107,8 @@ const ProjectCard = ({ data = {} }) => {
               alignItems: "center",
               justifyContent: "center",
               color: tokens.secondaryInk,
-              fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
-              fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
+              fontFamily: "'Instrument Serif', serif",
+              fontStyle: "italic",
               fontSize: "1.4rem",
               transition: "transform 0.5s ease"
             }}
@@ -112,7 +136,7 @@ const ProjectCard = ({ data = {} }) => {
               cursor: primaryUrl ? "pointer" : "default",
               transition: "opacity 0.2s ease, color 0.2s ease",
               "&:hover": primaryUrl ? {
-                color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
+                color: tokens.primaryInk,
                 opacity: 0.8
               } : {}
             }}
@@ -135,7 +159,7 @@ const ProjectCard = ({ data = {} }) => {
               border: "1px solid",
               borderColor: tokens.border,
               color: tokens.primaryInk,
-              borderRadius: isScandinavian ? 0.8 : "50%",
+              borderRadius: 0.8,
               transition: "all 0.25s ease"
             }}
           >
@@ -163,18 +187,18 @@ const ProjectCard = ({ data = {} }) => {
                 size="small"
                 variant="outlined"
                 sx={{
-                  borderRadius: isScandinavian ? 0.8 : 0.7,
+                  borderRadius: 0.8,
                   borderColor: tokens.border,
                   color: tokens.mutedInk,
                   bgcolor: tokens.washFill,
                   fontSize: "0.7rem",
                   height: 22,
                   transition: "all 0.2s ease",
-                  "&:hover": isScandinavian ? {
+                  "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
                     color: tokens.primaryInk
-                  } : {}
+                  }
                 }}
               />
             ))
@@ -184,8 +208,8 @@ const ProjectCard = ({ data = {} }) => {
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: "0.68rem",
                 color: tokens.mutedInk,
-                letterSpacing: isScandinavian ? "0.06em" : "0.12em",
-                textTransform: isScandinavian ? "none" : "uppercase"
+                letterSpacing: "0.06em",
+                textTransform: "none"
               }}
             >
               Tecnologías
@@ -208,15 +232,15 @@ const ProjectCard = ({ data = {} }) => {
                   py: 0.6,
                   px: 1.5,
                   minHeight: 36,
-                  borderRadius: isScandinavian ? 0.8 : 999,
+                  borderRadius: 0.8,
                   borderColor: tokens.border,
                   color: tokens.secondaryInk,
                   textTransform: "none",
                   transition: "all 0.2s ease",
                   "&:hover": {
                     borderColor: tokens.strongBorder,
-                    color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
-                    bgcolor: isScandinavian ? tokens.hoverFill : tokens.interactive.accentHover
+                    color: tokens.primaryInk,
+                    bgcolor: tokens.hoverFill
                   }
                 }}
               >
@@ -237,7 +261,7 @@ const ProjectCard = ({ data = {} }) => {
                   py: 0.6,
                   px: 1.5,
                   minHeight: 36,
-                  borderRadius: isScandinavian ? 0.8 : 999,
+                  borderRadius: 0.8,
                   bgcolor: tokens.accent.main,
                   color: tokens.accent.contrast,
                   textTransform: "none",

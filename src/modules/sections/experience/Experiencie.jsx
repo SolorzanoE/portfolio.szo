@@ -14,7 +14,7 @@ import MotionFade from "@/components/motion/MotionFade";
 import { useDesignSystem } from "@/context/DesignSystemContext";
 
 function Experiencie() {
-  const { isScandinavian, tokens } = useDesignSystem();
+  const { tokens } = useDesignSystem();
 
   const sortExperience = [...dataExperiencie]
     .sort((a, b) => a.startDate - b.startDate)
@@ -45,8 +45,8 @@ function Experiencie() {
                 sx={{
                   bgcolor: tokens.surface,
                   border: "1px solid",
-                  borderColor: isScandinavian ? tokens.border : tokens.accent.main,
-                  boxShadow: isScandinavian ? "none" : tokens.accent.glow,
+                  borderColor: tokens.border,
+                  boxShadow: "none",
                   width: 14,
                   height: 14,
                   margin: 0,

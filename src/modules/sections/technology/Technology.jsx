@@ -15,7 +15,7 @@ const areas = [
 
 const Technology = () => {
   const theme = useTheme()
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
   const [selectedChip, setSelectedChip] = useState("Todos")
 
   const handleClick = (item) => setSelectedChip(item)
@@ -73,7 +73,7 @@ const Technology = () => {
                   paddingBlock: 3,
                   paddingInline: 2,
                   height: "100%",
-                  borderRadius: isScandinavian ? 0.8 : 1,
+                  borderRadius: 0.8,
                   border: "1px solid",
                   borderColor: tokens.border,
                   bgcolor: tokens.surface,
@@ -81,7 +81,7 @@ const Technology = () => {
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.interactive.cardHover,
-                    transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-2px)") : "translateY(-3px)",
+                    transform: "translateY(-2px)",
                     boxShadow: tokens.shadows.techHover
                   }
                 }}
@@ -93,7 +93,7 @@ const Technology = () => {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    borderRadius: isScandinavian ? 1 : "50%",
+                    borderRadius: 1,
                     bgcolor: tokens.interactive.iconBg,
                     overflow: "hidden"
                   }}
@@ -122,11 +122,11 @@ const Technology = () => {
                   ) : (
                     <Typography
                       sx={{
-                        fontFamily: isScandinavian ? "'Inter Tight', sans-serif" : "'Cormorant Garamond', serif",
-                        fontStyle: isScandinavian ? "normal" : "italic",
+                        fontFamily: "'Inter Tight', sans-serif",
+                        fontStyle: "normal",
                         fontSize: "1.3rem",
-                        fontWeight: isScandinavian ? 600 : 400,
-                        color: isScandinavian ? tokens.secondaryInk : tokens.accent.main
+                        fontWeight: 600,
+                        color: tokens.secondaryInk
                       }}
                     >
                       {data.name?.charAt(0) ?? "·"}
@@ -147,8 +147,8 @@ const Technology = () => {
                   variant="caption"
                   sx={{
                     color: tokens.mutedInk,
-                    letterSpacing: isScandinavian ? "0.08em" : "0.15em",
-                    textTransform: isScandinavian ? "none" : "uppercase",
+                    letterSpacing: "0.08em",
+                    textTransform: "none",
                     fontSize: "0.65rem"
                   }}
                 >

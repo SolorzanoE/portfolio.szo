@@ -7,7 +7,7 @@ import SectionHeader from "@/components/SectionHeader"
 import MotionFade from "@/components/motion/MotionFade"
 
 function Contact() {
-  const { isScandinavian, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   return (
     <Stack
@@ -23,24 +23,12 @@ function Contact() {
           elevation={0}
           sx={{
             padding: { xs: 3.5, sm: 5, md: 6 },
-            borderRadius: isScandinavian ? 1.5 : 2,
+            borderRadius: 1.5,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: tokens.surface,
             position: "relative",
-            overflow: "hidden",
-            ...(!isScandinavian && {
-              "&::before": {
-                content: '""',
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: 320,
-                height: 320,
-                background: tokens.gradients.contactGlow,
-                pointerEvents: "none"
-              }
-            })
+            overflow: "hidden"
           }}
         >
           <Stack spacing={4} sx={{ maxWidth: 720 }}>
@@ -53,7 +41,7 @@ function Contact() {
                   alignSelf: "flex-start",
                   paddingInline: 1.5,
                   paddingBlock: 0.6,
-                  borderRadius: isScandinavian ? 1 : 1.2,
+                  borderRadius: 1,
                   border: "1px solid",
                   borderColor: tokens.border,
                   bgcolor: tokens.washFill
@@ -124,7 +112,7 @@ function Contact() {
                   paddingInline: 3,
                   paddingBlock: 1.35,
                   fontSize: "0.9rem",
-                  borderRadius: isScandinavian ? 1 : 999,
+                  borderRadius: 1,
                   minHeight: 44,
                   transition: "opacity 0.2s ease, background-color 0.2s ease",
                   "&:hover": {
@@ -151,13 +139,13 @@ function Contact() {
                   paddingInline: 2.5,
                   paddingBlock: 1.35,
                   fontSize: "0.88rem",
-                  borderRadius: isScandinavian ? 1 : 999,
+                  borderRadius: 1,
                   minHeight: 44,
                   transition: "all 0.2s ease",
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
-                    color: isScandinavian ? tokens.primaryInk : tokens.accent.main
+                    color: tokens.primaryInk
                   }
                 }}
               >
@@ -176,13 +164,13 @@ function Contact() {
                   paddingInline: 2.5,
                   paddingBlock: 1.35,
                   fontSize: "0.88rem",
-                  borderRadius: isScandinavian ? 1 : 999,
+                  borderRadius: 1,
                   minHeight: 44,
                   transition: "all 0.2s ease",
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
-                    color: isScandinavian ? tokens.primaryInk : tokens.accent.main
+                    color: tokens.primaryInk
                   }
                 }}
               >

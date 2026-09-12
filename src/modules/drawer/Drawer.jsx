@@ -5,7 +5,7 @@ import DrawerLayout from "@mui/material/Drawer"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 const Drawer = ({ open, close }) => {
-  const { isScandinavian, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   return (
     <DrawerLayout
@@ -39,14 +39,14 @@ const Drawer = ({ open, close }) => {
                 width: 8,
                 height: 8,
                 borderRadius: "50%",
-                bgcolor: isScandinavian ? tokens.secondaryInk : tokens.accent.main
+                bgcolor: tokens.secondaryInk
               }}
             />
             <Typography
               variant="overline"
               sx={{
-                color: isScandinavian ? tokens.secondaryInk : tokens.mutedInk,
-                textTransform: isScandinavian ? "none" : "uppercase"
+                color: tokens.secondaryInk,
+                textTransform: "none"
               }}
             >
               Navegación
@@ -88,7 +88,7 @@ const Drawer = ({ open, close }) => {
                 transition: "padding-left 0.25s ease, color 0.25s ease",
                 "&:hover": {
                   bgcolor: "transparent",
-                  color: isScandinavian ? tokens.primaryInk : tokens.accent.main,
+                  color: tokens.primaryInk,
                   paddingLeft: 1
                 }
               }}

@@ -9,7 +9,7 @@ import { useDesignSystem } from "@/context/DesignSystemContext";
 
 function Header() {
   const { mode, setMode, systemMode } = useColorScheme()
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -68,10 +68,10 @@ function Header() {
             <Box
               component="span"
               sx={{
-                fontFamily: isScandinavian && variant !== "editorial" ? "'Inter Tight', sans-serif" : "'Instrument Serif', serif",
-                fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
-                fontWeight: isScandinavian ? 600 : 800,
-                color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
+                fontFamily: "'Instrument Serif', serif",
+                fontStyle: "italic",
+                fontWeight: 400,
+                color: tokens.secondaryInk,
                 marginLeft: "0.2em"
               }}
             >
@@ -89,7 +89,7 @@ function Header() {
             borderRadius: 1.5,
             border: "1px solid",
             borderColor: tokens.border,
-            bgcolor: isScandinavian ? "transparent" : tokens.surfaceSubtle
+            bgcolor: "transparent"
           }}
         >
           {Object.keys(dataSection).map(key => (
@@ -104,7 +104,7 @@ function Header() {
                 paddingBlock: 0.6,
                 fontSize: "0.82rem",
                 fontWeight: 500,
-                borderRadius: isScandinavian ? 1 : 999,
+                borderRadius: 1,
                 bgcolor: "transparent",
                 transition: "color 0.2s ease, background-color 0.2s ease",
                 "&:hover": {

@@ -6,7 +6,7 @@ import { useDesignSystem } from "@/context/DesignSystemContext"
 import MotionFade from "@/components/motion/MotionFade"
 
 const AboutMe = () => {
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   return (
     <Stack
@@ -62,18 +62,11 @@ const AboutMe = () => {
               sx={{
                 position: "relative",
                 padding: { xs: 3, md: 4 },
-                borderRadius: isScandinavian ? 1.2 : 1.7,
+                borderRadius: 1.2,
                 border: "1px solid",
                 borderColor: tokens.border,
                 bgcolor: tokens.surface,
                 overflow: "hidden",
-                "&::before": isScandinavian ? {} : {
-                  content: '""',
-                  position: "absolute",
-                  inset: 0,
-                  background: tokens.gradients.quoteGlow,
-                  pointerEvents: "none"
-                }
               }}
             >
               <FormatQuoteIcon
@@ -89,10 +82,10 @@ const AboutMe = () => {
               <Stack spacing={2.5} sx={{ position: "relative" }}>
                 <Typography
                   sx={{
-                    fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
-                    fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
+                    fontFamily: "'Instrument Serif', serif",
+                    fontStyle: "italic",
                     fontSize: { xs: "1.65rem", md: "2rem" },
-                    fontWeight: isScandinavian && variant !== "editorial" ? 500 : 400,
+                    fontWeight: 400,
                     lineHeight: 1.25,
                     letterSpacing: "-0.01em",
                     color: tokens.primaryInk
@@ -101,13 +94,13 @@ const AboutMe = () => {
                 Talk is cheap. Show me the code.
                 </Typography>
                 <Stack direction="row" spacing={1.5} alignItems="center">
-                  <Box sx={{ width: 24, height: "1px", bgcolor: isScandinavian ? tokens.border : tokens.accent.main }} />
+                  <Box sx={{ width: 24, height: "1px", bgcolor: tokens.border }} />
                   <Typography
                     variant="overline"
                     sx={{
-                      color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
-                      letterSpacing: isScandinavian ? "0.08em" : "0.15em",
-                      textTransform: isScandinavian ? "none" : "uppercase"
+                      color: tokens.secondaryInk,
+                      letterSpacing: "0.08em",
+                      textTransform: "none"
                     }}
                   >
                   Linus Torvalds

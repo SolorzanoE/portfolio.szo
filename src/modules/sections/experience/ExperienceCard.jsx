@@ -4,7 +4,7 @@ import { useDesignSystem } from "@/context/DesignSystemContext"
 
 function ExperiencieCard({ data = {} }) {
   const { title, company, description, technologies = [] } = data
-  const { isScandinavian, variant, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   const startDate = data.startDate
     .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
@@ -17,14 +17,14 @@ function ExperiencieCard({ data = {} }) {
       sx={{
         paddingY: { xs: 2.5, md: 3 },
         paddingX: { xs: 2.5, md: 3.5 },
-        borderRadius: isScandinavian ? 1.2 : 1.7,
+        borderRadius: 1.2,
         border: "1px solid",
         borderColor: tokens.border,
         bgcolor: tokens.surface,
         transition: "border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
         "&:hover": {
           borderColor: tokens.strongBorder,
-          transform: isScandinavian ? (variant === "quiet" ? "none" : "translateY(-1px)") : "translateY(-2px)",
+          transform: "translateY(-1px)",
           boxShadow: tokens.shadows.cardHover
         }
       }}
@@ -47,9 +47,9 @@ function ExperiencieCard({ data = {} }) {
                 justifyContent: "center",
                 border: "1px solid",
                 borderColor: tokens.border,
-                color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
+                color: tokens.secondaryInk,
                 flexShrink: 0,
-                bgcolor: isScandinavian ? tokens.hoverFill : tokens.interactive.accentHover
+                bgcolor: tokens.hoverFill
               }}
             >
               <MapsHomeWorkOutlinedIcon fontSize="small" />
@@ -69,7 +69,7 @@ function ExperiencieCard({ data = {} }) {
               <Typography
                 sx={{
                   fontSize: "0.92rem",
-                  color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
+                  color: tokens.secondaryInk,
                   fontWeight: 500
                 }}
               >
@@ -82,7 +82,7 @@ function ExperiencieCard({ data = {} }) {
             sx={{
               paddingInline: 1.25,
               paddingBlock: 0.5,
-              borderRadius: isScandinavian ? 0.8 : 1,
+              borderRadius: 0.8,
               border: "1px solid",
               borderColor: tokens.border,
               bgcolor: "transparent",
@@ -116,18 +116,18 @@ function ExperiencieCard({ data = {} }) {
                 size="small"
                 variant="outlined"
                 sx={{
-                  borderRadius: isScandinavian ? 0.8 : 0.7,
+                  borderRadius: 0.8,
                   borderColor: tokens.border,
                   color: tokens.mutedInk,
                   bgcolor: tokens.washFill,
                   fontSize: "0.7rem",
                   height: 24,
                   transition: "all 0.2s ease",
-                  "&:hover": isScandinavian ? {
+                  "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
                     color: tokens.primaryInk
-                  } : {}
+                  }
                 }}
               />
             ))}

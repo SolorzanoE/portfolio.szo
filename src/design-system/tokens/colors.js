@@ -140,18 +140,16 @@ export const primitives = {
       200: 'rgba(56, 189, 248, 0.20)'
     },
     selection: {
-      scandinavian: 'rgba(128, 128, 128, 0.25)',
-      classicDark: 'rgba(34, 211, 238, 0.28)',
-      classicLight: 'rgba(8, 145, 178, 0.20)'
+      scandinavian: 'rgba(128, 128, 128, 0.25)'
     }
   }
 }
 
 // ----------------------------------------------------------------------
-// 2. SEMANTIC TOKENS (Mode & Design system variants)
+// 2. SEMANTIC TOKENS (Light and dark color schemes)
 // ----------------------------------------------------------------------
 
-const scandinavianDark = {
+const darkTokens = {
   canvas: primitives.neutral.dark.canvas,
   surface: primitives.neutral.dark.surface,
   surfaceSubtle: primitives.alpha.white[30],
@@ -195,16 +193,7 @@ const scandinavianDark = {
     selection: primitives.alpha.selection.scandinavian,
     selectionText: 'inherit'
   },
-  gradients: {
-    heroBackground: 'none',
-    gridPattern: 'none',
-    gridOpacity: 0,
-    contactGlow: 'none',
-    quoteGlow: 'none',
-    profileAccent: 'none'
-  },
   shadows: {
-    card: 'none',
     cardHover: '0 10px 25px -15px rgba(0,0,0,0.5)',
     projectHover: '0 14px 30px -18px rgba(0,0,0,0.6)',
     techHover: 'none',
@@ -219,7 +208,7 @@ const scandinavianDark = {
   }
 }
 
-const scandinavianLight = {
+const lightTokens = {
   canvas: primitives.neutral.white,
   surface: primitives.neutral.white,
   surfaceSubtle: primitives.alpha.black[25],
@@ -263,16 +252,7 @@ const scandinavianLight = {
     selection: primitives.alpha.selection.scandinavian,
     selectionText: 'inherit'
   },
-  gradients: {
-    heroBackground: 'none',
-    gridPattern: 'none',
-    gridOpacity: 0,
-    contactGlow: 'none',
-    quoteGlow: 'none',
-    profileAccent: 'none'
-  },
   shadows: {
-    card: '0 8px 20px -12px rgba(0,0,0,0.08)',
     cardHover: '0 8px 20px -12px rgba(0,0,0,0.08)',
     projectHover: '0 10px 25px -15px rgba(0,0,0,0.1)',
     techHover: '0 8px 20px -12px rgba(0,0,0,0.08)',
@@ -287,167 +267,23 @@ const scandinavianLight = {
   }
 }
 
-const classicDark = {
-  canvas: primitives.neutral.zinc[950],
-  surface: primitives.neutral.dark.card,
-  surfaceSubtle: primitives.alpha.zincLight[30],
-  text: {
-    primary: primitives.neutral.zinc[50],
-    secondary: primitives.neutral.zinc[400],
-    muted: primitives.alpha.white[500],
-    tertiary: primitives.alpha.white[360],
-    inverse: primitives.neutral.zinc[950]
-  },
-  border: {
-    default: primitives.alpha.zincLight[80],
-    strong: primitives.brand.cyan[400],
-    subtle: primitives.alpha.zincLight[80]
-  },
-  interactive: {
-    hoverFill: primitives.alpha.zincLight[60],
-    pressedFill: 'rgba(250, 250, 250, 0.10)',
-    washFill: primitives.alpha.zincLight[20],
-    accentHover: primitives.alpha.cyan[60],
-    navHover: primitives.alpha.zincLight[60],
-    cardHover: primitives.neutral.dark.card,
-    iconBg: 'rgba(243, 238, 227, 0.04)',
-    chipHover: primitives.alpha.cyan[80],
-    iconHoverColor: primitives.brand.cyan[400]
-  },
-  accent: {
-    main: primitives.brand.cyan[400],
-    contrast: primitives.neutral.dark.canvas,
-    hover: primitives.brand.cyan[500],
-    glow: '0 0 0 4px rgba(34, 211, 238, 0.15)'
-  },
-  status: {
-    success: primitives.status.success.dark,
-    warning: primitives.status.warning.dark,
-    error: primitives.status.error.dark,
-    info: primitives.status.info.dark
-  },
-  overlay: {
-    header: primitives.alpha.zincDark[650],
-    selection: primitives.alpha.selection.classicDark,
-    selectionText: 'inherit'
-  },
-  gradients: {
-    heroBackground: `radial-gradient(900px 600px at 85% -10%, ${primitives.alpha.cyan[140]}, transparent 60%), radial-gradient(700px 500px at -10% 40%, ${primitives.alpha.sky[80]}, transparent 60%)`,
-    gridPattern: `linear-gradient(${primitives.alpha.white[25]} 1px, transparent 1px), linear-gradient(90deg, ${primitives.alpha.white[25]} 1px, transparent 1px)`,
-    gridOpacity: 0.35,
-    contactGlow: `radial-gradient(circle at 100% 0%, ${primitives.alpha.cyan[120]}, transparent 70%)`,
-    quoteGlow: `radial-gradient(400px 200px at 100% 0%, ${primitives.alpha.cyan[100]}, transparent 60%)`,
-    profileAccent: `linear-gradient(135deg, ${primitives.alpha.cyan[550]}, ${primitives.alpha.sky[200]} 40%, transparent 70%)`
-  },
-  shadows: {
-    card: 'none',
-    cardHover: '0 24px 40px -28px rgba(0,0,0,0.65)',
-    projectHover: '0 30px 50px -28px rgba(0,0,0,0.65)',
-    techHover: '0 18px 30px -22px rgba(0,0,0,0.5)',
-    profile: '0 40px 80px -40px rgba(0,0,0,0.55)'
-  },
-  badges: {
-    availableDot: primitives.status.success.dark
-  },
-  quote: {
-    iconColor: primitives.brand.cyan[400],
-    iconOpacity: 0.18
-  }
-}
-
-const classicLight = {
-  canvas: primitives.neutral.zinc[50],
-  surface: primitives.neutral.white,
-  surfaceSubtle: primitives.alpha.zincDark[25],
-  text: {
-    primary: primitives.neutral.zinc[950],
-    secondary: primitives.neutral.zinc[600],
-    muted: primitives.alpha.black[560],
-    tertiary: primitives.alpha.black[440],
-    inverse: primitives.neutral.zinc[50]
-  },
-  border: {
-    default: primitives.alpha.zincDark[90],
-    strong: primitives.brand.cyan[600],
-    subtle: primitives.alpha.zincDark[90]
-  },
-  interactive: {
-    hoverFill: primitives.alpha.zincDark[50],
-    pressedFill: primitives.alpha.zincDark[90],
-    washFill: primitives.alpha.zincDark[20],
-    accentHover: primitives.alpha.teal[50],
-    navHover: primitives.alpha.zincDark[50],
-    cardHover: primitives.neutral.white,
-    iconBg: 'rgba(10, 10, 10, 0.04)',
-    chipHover: primitives.alpha.teal[60],
-    iconHoverColor: primitives.brand.cyan[600]
-  },
-  accent: {
-    main: primitives.brand.cyan[600],
-    contrast: primitives.neutral.zinc[50],
-    hover: primitives.brand.cyan[500],
-    glow: '0 0 0 4px rgba(8, 145, 178, 0.12)'
-  },
-  status: {
-    success: primitives.status.success.light,
-    warning: primitives.status.warning.light,
-    error: primitives.status.error.light,
-    info: primitives.status.info.light
-  },
-  overlay: {
-    header: primitives.alpha.zincLight[720],
-    selection: primitives.alpha.selection.classicLight,
-    selectionText: 'inherit'
-  },
-  gradients: {
-    heroBackground: `radial-gradient(900px 600px at 85% -10%, ${primitives.alpha.teal[100]}, transparent 60%), radial-gradient(700px 500px at -10% 40%, ${primitives.alpha.sky[60]}, transparent 60%)`,
-    gridPattern: `linear-gradient(${primitives.alpha.black[35]} 1px, transparent 1px), linear-gradient(90deg, ${primitives.alpha.black[35]} 1px, transparent 1px)`,
-    gridOpacity: 0.5,
-    contactGlow: `radial-gradient(circle at 100% 0%, ${primitives.alpha.teal[80]}, transparent 70%)`,
-    quoteGlow: `radial-gradient(400px 200px at 100% 0%, ${primitives.alpha.teal[80]}, transparent 60%)`,
-    profileAccent: `linear-gradient(135deg, ${primitives.alpha.teal[450]}, ${primitives.alpha.sky[150]} 40%, transparent 70%)`
-  },
-  shadows: {
-    card: '0 8px 20px -12px rgba(0,0,0,0.08)',
-    cardHover: '0 18px 40px -24px rgba(8,145,178,0.18)',
-    projectHover: '0 24px 44px -22px rgba(8,145,178,0.22)',
-    techHover: '0 18px 30px -22px rgba(0,0,0,0.5)',
-    profile: '0 40px 80px -40px rgba(0,0,0,0.55)'
-  },
-  badges: {
-    availableDot: primitives.status.success.light
-  },
-  quote: {
-    iconColor: primitives.brand.cyan[600],
-    iconOpacity: 0.18
-  }
-}
-
-export const semanticTokens = {
-  scandinavian: {
-    dark: scandinavianDark,
-    light: scandinavianLight
-  },
-  classic: {
-    dark: classicDark,
-    light: classicLight
-  }
+export const colorTokens = {
+  dark: darkTokens,
+  light: lightTokens
 }
 
 /**
- * Returns the resolved semantic token object for the specified mode and variant.
+ * Returns the resolved editorial token object for the specified color scheme.
  * In addition to structured categories (text, border, interactive, accent, etc.),
  * legacy aliases (primaryInk, secondaryInk, border, strongBorder, hoverFill, washFill)
  * are provided to ensure backwards compatibility.
  *
  * @param {'dark'|'light'} mode
- * @param {boolean} isScandinavian
  * @returns {object} Full token tree
  */
-export const getColorTokens = (mode = 'dark', isScandinavian = true) => {
+export const getColorTokens = (mode = 'dark') => {
   const isDark = mode === 'dark'
-  const variant = isScandinavian ? 'scandinavian' : 'classic'
-  const raw = semanticTokens[variant][isDark ? 'dark' : 'light']
+  const raw = colorTokens[isDark ? 'dark' : 'light']
 
   // Attach legacy flat aliases for ease of use and backward compatibility
   return {
@@ -475,10 +311,6 @@ export const getColorTokens = (mode = 'dark', isScandinavian = true) => {
  */
 export const cssColorVariables = {
   ':root': {
-    '--ds-color-selection-scandinavian': primitives.alpha.selection.scandinavian,
-    '--ds-color-selection-classic-dark': primitives.alpha.selection.classicDark,
-    '--ds-color-selection-classic-light': primitives.alpha.selection.classicLight,
-    '--color-selection': primitives.alpha.selection.classicDark,
-    '--color-selection-scandinavian': primitives.alpha.selection.scandinavian
+    '--color-selection': primitives.alpha.selection.scandinavian
   }
 }

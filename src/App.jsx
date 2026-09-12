@@ -10,11 +10,10 @@ import Footer from "@/components/Footer"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
 function App() {
-  const { isScandinavian, tokens } = useDesignSystem()
+  const { tokens } = useDesignSystem()
 
   return (
     <Box
-      className={isScandinavian ? "scandinavian-mode" : ""}
       sx={{
         position: "relative",
         minHeight: "100dvh",
@@ -22,25 +21,6 @@ function App() {
         bgcolor: tokens.canvas,
         color: tokens.primaryInk,
         transition: "background-color 0.4s ease, color 0.4s ease",
-        "&::before": isScandinavian ? {} : {
-          content: '""',
-          position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 0,
-          background: tokens.gradients.heroBackground
-        },
-        "&::after": isScandinavian ? {} : {
-          content: '""',
-          position: "fixed",
-          inset: 0,
-          pointerEvents: "none",
-          zIndex: 0,
-          opacity: tokens.gradients.gridOpacity,
-          backgroundImage: tokens.gradients.gridPattern,
-          backgroundSize: "56px 56px",
-          maskImage: "radial-gradient(ellipse at 50% 20%, black 30%, transparent 80%)"
-        }
       }}
     >
       <Header />
