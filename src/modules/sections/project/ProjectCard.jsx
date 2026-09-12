@@ -8,6 +8,7 @@ const ProjectCard = ({ data = {} }) => {
     title,
     description,
     image,
+    imageFit = "cover",
     technologies = [],
     demoUrl,
     repoUrl
@@ -67,7 +68,8 @@ const ProjectCard = ({ data = {} }) => {
             sx={{
               width: "100%",
               height: "100%",
-              objectFit: "cover",
+              objectFit: imageFit,
+              bgcolor: imageFit === "contain" ? tokens.surfaceSubtle : "transparent",
               transition: "transform 0.5s ease"
             }}
           />

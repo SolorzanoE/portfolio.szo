@@ -20,6 +20,7 @@ export const dataProject = [
     title: "Data tracking Cacao",
     description: "Sistema de gestión de variables para la trazabilidad del proceso de poscosecha del cacao.",
     image: cacaoImage,
+    imageFit: "contain",
     technologies: ["Java", "PostgreSQL"],
   }
 ]
