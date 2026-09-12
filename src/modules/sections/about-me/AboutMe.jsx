@@ -19,106 +19,106 @@ const AboutMe = () => {
 
       <MotionFade delay={0.1}>
         <Grid container spacing={{ xs: 4, md: 8 }} alignItems="center">
-        <Grid size={{ xs: 12, md: 7 }}>
-          <Stack spacing={3}>
-            <Typography
-              sx={{
-                color: tokens.secondaryInk,
-                fontSize: { xs: "1rem", md: "1.08rem" },
-                lineHeight: 1.75
-              }}
-            >
+          <Grid size={{ xs: 12, md: 7 }}>
+            <Stack spacing={3}>
+              <Typography
+                sx={{
+                  color: tokens.secondaryInk,
+                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  lineHeight: 1.75
+                }}
+              >
               Soy estudiante de último semestre en <strong style={{ color: tokens.primaryInk }}>Ingeniería en Desarrollo y 
               Tecnologías de Software</strong>. A lo largo de mi formación, he consolidado mi 
               perfil técnico y de liderazgo participando activamente en 
               hackatones de alto nivel organizados por <strong style={{ color: tokens.primaryInk }}>Enactus y Apple</strong>.
-            </Typography>
-            <Typography
-              sx={{
-                color: tokens.secondaryInk,
-                fontSize: { xs: "1rem", md: "1.08rem" },
-                lineHeight: 1.75
-              }}
-            >
+              </Typography>
+              <Typography
+                sx={{
+                  color: tokens.secondaryInk,
+                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  lineHeight: 1.75
+                }}
+              >
               Cuento con experiencia práctica como <strong style={{ color: tokens.primaryInk }}>Desarrollador de Software Freelance
               Subcontratado</strong>, colaborando de manera externa con empresas en la toma de decisiones 
               técnicas y el desarrollo de productos bajo entornos colaborativos.
-            </Typography>
-            <Typography
-              sx={{
-                color: tokens.secondaryInk,
-                fontSize: { xs: "1rem", md: "1.08rem" },
-                lineHeight: 1.75
-              }}
-            >
-              Actualmente, me encuentro diseñando y construyendo un <strong style={{ color: tokens.primaryInk }}>sistema de 
-              soporte de servicios</strong> a través de tickets, 
-            </Typography>
-          </Stack>
-        </Grid>
-
-        <Grid size={{ xs: 12, md: 5 }}>
-          <Box
-            sx={{
-              position: "relative",
-              padding: { xs: 3, md: 4 },
-              borderRadius: isScandinavian ? 1.2 : 1.7,
-              border: "1px solid",
-              borderColor: tokens.border,
-              bgcolor: tokens.surface,
-              overflow: "hidden",
-              "&::before": isScandinavian ? {} : {
-                content: '""',
-                position: "absolute",
-                inset: 0,
-                background: tokens.gradients.quoteGlow,
-                pointerEvents: "none"
-              }
-            }}
-          >
-            <FormatQuoteIcon
-              sx={{
-                position: "absolute",
-                top: 10,
-                right: 14,
-                fontSize: 52,
-                color: tokens.quote.iconColor,
-                opacity: tokens.quote.iconOpacity
-              }}
-            />
-            <Stack spacing={2.5} sx={{ position: "relative" }}>
+              </Typography>
               <Typography
                 sx={{
-                  fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
-                  fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
-                  fontSize: { xs: "1.65rem", md: "2rem" },
-                  fontWeight: isScandinavian && variant !== "editorial" ? 500 : 400,
-                  lineHeight: 1.25,
-                  letterSpacing: "-0.01em",
-                  color: tokens.primaryInk
+                  color: tokens.secondaryInk,
+                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  lineHeight: 1.75
                 }}
               >
-                Talk is cheap. Show me the code.
+              Actualmente, me encuentro diseñando y construyendo un <strong style={{ color: tokens.primaryInk }}>sistema de 
+              soporte de servicios</strong> basado en tickets.
               </Typography>
-              <Stack direction="row" spacing={1.5} alignItems="center">
-                <Box sx={{ width: 24, height: "1px", bgcolor: isScandinavian ? tokens.border : tokens.accent.main }} />
+            </Stack>
+          </Grid>
+
+          <Grid size={{ xs: 12, md: 5 }}>
+            <Box
+              sx={{
+                position: "relative",
+                padding: { xs: 3, md: 4 },
+                borderRadius: isScandinavian ? 1.2 : 1.7,
+                border: "1px solid",
+                borderColor: tokens.border,
+                bgcolor: tokens.surface,
+                overflow: "hidden",
+                "&::before": isScandinavian ? {} : {
+                  content: '""',
+                  position: "absolute",
+                  inset: 0,
+                  background: tokens.gradients.quoteGlow,
+                  pointerEvents: "none"
+                }
+              }}
+            >
+              <FormatQuoteIcon
+                sx={{
+                  position: "absolute",
+                  top: 10,
+                  right: 14,
+                  fontSize: 52,
+                  color: tokens.quote.iconColor,
+                  opacity: tokens.quote.iconOpacity
+                }}
+              />
+              <Stack spacing={2.5} sx={{ position: "relative" }}>
                 <Typography
-                  variant="overline"
                   sx={{
-                    color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
-                    letterSpacing: isScandinavian ? "0.08em" : "0.15em",
-                    textTransform: isScandinavian ? "none" : "uppercase"
+                    fontFamily: isScandinavian && variant !== "editorial" ? "inherit" : "'Instrument Serif', serif",
+                    fontStyle: isScandinavian && variant !== "editorial" ? "normal" : "italic",
+                    fontSize: { xs: "1.65rem", md: "2rem" },
+                    fontWeight: isScandinavian && variant !== "editorial" ? 500 : 400,
+                    lineHeight: 1.25,
+                    letterSpacing: "-0.01em",
+                    color: tokens.primaryInk
                   }}
                 >
-                  Linus Torvalds
+                Talk is cheap. Show me the code.
                 </Typography>
+                <Stack direction="row" spacing={1.5} alignItems="center">
+                  <Box sx={{ width: 24, height: "1px", bgcolor: isScandinavian ? tokens.border : tokens.accent.main }} />
+                  <Typography
+                    variant="overline"
+                    sx={{
+                      color: isScandinavian ? tokens.secondaryInk : tokens.accent.main,
+                      letterSpacing: isScandinavian ? "0.08em" : "0.15em",
+                      textTransform: isScandinavian ? "none" : "uppercase"
+                    }}
+                  >
+                  Linus Torvalds
+                  </Typography>
+                </Stack>
               </Stack>
-            </Stack>
-          </Box>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </MotionFade>
-  </Stack>
+      </MotionFade>
+    </Stack>
   )
 }
 

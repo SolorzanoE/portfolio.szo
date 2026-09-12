@@ -62,6 +62,8 @@ const ProjectCard = ({ data = {} }) => {
             className="project-cover"
             src={image}
             alt={title || "Proyecto"}
+            loading="lazy"
+            decoding="async"
             sx={{
               width: "100%",
               height: "100%",

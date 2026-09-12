@@ -1,6 +1,6 @@
-import inventoryImage from "@/assets/projects/inventory-image.png";
-import serviicyImage from "@/assets/projects/serviicy-image.png"
-import cacaoImage from "@/assets/projects/cacao-image.png"
+import inventoryImage from "@/assets/projects/inventory-image.webp";
+import serviicyImage from "@/assets/projects/serviicy-image.webp"
+import cacaoImage from "@/assets/projects/cacao-image.webp"
 
 export const dataProject = [
   {
@@ -8,7 +8,6 @@ export const dataProject = [
     description: "Sistema gestor de pólizas de usuarios, orientado al soporte de servicios.",
     image: serviicyImage,
     technologies: ["Spring Boot", "PostgreSQL", "TypeScript", "React", "Vite"],
-    //demoUrl: "1",
   },
   {
     title: "Inventory-Qi",

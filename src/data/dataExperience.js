@@ -23,12 +23,4 @@ export const dataExperiencie = [
     description: "Diseñé prototipos de baja y alta fidelidad con Figma y desarrollé el frontend de una aplicación web responsiva utilizando React y Material UI. También diseñé e implementé el modelo relacional de la base de datos de acuerdo con los requerimientos del negocio, gestionando y analizando la información para asegurar su correcta integración con la aplicación. Asimismo, reduje los tiempos de carga de pantallas que alcanzaban hasta dos minutos mediante la implementación de paginación y la disminución del volumen de datos transferidos. Finalmente, desplegué la aplicación dentro de la red privada de la empresa, sin acceso a internet, utilizando Apache HTTP Server, e implementé mecanismos de autenticación y autorización con Spring Security para restringir el acceso a los recursos según los permisos de cada usuario.", 
     technologies: ["React", "JavaScript", "MUI", "Web"]
   },
-  /*{
-    title: "Residencia profesional",
-    company: "Compusur",
-    startDate: new Date(),
-    endDate: new Date(), 
-    description: "", 
-    technologies: ["Spring Framework", "PostgreSQL", "React", "TypeScript", "MUI", "Web"]
-  }*/
 ]

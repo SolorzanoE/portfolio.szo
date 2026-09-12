@@ -2,7 +2,7 @@ import { dataSection } from "@/data/dataSection"
 import { EmailOutlined, GitHub, LinkedIn, ArrowDownward, ArrowOutward } from "@mui/icons-material"
 import { Box, Button, IconButton, Stack, Typography } from "@mui/material"
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
-import profile from "@/assets/profile.png"
+import profile from "@/assets/profile.webp"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 import { motion } from "framer-motion"
 

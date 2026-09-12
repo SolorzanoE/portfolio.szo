@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion as Motion } from "framer-motion"
 
 export const MotionFade = ({
   children,
@@ -12,7 +12,7 @@ export const MotionFade = ({
   ...props
 }) => {
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y, scale }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: viewportMargin }}
@@ -22,7 +22,7 @@ export const MotionFade = ({
       {...props}
     >
       {children}
-    </motion.div>
+    </Motion.div>
   )
 }
 

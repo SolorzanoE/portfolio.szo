@@ -16,10 +16,10 @@ import { useDesignSystem } from "@/context/DesignSystemContext";
 function Experiencie() {
   const { isScandinavian, tokens } = useDesignSystem();
 
-  const sortExperience = dataExperiencie
-    .sort((a, b) => a.date <= (b.date))
+  const sortExperience = [...dataExperiencie]
+    .sort((a, b) => a.startDate - b.startDate)
 
- return (
+  return (
     <Stack
       id={dataSection.experience.id}
       sx={{
