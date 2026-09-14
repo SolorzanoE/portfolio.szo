@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion"
 const areas = [
   "Todos", "Backend", "Frontend", 
   "Mobile", "Database", "Service", 
-  "Language", "Tool"
+  "Language", "IA", "Tool"
 ]
 
 const Technology = () => {

@@ -5,7 +5,7 @@ CDNs at runtime.
 
 ## Directory structure
 
-- `backend`, `frontend`, `database`, `service`, `language`, and `tool` mirror the
+- `backend`, `frontend`, `database`, `service`, `language`, `ai`, and `tool` mirror the
   areas used by the technology grid.
 - `shared` contains assets reused by more than one area, currently React and Swift.
 
@@ -17,6 +17,10 @@ CDNs at runtime.
 - `service/vercel-on-*.svg`: Vercel symbol variants from https://vercel.com/geist/brands
 - `tool/github-on-*.svg`: GitHub Invertocat variants from https://brand.github.com/foundations/logo
 - `tool/prettier.png`: Prettier icon from https://prettier.io/icon.png
+- `ai/claude.png`: Claude icon from the official Claude website apple-touch-icon.
+- `ai/chatgpt.svg` and `ai/chatgpt-dark.svg`: OpenAI monoblossom assets from
+  https://cdn.openai.com/brand/OpenAI-Logos-2025.zip.
+- `ai/gemini.png`: Gemini Spark icon from the official Google Press Corner.
 
 The `on-light` and `on-dark` suffixes identify the background for which an official
 variant is intended. Do not recolor or transform these files. Brand names and logos

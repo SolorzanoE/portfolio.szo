@@ -35,6 +35,10 @@ import linuxIcon from "@/assets/technologies/tool/linux.svg?no-inline"
 import postmanIcon from "@/assets/technologies/tool/postman.svg?no-inline"
 import prettierIcon from "@/assets/technologies/tool/prettier.png?no-inline"
 import vscodeIcon from "@/assets/technologies/tool/vscode.svg?no-inline"
+import claudeIcon from "@/assets/technologies/ai/claude.png?no-inline"
+import chatgptIcon from "@/assets/technologies/ai/chatgpt.svg?no-inline"
+import chatgptDarkIcon from "@/assets/technologies/ai/chatgpt-dark.svg?no-inline"
+import geminiIcon from "@/assets/technologies/ai/gemini.png?no-inline"
 
 const backend = [
   {
@@ -146,6 +150,22 @@ const language = [
   }
 ]
 
+const ai = [
+  {
+    name: "Claude",
+    image: claudeIcon
+  },
+  {
+    name: "ChatGPT",
+    image: chatgptIcon,
+    imageDark: chatgptDarkIcon
+  },
+  {
+    name: "Gemini",
+    image: geminiIcon
+  }
+]
+
 const tool = [
   {
     name: "Prettier",
@@ -206,7 +226,7 @@ const tool = [
 ]
 
 /**
- * @type {Array<{name: string, image: string, imageDark?: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool"}>}
+ * @type {Array<{name: string, image: string, imageDark?: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool" | "IA"}>}
  */
 export const dataTechnologies = [
   ...backend.map(e => ({ ...e, area: "Backend" })),
@@ -215,5 +235,6 @@ export const dataTechnologies = [
   ...database.map(e => ({ ...e, area: "Database" })),
   ...service.map(e => ({ ...e, area: "Service" })),
   ...language.map(e => ({ ...e, area: "Language" })),
+  ...ai.map(e => ({ ...e, area: "IA" })),
   ...tool.map(e => ({ ...e, area: "Tool" }))
 ]
