@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material"
+import Stack from "@mui/material/Stack"
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';

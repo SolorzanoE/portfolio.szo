@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material'
+import { createTheme } from '@mui/material/styles'
 import { primitives, cssColorVariables } from './tokens/colors'
 
 const display = "'Inter Tight', 'Inter', system-ui, sans-serif"

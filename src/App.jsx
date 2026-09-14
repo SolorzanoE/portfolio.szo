@@ -1,6 +1,7 @@
 import Header from "@/modules/Header"
 import Home from "@/modules/sections/home/Home"
-import { Box, Container } from "@mui/material"
+import Box from "@mui/material/Box"
+import Container from "@mui/material/Container"
 import AboutMe from "@/modules/sections/about-me/AboutMe"
 import Experiencie from "@/modules/sections/experience/Experiencie"
 import Proyect from "@/modules/sections/project/Project"

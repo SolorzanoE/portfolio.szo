@@ -55,7 +55,7 @@ El diseño se rige de forma exclusiva por la variante **Editorial** del sistema 
 ## Instalación y Desarrollo Local
 
 ### Prerrequisitos
-* Node.js >= 18.x
+* Node.js ^20.19.0 o >= 22.12.0
 * npm o pnpm
 
 ### Pasos

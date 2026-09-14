@@ -1,7 +1,14 @@
-import { AppBar, Box, Button, IconButton, Stack, Toolbar, Typography, useColorScheme } from "@mui/material"
+import AppBar from "@mui/material/AppBar"
+import Box from "@mui/material/Box"
+import Button from "@mui/material/Button"
+import IconButton from "@mui/material/IconButton"
+import Stack from "@mui/material/Stack"
+import Toolbar from "@mui/material/Toolbar"
+import Typography from "@mui/material/Typography"
+import { useColorScheme } from "@mui/material/styles"
 import DarkModeIcon from '@mui/icons-material/DarkModeOutlined';
 import LightModeIcon from '@mui/icons-material/LightModeOutlined';
-import { MenuOutlined } from "@mui/icons-material";
+import MenuOutlined from "@mui/icons-material/MenuOutlined";
 import { dataSection } from "@/data/dataSection";
 import Drawer from "@/modules/drawer/Drawer";
 import { useState } from "react";
@@ -122,7 +129,8 @@ function Header() {
           <IconButton
             onClick={toggleMode}
             size="small"
-            aria-label="Cambiar tema"
+            aria-label={globalMode === "dark" ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+            aria-pressed={globalMode === "dark"}
             sx={{
               width: 36,
               height: 36,

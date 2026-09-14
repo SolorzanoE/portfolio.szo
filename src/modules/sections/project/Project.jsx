@@ -1,5 +1,6 @@
 import { dataProject } from "@/data/dataProject"
-import { Grid, Stack } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import Stack from "@mui/material/Stack"
 import ProjectCard from "./ProjectCard"
 import { dataSection } from "@/data/dataSection"
 import SectionHeader from "@/components/SectionHeader"

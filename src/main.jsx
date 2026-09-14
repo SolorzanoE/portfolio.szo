@@ -1,13 +1,22 @@
 import { createRoot } from 'react-dom/client'
+import { lazy, Suspense } from 'react'
 import App from '@/App'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import CssBaseline from '@mui/material/CssBaseline'
+import { ThemeProvider } from '@mui/material/styles'
 import { DesignSystemProvider } from '@/context/DesignSystemContext'
 import { theme } from '@/design-system'
-import { Analytics } from "@vercel/analytics/react"
+
+const Analytics = lazy(() =>
+  import('@vercel/analytics/react').then(({ Analytics: AnalyticsComponent }) => ({
+    default: AnalyticsComponent,
+  })),
+)
 
 createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={theme} defaultMode="system">
-    <Analytics />
+    <Suspense fallback={null}>
+      <Analytics />
+    </Suspense>
     <CssBaseline />
     <DesignSystemProvider>
       <App />

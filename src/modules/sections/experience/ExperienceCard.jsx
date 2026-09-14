@@ -1,4 +1,8 @@
-import { Box, Chip, Paper, Stack, Typography } from "@mui/material"
+import Box from "@mui/material/Box"
+import Chip from "@mui/material/Chip"
+import Paper from "@mui/material/Paper"
+import Stack from "@mui/material/Stack"
+import Typography from "@mui/material/Typography"
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
