@@ -14,7 +14,13 @@ const Analytics = lazy(() =>
   })),
 )
 
-createRoot(document.getElementById('root')).render(
+const rootElement = document.getElementById('root')
+
+if (!rootElement) {
+  throw new Error("The application root element was not found")
+}
+
+createRoot(rootElement).render(
   <ErrorBoundary>
     <ThemeProvider theme={theme} defaultMode="system">
       <Suspense fallback={null}>

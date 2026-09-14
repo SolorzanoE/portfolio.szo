@@ -6,7 +6,7 @@ Este documento explica la arquitectura, las decisiones técnicas y la forma de e
 
 El proyecto es una aplicación web de una sola página —SPA, *Single Page Application*— construida con React y Vite. Su función principal es presentar información profesional, experiencia, proyectos, tecnologías y canales de contacto.
 
-No existe un backend propio, una base de datos ni autenticación para los visitantes. El contenido se compila junto con la aplicación y se entrega como archivos estáticos. El despliegue está preparado para Vercel, por lo que el tráfico normal puede servirse desde una CDN sin ejecutar lógica de servidor por cada visita.
+La capa de presentación se compila junto con el contenido y se entrega como archivos estáticos. El despliegue está preparado para Vercel, por lo que el tráfico normal puede servirse desde una CDN sin ejecutar lógica de negocio por cada visita.
 
 ```text
 Navegador
@@ -25,7 +25,7 @@ Navegador
                   ├── Header / Drawer
                   ├── Home
                   ├── AboutMe
-                  ├── Experiencie
+                  ├── Experience
                   ├── Project
                   ├── Technology
                   ├── Contact
@@ -45,7 +45,7 @@ Navegador
 | Contenido | Módulos JavaScript estáticos en `src/data/` |
 | Hosting previsto | Vercel |
 | Seguridad de edge | Headers definidos en `vercel.json` |
-| Pruebas actuales | Node Test Runner para el contrato de tokens |
+| Pruebas | Node Test Runner, Vitest y Testing Library |
 
 ## 2. Estructura del repositorio
 
@@ -53,6 +53,7 @@ Navegador
 portfolio.szo/
 ├── docs/                         Documentación técnica
 │   └── README.md
+├── .github/workflows/ci.yml      Validación automática del repositorio
 ├── public/                       Recursos servidos con ruta absoluta
 │   ├── brand-icon-dark.svg
 │   ├── brand-icon-light.svg
@@ -77,7 +78,8 @@ portfolio.szo/
 ├── package.json                  Scripts y dependencias
 ├── package-lock.json             Resolución reproducible de dependencias
 ├── vercel.json                   Headers de seguridad del despliegue
-└── vite.config.js                Configuración de Vite
+├── vite.config.js                Configuración de Vite
+└── vitest.config.js              Configuración de pruebas de interfaz
 ```
 
 ### `public/` frente a `src/assets/`
@@ -120,7 +122,7 @@ El HTML funciona como *application shell*: contiene la estructura mínima necesa
 #home → #about-me → #experience → #project → #technology → #contact
 ```
 
-El `Header` usa esos mismos identificadores para la navegación de escritorio y para el `Drawer` móvil. Esta elección evita añadir complejidad de routing a una página que actualmente no tiene vistas independientes.
+El `Header` usa esos mismos identificadores para la navegación de escritorio y para el `Drawer` móvil. Esta elección mantiene la navegación alineada con la estructura de una sola página.
 
 ## 4. Organización de componentes
 
@@ -140,14 +142,12 @@ El `Header` usa esos mismos identificadores para la navegación de escritorio y 
 
 - `sections/home/Home.jsx`: presentación, rol profesional, imagen de perfil y llamados a la acción.
 - `sections/about-me/AboutMe.jsx`: descripción personal y capacidades.
-- `sections/experience/Experiencie.jsx`: línea temporal de experiencia y tarjetas de cada etapa.
+- `sections/experience/Experience.jsx`: línea temporal de experiencia y tarjetas de cada etapa.
 - `sections/project/Project.jsx`: listado de proyectos.
 - `sections/project/ProjectCard.jsx`: representación visual de un proyecto y sus enlaces.
 - `sections/technology/Technology.jsx`: filtro por área y cuadrícula de tecnologías.
 - `sections/technology/TechnologyChip.jsx`: control reutilizable del filtro.
 - `sections/contact/Contact.jsx`: contacto por correo, GitHub y LinkedIn.
-
-El nombre `Experiencie` y el alias local `Proyect` conservan errores históricos de nomenclatura. No afectan al usuario final, pero deben tenerse en cuenta si se renombraran archivos: sería necesario actualizar imports, referencias y posibles enlaces externos a rutas de documentación.
 
 ## 5. Design system
 
@@ -209,7 +209,7 @@ La fuente de verdad para nuevas decisiones tipográficas es `typographyTokens`, 
 
 ## 6. Datos y contenido
 
-El contenido se mantiene como módulos JavaScript porque el volumen actual es pequeño y cambia con poca frecuencia.
+El contenido se mantiene como módulos JavaScript versionados, con contratos JSDoc comprobados mediante `checkJs`.
 
 - `dataSection.js`: ids y nombres de navegación.
 - `dataExperience.js`: empresa, fechas, descripción y tecnologías de cada experiencia.
@@ -219,7 +219,7 @@ El contenido se mantiene como módulos JavaScript porque el volumen actual es pe
 
 ### Fechas
 
-Las fechas de experiencia se crean como objetos `Date`. Si se modifica una experiencia, se debe conservar un formato interpretable por JavaScript y comprobar cómo se presenta en la tarjeta. Para contenido editorial futuro convendría centralizar el formateo de fechas en una utilidad local.
+Las fechas de experiencia se crean como objetos `Date` y se formatean en `ExperienceCard` para la localización española.
 
 ### Agregar un proyecto
 
@@ -248,9 +248,9 @@ La aplicación usa estado local de React porque sus interacciones son acotadas:
 - Material UI: modo de color.
 - Framer Motion: estado visual de entrada y presencia de elementos.
 
-No hay Redux, Zustand ni otro almacén global. Añadir un gestor de estado tendría coste de complejidad sin resolver una necesidad actual. Si el proyecto incorpora autenticación, preferencias persistentes, favoritos o datos remotos compartidos, la decisión debe reevaluarse con un modelo de estado explícito.
+El estado se mantiene local a los módulos que lo utilizan y el contexto transversal se reserva para el tema y los tokens visuales. Esta separación evita acoplar interacciones independientes.
 
-La navegación usa enlaces `href="#id"` en vez de un router. Esto permite deep links sencillos dentro de la página y reduce la configuración de hosting. Si aparecen páginas de detalle, rutas indexables o navegación entre documentos, convendrá introducir routing y una estrategia de fallback para Vercel.
+La navegación usa enlaces `href="#id"` en vez de un router. Esto permite deep links sencillos dentro de la página y mantiene la navegación alineada con la estructura de una sola página.
 
 ## 8. Animación y accesibilidad
 
@@ -268,7 +268,7 @@ Los controles importantes incluyen `aria-label`, `aria-pressed` o `role="alert"`
 
 ### Superficie actual
 
-El proyecto no recibe formularios persistentes ni procesa datos autenticados. No hay llamadas `fetch`, almacenamiento de tokens, `dangerouslySetInnerHTML`, `eval`, `postMessage` ni service worker en la aplicación. Esto reduce significativamente el riesgo operativo actual.
+La aplicación trabaja con contenido controlado en módulos locales, enlaces externos definidos y renderizado JSX con escape por defecto de React. Esta composición mantiene una superficie operativa pequeña y predecible.
 
 Los valores de `config.js` son públicos por diseño: URLs, correo y enlaces de redes. Nunca se deben colocar secretos, contraseñas, tokens privados o credenciales en `src/`, `public/` ni variables `VITE_*` que terminen en el bundle.
 
@@ -294,42 +294,24 @@ La política permite `unsafe-inline` únicamente para estilos porque Emotion/MUI
 - archivo temporal;
 - reemplazo atómico solo después de validar.
 
-La URL es constante y el script se ejecuta manualmente o desde una tarea de generación. No debe convertirse en un proxy de URLs proporcionadas por usuarios.
+La URL es constante y el script se ejecuta manualmente o desde una tarea de generación, manteniendo el proceso aislado de entradas externas.
 
 ## 10. Rendimiento y escalabilidad
 
-### Fortalezas
+La entrega se apoya en archivos estáticos procesados por Vite y puede distribuirse mediante CDN. La arquitectura no ejecuta lógica de negocio por visita, por lo que el crecimiento del tráfico se concentra en la distribución y la caché de recursos.
 
-- El sitio es estático y puede distribuirse desde CDN.
-- No hay consultas a base de datos por visita.
-- Las imágenes de proyectos y tecnologías usan carga diferida cuando se renderizan con `img`.
-- Los SVG de tecnologías se mantienen como recursos externos con `?no-inline`.
-- Analytics se carga de forma diferida mediante `React.lazy`.
+Las decisiones de carga actuales son:
 
-### Límite conocido
+- imágenes de proyectos y tecnologías con `loading="lazy"` y `decoding="async"`;
+- iconos SVG importados con `?no-inline` para conservarlos como archivos externos;
+- iconos de Claude y Gemini en WebP, reduciendo el peso de sus recursos frente al PNG original;
+- nombres con hash para assets importados desde `src/assets`;
+- Analytics cargado mediante `React.lazy`;
+- animaciones con Framer Motion y soporte para `prefers-reduced-motion`.
 
-El build actual produce un bundle principal cercano a 553 kB minificado y 176 kB gzip, por encima del umbral de advertencia de Vite. Esto no implica una saturación del servidor, pero sí puede aumentar el tiempo de descarga, parseo y ejecución en móviles.
+La incorporación de una sección sigue el modelo de composición de `App.jsx`. El contenido se mantiene independiente en `src/data/`, de manera que agregar proyectos, experiencias o tecnologías no exige mezclar datos con la estructura visual.
 
-Antes de dividir módulos se debe medir con un perfil móvil real y revisar el contenido del bundle. Las opciones de evolución son:
-
-1. Cargar secciones no críticas mediante importación dinámica realmente diferida.
-2. Evitar importar datos o animaciones pesadas en la primera vista.
-3. Optimizar imágenes grandes según su tamaño de presentación.
-4. Mantener el contenido de la primera pantalla pequeño y estable.
-5. Medir Core Web Vitals y establecer un presupuesto de JavaScript.
-
-No se debe aumentar `chunkSizeWarningLimit` para ocultar el problema sin reducir el coste real.
-
-### Evolución de contenido
-
-Los datos estáticos son simples y confiables para un portafolio pequeño. Si el contenido se vuelve frecuente, crece a cientos de casos de estudio o debe editarse sin despliegue, se puede evaluar:
-
-- prerenderizado o generación estática para mejorar HTML inicial y SEO;
-- rutas de detalle para proyectos;
-- un CMS o repositorio de contenido validado;
-- paginación o búsqueda si el catálogo aumenta.
-
-La adopción de un CMS no debe ser preventiva: añade autenticación, validación de contenido, control de acceso, caché y una nueva frontera de seguridad.
+Para ampliar el portafolio con páginas de detalle, el modelo de contenido puede reutilizarse con rutas dedicadas y generación estática. Para catálogos extensos, la misma información puede alimentar paginación, búsqueda o un origen de contenido validado.
 
 ## 11. Seguridad y calidad en el ciclo de cambios
 
@@ -341,7 +323,10 @@ Los comandos disponibles en `package.json` son:
 | `npm run build` | Compilación de producción en `dist/` |
 | `npm run preview` | Servir localmente el build de producción |
 | `npm run lint` | ESLint sobre JavaScript y JSX |
-| `npm test` | Node Test Runner |
+| `npm test` | Contratos con Node Test Runner y pruebas de interacción con Vitest |
+| `npm run test:contracts` | Prueba directa de contratos de datos y tokens |
+| `npm run test:unit` | Pruebas de interfaz con Vitest, JSDOM y Testing Library |
+| `npm run typecheck` | Validación estática JSDoc mediante TypeScript y `checkJs` |
 | `npm run og:generate` | Actualizar la imagen Open Graph |
 
 Antes de entregar cambios se recomienda ejecutar:
@@ -349,23 +334,22 @@ Antes de entregar cambios se recomienda ejecutar:
 ```bash
 npm ci
 npm test
+npm run typecheck
 npm run lint
 npm run build
 ```
 
 `npm ci` usa el lockfile y evita resolver una combinación distinta de dependencias en automatizaciones. El proyecto declara Node `^20.19.0 || >=22.12.0`.
 
-La prueba actual protege el contrato de colores para ambos modos. La siguiente capa recomendada es probar filtros de tecnología, cambio de tema, enlaces y navegación responsive. No existe actualmente un pipeline CI versionado en este repositorio; si se añade, debe ejecutar los cuatro comandos anteriores y una auditoría periódica de dependencias.
+El workflow `.github/workflows/ci.yml` ejecuta instalación reproducible, pruebas, validación estática, lint y build en cambios dirigidos a `main`.
 
 ## 12. Decisiones arquitectónicas
 
-### D-001 — SPA estática en lugar de backend
+### D-001 — SPA estática y contenido compilado
 
 **Decisión:** compilar el contenido al frontend y servirlo desde CDN.
 
 **Motivo:** el portafolio es mayormente lectura, no necesita sesiones ni datos dinámicos y se beneficia de una infraestructura sencilla.
-
-**Trade-off:** editar contenido requiere modificar código y desplegar; el HTML inicial tiene poco contenido antes de hidratar React.
 
 ### D-002 — Material UI + Emotion
 
@@ -373,23 +357,17 @@ La prueba actual protege el contrato de colores para ambos modos. La siguiente c
 
 **Motivo:** aporta accesibilidad, responsive behavior, componentes probados y un sistema de tema.
 
-**Trade-off:** aumenta el bundle y obliga a coordinar CSS-in-JS con CSP. La política de estilos debe permanecer acotada.
-
 ### D-003 — Tokens propios encima del tema MUI
 
 **Decisión:** mantener tokens semánticos propios y traducirlos al tema MUI.
 
 **Motivo:** el diseño editorial necesita conceptos como `accent`, `surfaceSubtle`, `quote` y geometría propia que no caben únicamente en la paleta estándar.
 
-**Trade-off:** existen dos interfaces de consumo —tema MUI y `useDesignSystem`— y ambas deben mantenerse coherentes.
-
-### D-004 — Estado local y anchors
+### D-004 — Estado local y navegación por anchors
 
 **Decisión:** usar `useState`, contexto limitado al tema y navegación por anchors.
 
 **Motivo:** evita infraestructura de estado y routing innecesaria para una única página.
-
-**Trade-off:** para múltiples páginas, datos remotos o preferencias complejas habrá que adoptar routing, validación de datos y posiblemente un modelo de estado más explícito.
 
 ### D-005 — Assets versionados por Vite
 
@@ -397,35 +375,40 @@ La prueba actual protege el contrato de colores para ambos modos. La siguiente c
 
 **Motivo:** los nombres con hash facilitan la invalidación de caché y evitan servir recursos obsoletos después de un despliegue.
 
-**Trade-off:** los assets de `public/` no reciben el mismo versionado automático y deben gestionarse con cuidado.
-
 ### D-006 — Headers en configuración de Vercel
 
 **Decisión:** declarar la política de seguridad en `vercel.json`.
 
 **Motivo:** los headers HTTP son más completos que una meta etiqueta CSP y deben aplicarse desde el edge.
 
-**Trade-off:** la efectividad depende del despliegue y de verificar que proveedores externos estén incluidos en la política.
-
-### D-007 — Sin CMS por ahora
+### D-007 — Contenido versionado en el repositorio
 
 **Decisión:** conservar el contenido en módulos JavaScript.
 
-**Motivo:** el volumen y la frecuencia de cambios no justifican la complejidad de un servicio editorial.
+**Motivo:** el contenido editorial se revisa junto con el código, mantiene historial de cambios y se publica mediante el mismo proceso de build.
 
-**Trade-off:** cada cambio de contenido es un cambio de código y requiere nueva compilación.
+## 13. Convenciones de mantenimiento
 
-## 13. Deuda técnica y próximos pasos
+### Nombres y módulos
 
-Prioridad sugerida:
+- Los componentes React usan PascalCase y nombres semánticos en inglés: `Experience`, `Project`, `ExperienceCard` y `ProjectCard`.
+- Los módulos de contenido usan nombres descriptivos: `dataExperience`, `dataProject`, `dataTechnologies` y `dataSection`.
+- La navegación se deriva de `dataSection` para mantener un único origen de ids y etiquetas.
 
-1. Desplegar y verificar los headers de seguridad con una respuesta GET real.
-2. Añadir pruebas de interacción y un pipeline CI con `npm ci`, test, lint y build.
-3. Medir bundle y Core Web Vitals antes de introducir code splitting.
-4. Optimizar recursos de imagen que tengan impacto medible.
-5. Considerar rutas de detalle/prerenderizado si el contenido crece.
-6. Corregir gradualmente nombres históricos como `Experiencie` y `Proyect` en un cambio aislado.
-7. Introducir validación estática más fuerte —TypeScript o JSDoc con `checkJs`— cuando el contrato de datos crezca.
+### Contratos estáticos
+
+- Los modelos de contenido se declaran con JSDoc en el mismo módulo que los exporta.
+- `jsconfig.json` habilita `allowJs`, `checkJs`, `moduleResolution: "Bundler"` y `noEmit`.
+- `npm run typecheck` valida componentes, datos, configuración de Vite y pruebas compatibles con el entorno.
+- Los contratos compartidos deben actualizarse junto con sus consumidores y su prueba correspondiente.
+
+### Assets y pruebas
+
+- Usar WebP para imágenes rasterizadas de interfaz cuando conserve la calidad visual.
+- Usar SVG para iconos vectoriales y `?no-inline` cuando el recurso deba mantenerse fuera del bundle.
+- Marcar imágenes no críticas con `loading="lazy"` y `decoding="async"`.
+- Probar comportamiento observable, como filtros y navegación, mediante Testing Library.
+- Ejecutar `npm test`, `npm run typecheck`, `npm run lint` y `npm run build` antes de integrar cambios.
 
 Las decisiones futuras deben conservar tres propiedades: contenido seguro por defecto, carga inicial razonable y una única fuente de verdad para las reglas visuales.
 

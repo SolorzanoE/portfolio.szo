@@ -6,18 +6,18 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
 import { timelineItemClasses } from "@mui/lab/TimelineItem";
-import { dataExperiencie } from "@/data/dataExperience";
-import ExperiencieCard from "./ExperienceCard";
+import { dataExperience } from "@/data/dataExperience";
+import ExperienceCard from "./ExperienceCard";
 import { dataSection } from "@/data/dataSection";
 import SectionHeader from "@/components/SectionHeader";
 import MotionFade from "@/components/motion/MotionFade";
 import { useDesignSystem } from "@/context/DesignSystemContext";
 
-function Experiencie() {
+function Experience() {
   const { tokens } = useDesignSystem();
 
-  const sortExperience = [...dataExperiencie]
-    .sort((a, b) => a.startDate - b.startDate)
+  const sortExperience = [...dataExperience]
+    .sort((a, b) => a.startDate.getTime() - b.startDate.getTime())
 
   return (
     <Stack
@@ -60,7 +60,7 @@ function Experiencie() {
                   }
                 }}
               />
-              {idx < dataExperiencie.length - 1 && (
+              {idx < dataExperience.length - 1 && (
                 <TimelineConnector
                   sx={{
                     bgcolor: tokens.border,
@@ -77,7 +77,7 @@ function Experiencie() {
               }}
             >
               <MotionFade delay={idx * 0.08}>
-                <ExperiencieCard data={data} />
+                <ExperienceCard data={data} />
               </MotionFade>
             </TimelineContent>
           </TimelineItem>
@@ -87,4 +87,4 @@ function Experiencie() {
   )
 }
 
-export default Experiencie
+export default Experience

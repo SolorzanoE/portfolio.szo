@@ -9,6 +9,7 @@ import CloseIcon from "@mui/icons-material/CloseOutlined"
 import DrawerLayout from "@mui/material/Drawer"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
+/** @param {{open: boolean, close: () => void}} props */
 const Drawer = ({ open, close }) => {
   const { tokens } = useDesignSystem()
 
@@ -78,11 +79,11 @@ const Drawer = ({ open, close }) => {
         </Stack>
 
         <List sx={{ padding: 0 }}>
-          {Object.keys(dataSection).map((key, idx) => (
+          {Object.entries(dataSection).map(([key, section], idx) => (
             <ListItemButton
               key={key}
               draggable={false}
-              href={`#${dataSection[key].id}`}
+              href={`#${section.id}`}
               onClick={close}
               disableRipple
               sx={{
@@ -117,7 +118,7 @@ const Drawer = ({ open, close }) => {
                     color: tokens.primaryInk
                   }}
                 >
-                  {dataSection[key].name}
+                  {section.name}
                 </Typography>
               </Stack>
             </ListItemButton>

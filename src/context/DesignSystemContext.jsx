@@ -8,6 +8,7 @@ const DesignSystemContext = createContext({
   tokens: getDesignTokens("light"),
 })
 
+/** @param {{children: import("react").ReactNode}} props */
 export const DesignSystemProvider = ({ children }) => {
   const { mode, systemMode } = useColorScheme()
   const resolvedMode = mode === "system" ? systemMode : mode

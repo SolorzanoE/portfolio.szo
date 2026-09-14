@@ -9,6 +9,9 @@ import ArrowOutwardIcon from "@mui/icons-material/ArrowOutward"
 import GitHubIcon from "@mui/icons-material/GitHub"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
+/**
+ * @param {{data?: {title?: string, description?: string, image?: string, imageFit?: "contain"|"cover", technologies?: string[], demoUrl?: string, repoUrl?: string}}} props
+ */
 const ProjectCard = ({ data = {} }) => {
   const {
     title,

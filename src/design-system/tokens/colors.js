@@ -278,8 +278,8 @@ export const colorTokens = {
  * legacy aliases (primaryInk, secondaryInk, border, strongBorder, hoverFill, washFill)
  * are provided to ensure backwards compatibility.
  *
- * @param {'dark'|'light'} mode
- * @returns {object} Full token tree
+ * @param {'dark'|'light'} [mode='dark']
+ * @returns {Omit<typeof darkTokens, 'border'> & {border: string, strongBorder: string, subtleBorder: string, primaryInk: string, secondaryInk: string, mutedInk: string, tertiaryInk: string, hoverFill: string, pressedFill: string, washFill: string, accentColor: string}} Full token tree
  */
 export const getColorTokens = (mode = 'dark') => {
   const isDark = mode === 'dark'

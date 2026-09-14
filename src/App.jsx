@@ -3,8 +3,8 @@ import Home from "@/modules/sections/home/Home"
 import Box from "@mui/material/Box"
 import Container from "@mui/material/Container"
 import AboutMe from "@/modules/sections/about-me/AboutMe"
-import Experiencie from "@/modules/sections/experience/Experiencie"
-import Proyect from "@/modules/sections/project/Project"
+import Experience from "@/modules/sections/experience/Experience"
+import Project from "@/modules/sections/project/Project"
 import Technology from "./modules/sections/technology/Technology"
 import Contact from "@/modules/sections/contact/Contact"
 import Footer from "@/components/Footer"
@@ -40,8 +40,8 @@ function App() {
       >
         <Home />
         <AboutMe />
-        <Experiencie />
-        <Proyect />
+        <Experience />
+        <Project />
         <Technology />
         <Contact />
         <Footer />

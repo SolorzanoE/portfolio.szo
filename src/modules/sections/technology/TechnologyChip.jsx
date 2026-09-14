@@ -1,6 +1,7 @@
 import Chip from "@mui/material/Chip"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
+/** @param {{label: string, onClick: () => void, selected: boolean}} props */
 const TechnologyChip = ({ label, onClick, selected }) => {
   const { tokens } = useDesignSystem()
 

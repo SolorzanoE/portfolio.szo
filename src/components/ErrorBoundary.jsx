@@ -7,6 +7,7 @@ class ErrorBoundary extends Component {
     return { hasError: true }
   }
 
+  /** @param {Error} error */
   componentDidCatch(error) {
     console.error("Unexpected portfolio render error", error)
   }

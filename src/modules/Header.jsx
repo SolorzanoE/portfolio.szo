@@ -99,12 +99,12 @@ function Header() {
             bgcolor: "transparent"
           }}
         >
-          {Object.keys(dataSection).map(key => (
+          {Object.entries(dataSection).map(([key, section]) => (
             <Button
               key={key}
               disableRipple
               draggable={false}
-              href={`#${dataSection[key].id}`}
+              href={`#${section.id}`}
               sx={{
                 color: tokens.secondaryInk,
                 paddingInline: 1.75,
@@ -120,7 +120,7 @@ function Header() {
                 }
               }}
             >
-              {dataSection[key].name}
+              {section.name}
             </Button>
           ))}
         </Stack>

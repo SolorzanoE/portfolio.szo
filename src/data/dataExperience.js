@@ -1,4 +1,15 @@
-export const dataExperiencie = [
+/**
+ * @typedef {Object} Experience
+ * @property {string} title
+ * @property {string} company
+ * @property {Date} startDate
+ * @property {Date} endDate
+ * @property {string} description
+ * @property {string[]} technologies
+ */
+
+/** @type {Experience[]} */
+export const dataExperience = [
   {
     title: "Practicas Profesionales",
     company: "INIFAP",

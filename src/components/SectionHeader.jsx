@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack"
 import Typography from "@mui/material/Typography"
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
+/** @param {{eyebrow: string, title: string, italicWord?: string, align?: "left"|"center"}} props */
 const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
   const { tokens } = useDesignSystem()
   const isCenter = align === "center"

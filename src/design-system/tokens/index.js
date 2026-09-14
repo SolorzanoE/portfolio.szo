@@ -6,6 +6,7 @@ import { getColorTokens } from './colors'
 import { layoutTokens } from './layout'
 import { typographyTokens } from './typography'
 
+/** @param {'dark'|'light'} [mode='light'] */
 export const getDesignTokens = (mode = 'light') => ({
   ...getColorTokens(mode),
   layout: layoutTokens,

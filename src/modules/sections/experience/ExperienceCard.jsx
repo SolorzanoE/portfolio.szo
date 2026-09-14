@@ -6,14 +6,17 @@ import Typography from "@mui/material/Typography"
 import MapsHomeWorkOutlinedIcon from '@mui/icons-material/MapsHomeWorkOutlined';
 import { useDesignSystem } from "@/context/DesignSystemContext"
 
-function ExperiencieCard({ data = {} }) {
+/**
+ * @param {{data?: {title?: string, company?: string, description?: string, technologies?: string[], startDate?: Date, endDate?: Date}}} props
+ */
+function ExperienceCard({ data = {} }) {
   const { title, company, description, technologies = [] } = data
   const { tokens } = useDesignSystem()
 
   const startDate = data.startDate
-    .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
+    ?.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
   const endDate = data.endDate
-    .toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
+    ?.toLocaleDateString('es-ES', { month: 'short', year: 'numeric' }).replace('de', '')
 
   return (
     <Paper
@@ -142,4 +145,4 @@ function ExperiencieCard({ data = {} }) {
   )
 }
 
-export default ExperiencieCard
+export default ExperienceCard

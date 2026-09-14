@@ -20,6 +20,12 @@ const links = [
   { icon: <EmailOutlined fontSize="small" />, link: `mailto:${EMAIL_ADDRESS}`, label: "Email" }
 ]
 
+/**
+ * @param {boolean | null} prefersReducedMotion
+ * @param {object} initial
+ * @param {object} transition
+ * @returns {any}
+ */
 const getEntranceProps = (prefersReducedMotion, initial, transition) => {
   if (prefersReducedMotion) {
     return { initial: false }

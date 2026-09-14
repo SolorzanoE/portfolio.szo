@@ -23,6 +23,7 @@ const Technology = () => {
   const prefersReducedMotion = useReducedMotion()
   const [selectedChip, setSelectedChip] = useState("Todos")
 
+  /** @param {string} item */
   const handleClick = (item) => setSelectedChip(item)
 
   const filterTechnology = dataTechnologies

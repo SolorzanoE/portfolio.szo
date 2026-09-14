@@ -1,13 +1,16 @@
 import { motion as Motion, useReducedMotion } from "framer-motion"
 
+/**
+ * @param {{children: import("react").ReactNode, delay?: number, duration?: number, y?: number, scale?: number, className?: string, style?: import("react").CSSProperties, viewportMargin?: string, [key: string]: unknown}} props
+ */
 export const MotionFade = ({
   children,
   delay = 0,
   duration = 0.6,
   y = 24,
   scale = 1,
-  className,
-  style,
+  className = undefined,
+  style = undefined,
   viewportMargin = "-50px",
   ...props
 }) => {

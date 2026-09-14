@@ -35,10 +35,26 @@ import linuxIcon from "@/assets/technologies/tool/linux.svg?no-inline"
 import postmanIcon from "@/assets/technologies/tool/postman.svg?no-inline"
 import prettierIcon from "@/assets/technologies/tool/prettier.png?no-inline"
 import vscodeIcon from "@/assets/technologies/tool/vscode.svg?no-inline"
-import claudeIcon from "@/assets/technologies/ai/claude.png?no-inline"
+import claudeIcon from "@/assets/technologies/ai/claude.webp?no-inline"
 import chatgptIcon from "@/assets/technologies/ai/chatgpt.svg?no-inline"
 import chatgptDarkIcon from "@/assets/technologies/ai/chatgpt-dark.svg?no-inline"
-import geminiIcon from "@/assets/technologies/ai/gemini.png?no-inline"
+import geminiIcon from "@/assets/technologies/ai/gemini.webp?no-inline"
+
+/**
+ * @typedef {Object} Technology
+ * @property {string} name
+ * @property {string} image
+ * @property {string} [imageDark]
+ * @property {boolean} [invertOnDark]
+ * @property {"Backend"|"Frontend"|"Mobile"|"Database"|"Service"|"Language"|"Tool"|"IA"} area
+ */
+
+/**
+ * @param {Array<{name: string, image: string, imageDark?: string, invertOnDark?: boolean}>} entries
+ * @param {Technology["area"]} area
+ * @returns {Technology[]}
+ */
+const withArea = (entries, area) => entries.map(entry => ({ ...entry, area }))
 
 const backend = [
   {
@@ -225,16 +241,14 @@ const tool = [
   }
 ]
 
-/**
- * @type {Array<{name: string, image: string, imageDark?: string, invertOnDark?: boolean, area: "Backend" | "Frontend" | "Mobile" | "Database" | "Service" | "Language" | "Tool" | "IA"}>}
- */
+/** @type {Technology[]} */
 export const dataTechnologies = [
-  ...backend.map(e => ({ ...e, area: "Backend" })),
-  ...frontend.map(e => ({ ...e, area: "Frontend" })),
-  ...mobile.map(e => ({ ...e, area: "Mobile" })),
-  ...database.map(e => ({ ...e, area: "Database" })),
-  ...service.map(e => ({ ...e, area: "Service" })),
-  ...language.map(e => ({ ...e, area: "Language" })),
-  ...ai.map(e => ({ ...e, area: "IA" })),
-  ...tool.map(e => ({ ...e, area: "Tool" }))
+  ...withArea(backend, "Backend"),
+  ...withArea(frontend, "Frontend"),
+  ...withArea(mobile, "Mobile"),
+  ...withArea(database, "Database"),
+  ...withArea(service, "Service"),
+  ...withArea(language, "Language"),
+  ...withArea(ai, "IA"),
+  ...withArea(tool, "Tool")
 ]

@@ -2,6 +2,18 @@ import inventoryImage from "@/assets/projects/inventory-image.webp";
 import serviicyImage from "@/assets/projects/serviicy-image.webp"
 import cacaoImage from "@/assets/projects/cacao-image.webp"
 
+/**
+ * @typedef {Object} Project
+ * @property {string} title
+ * @property {string} description
+ * @property {string} image
+ * @property {string[]} technologies
+ * @property {string} [repoUrl]
+ * @property {string} [demoUrl]
+ * @property {"contain"|"cover"} [imageFit]
+ */
+
+/** @type {Project[]} */
 export const dataProject = [
   {
     title: "Serviicy",

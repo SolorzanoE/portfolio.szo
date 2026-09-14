@@ -4,6 +4,7 @@ import { layoutTokens, typographyTokens } from './tokens'
 
 const { family, size, weight, tracking, leading } = typographyTokens
 
+/** @param {"dark"|"light"} mode */
 const paletteFor = (mode) => {
   const tokens = colorTokens[mode]
 
@@ -34,7 +35,7 @@ const paletteFor = (mode) => {
 }
 
 export const theme = createTheme({
-  typography: {
+  typography: /** @type {any} */ ({
     fontFamily: family.body,
     h1: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: tracking.tight, lineHeight: leading.tight },
     h2: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: '-0.03em', lineHeight: 1.05 },
@@ -53,7 +54,7 @@ export const theme = createTheme({
     editorial: { fontFamily: family.editorial, fontStyle: 'italic', fontWeight: weight.regular, lineHeight: 1.25 },
     eyebrow: { fontFamily: family.mono, fontSize: size.caption, fontWeight: weight.medium, letterSpacing: tracking.overline, lineHeight: 1 },
     code: { fontFamily: family.mono, fontSize: size.caption, letterSpacing: tracking.mono, lineHeight: 1.4 }
-  },
+  }),
   shape: { borderRadius: layoutTokens.radius.base },
   transitions: {
     duration: {
