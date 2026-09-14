@@ -1,26 +1,37 @@
 #!/usr/bin/env python3
 """
 Fetch and update Open Graph preview image from Site Looker Atter API:
-https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2
+https://api.sitelookeratter.com/screenshot?url=<public-url>&dark=true&scale=2
 """
 
 import os
 import sys
 import tempfile
+import time
+from urllib.parse import urlencode
 import urllib.request
 
 ROOT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 OUTPUT_IMAGE = os.path.join(ROOT_DIR, "public", "og-image.png")
-API_URL = "https://api.sitelookeratter.com/screenshot?url=https://solorzanoszo.vercel.app&dark=true&scale=2"
+PUBLIC_URL = "https://solorzanoszo.vercel.app"
+API_BASE_URL = "https://api.sitelookeratter.com/screenshot"
 MAX_IMAGE_BYTES = 10 * 1024 * 1024
 REQUEST_TIMEOUT_SECONDS = 30
 PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
 
 
+def build_api_url():
+    # A unique query parameter avoids stale screenshots in the API and CDN.
+    target_url = f"{PUBLIC_URL}/?og_version={int(time.time())}"
+    query = urlencode({"url": target_url, "dark": "true", "scale": "2"})
+    return f"{API_BASE_URL}?{query}"
+
+
 def download_og_image():
-    print(f"Fetching live snapshot from Site Looker Atter API: {API_URL}...")
+    api_url = build_api_url()
+    print(f"Fetching live snapshot from Site Looker Atter API: {api_url}...")
     req = urllib.request.Request(
-        API_URL,
+        api_url,
         headers={"User-Agent": "Mozilla/5.0 (compatible; PortfolioOGFetcher/1.0)"}
     )
     temporary_path = None
