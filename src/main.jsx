@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import { DesignSystemProvider } from '@/context/DesignSystemContext'
 import { theme } from '@/design-system'
+import '../app.css'
 
 const Analytics = lazy(() =>
   import('@vercel/analytics/react').then(({ Analytics: AnalyticsComponent }) => ({

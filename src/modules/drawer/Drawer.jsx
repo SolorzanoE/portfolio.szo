@@ -43,7 +43,7 @@ const Drawer = ({ open, close }) => {
               sx={{
                 width: 8,
                 height: 8,
-                borderRadius: "50%",
+                borderRadius: tokens.layout.radius.circular,
                 bgcolor: tokens.secondaryInk
               }}
             />
@@ -103,14 +103,14 @@ const Drawer = ({ open, close }) => {
                   variant="caption"
                   sx={{
                     color: tokens.mutedInk,
-                    fontSize: "0.75rem"
+                    fontSize: tokens.typography.size.caption
                   }}
                 >
                   0{idx + 1}
                 </Typography>
                 <Typography
                   sx={{
-                    fontFamily: "'Inter Tight', sans-serif",
+                    fontFamily: tokens.typography.family.display,
                     fontSize: "1.5rem",
                     fontWeight: 500,
                     letterSpacing: "-0.02em",

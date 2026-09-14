@@ -27,7 +27,7 @@ const AboutMe = () => {
               <Typography
                 sx={{
                   color: tokens.secondaryInk,
-                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  fontSize: { xs: tokens.typography.size.body, md: tokens.typography.size.bodyLarge },
                   lineHeight: 1.75
                 }}
               >
@@ -39,7 +39,7 @@ const AboutMe = () => {
               <Typography
                 sx={{
                   color: tokens.secondaryInk,
-                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  fontSize: { xs: tokens.typography.size.body, md: tokens.typography.size.bodyLarge },
                   lineHeight: 1.75
                 }}
               >
@@ -50,7 +50,7 @@ const AboutMe = () => {
               <Typography
                 sx={{
                   color: tokens.secondaryInk,
-                  fontSize: { xs: "1rem", md: "1.08rem" },
+                  fontSize: { xs: tokens.typography.size.body, md: tokens.typography.size.bodyLarge },
                   lineHeight: 1.75
                 }}
               >
@@ -65,7 +65,7 @@ const AboutMe = () => {
               sx={{
                 position: "relative",
                 padding: { xs: 3, md: 4 },
-                borderRadius: 1.2,
+                borderRadius: tokens.layout.radius.lg,
                 border: "1px solid",
                 borderColor: tokens.border,
                 bgcolor: tokens.surface,
@@ -85,7 +85,7 @@ const AboutMe = () => {
               <Stack spacing={2.5} sx={{ position: "relative" }}>
                 <Typography
                   sx={{
-                    fontFamily: "'Instrument Serif', serif",
+                    fontFamily: tokens.typography.family.editorial,
                     fontStyle: "italic",
                     fontSize: { xs: "1.65rem", md: "2rem" },
                     fontWeight: 400,

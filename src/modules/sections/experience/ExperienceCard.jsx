@@ -21,7 +21,7 @@ function ExperiencieCard({ data = {} }) {
       sx={{
         paddingY: { xs: 2.5, md: 3 },
         paddingX: { xs: 2.5, md: 3.5 },
-        borderRadius: 1.2,
+        borderRadius: tokens.layout.radius.lg,
         border: "1px solid",
         borderColor: tokens.border,
         bgcolor: tokens.surface,
@@ -45,7 +45,7 @@ function ExperiencieCard({ data = {} }) {
               sx={{
                 width: 44,
                 height: 44,
-                borderRadius: 1,
+                borderRadius: tokens.layout.radius.control,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -61,7 +61,7 @@ function ExperiencieCard({ data = {} }) {
             <Stack spacing={0.25}>
               <Typography
                 sx={{
-                  fontFamily: "'Inter Tight', sans-serif",
+                  fontFamily: tokens.typography.family.display,
                   fontSize: "1.15rem",
                   fontWeight: 600,
                   letterSpacing: "-0.02em",
@@ -86,11 +86,11 @@ function ExperiencieCard({ data = {} }) {
             sx={{
               paddingInline: 1.25,
               paddingBlock: 0.5,
-              borderRadius: 0.8,
+              borderRadius: tokens.layout.radius.sm,
               border: "1px solid",
               borderColor: tokens.border,
               bgcolor: "transparent",
-              fontFamily: "'JetBrains Mono', monospace",
+              fontFamily: tokens.typography.family.mono,
               fontSize: "0.7rem",
               color: tokens.mutedInk,
               letterSpacing: "0.05em",
@@ -120,13 +120,13 @@ function ExperiencieCard({ data = {} }) {
                 size="small"
                 variant="outlined"
                 sx={{
-                  borderRadius: 0.8,
+                  borderRadius: tokens.layout.radius.sm,
                   borderColor: tokens.border,
                   color: tokens.mutedInk,
                   bgcolor: tokens.washFill,
-                  fontSize: "0.7rem",
+                  fontSize: tokens.typography.size.micro,
                   height: 24,
-                  transition: "all 0.2s ease",
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,

@@ -1,24 +1,29 @@
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useMemo } from "react"
-import { useTheme } from "@mui/material/styles"
-import { getColorTokens } from "@/design-system/tokens"
+import { useColorScheme } from "@mui/material/styles"
+import { getDesignTokens } from "@/design-system/tokens"
 
 const DesignSystemContext = createContext({
-  tokens: getColorTokens("light"),
+  mode: "light",
+  tokens: getDesignTokens("light"),
 })
 
 export const DesignSystemProvider = ({ children }) => {
-  const theme = useTheme()
+  const { mode, systemMode } = useColorScheme()
+  const resolvedMode = mode === "system" ? systemMode : mode
 
   const tokens = useMemo(() => {
-    return getColorTokens(theme.palette.mode || "light")
-  }, [theme.palette.mode])
+    return getDesignTokens(resolvedMode || "light")
+  }, [resolvedMode])
+
+  const value = useMemo(() => ({
+    mode: resolvedMode || "light",
+    tokens
+  }), [resolvedMode, tokens])
 
   return (
     <DesignSystemContext.Provider
-      value={{
-        tokens,
-      }}
+      value={value}
     >
       {children}
     </DesignSystemContext.Provider>

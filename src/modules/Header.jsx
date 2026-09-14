@@ -58,13 +58,13 @@ function Header() {
             sx={{
               width: 28,
               height: 28,
-              borderRadius: "8px",
+              borderRadius: tokens.layout.radius.sm,
               display: "block"
             }}
           />
           <Typography
             sx={{
-              fontFamily: "'Inter Tight', sans-serif",
+              fontFamily: tokens.typography.family.display,
               fontWeight: 600,
               fontSize: "1rem",
               letterSpacing: "-0.02em",
@@ -75,7 +75,7 @@ function Header() {
             <Box
               component="span"
               sx={{
-                fontFamily: "'Instrument Serif', serif",
+                fontFamily: tokens.typography.family.editorial,
                 fontStyle: "italic",
                 fontWeight: 400,
                 color: tokens.secondaryInk,
@@ -93,7 +93,7 @@ function Header() {
           sx={{
             display: { xs: "none", md: "flex" },
             padding: "4px",
-            borderRadius: 1.5,
+            borderRadius: tokens.layout.radius.lg,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: "transparent"
@@ -111,7 +111,7 @@ function Header() {
                 paddingBlock: 0.6,
                 fontSize: "0.82rem",
                 fontWeight: 500,
-                borderRadius: 1,
+                borderRadius: tokens.layout.radius.control,
                 bgcolor: "transparent",
                 transition: "color 0.2s ease, background-color 0.2s ease",
                 "&:hover": {

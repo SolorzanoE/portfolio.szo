@@ -22,7 +22,7 @@ const Footer = () => {
           maxWidth: 760,
           marginInline: "auto",
           color: tokens.mutedInk,
-          fontSize: "0.625rem",
+          fontSize: tokens.typography.size.micro,
           lineHeight: 1.55,
           letterSpacing: "0.01em",
           textAlign: "center"

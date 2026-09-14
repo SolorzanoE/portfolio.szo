@@ -41,6 +41,8 @@ El diseño se rige de forma exclusiva por la variante **Editorial** del sistema 
   * Botones y chips de filtrado con respuesta háptica visual (`transform: translateY(-1px)`, `scale(0.97)` al presionar).
   * En modo oscuro, eliminación de sombras negras invisibles a favor de respuesta sutil de superficie (`rgba(255, 255, 255, 0.03)`).
 
+La implementación mantiene una única fuente de verdad en `src/design-system/`: `tokens/colors.js` contiene los valores primitivos y semánticos por modo, `tokens/typography.js` define las familias y la escala tipográfica, y `tokens/layout.js` concentra radios, espaciado y movimiento. `theme.js` traduce esos tokens al tema de Material UI, mientras `DesignSystemContext` expone el conjunto resuelto para los componentes que necesitan estados interactivos o valores editoriales.
+
 ## Stack Tecnológico
 
 | Capa | Tecnología |

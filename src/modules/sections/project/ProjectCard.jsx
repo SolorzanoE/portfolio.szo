@@ -29,7 +29,7 @@ const ProjectCard = ({ data = {} }) => {
       elevation={0}
       sx={{
         height: "100%",
-        borderRadius: 1.2,
+        borderRadius: tokens.layout.radius.lg,
         border: "1px solid",
         borderColor: tokens.border,
         bgcolor: tokens.surface,
@@ -113,7 +113,7 @@ const ProjectCard = ({ data = {} }) => {
               alignItems: "center",
               justifyContent: "center",
               color: tokens.secondaryInk,
-              fontFamily: "'Instrument Serif', serif",
+              fontFamily: tokens.typography.family.editorial,
               fontStyle: "italic",
               fontSize: "1.4rem",
               transition: "transform 0.5s ease"
@@ -132,7 +132,7 @@ const ProjectCard = ({ data = {} }) => {
             target={primaryUrl ? "_blank" : undefined}
             rel={primaryUrl ? "noreferrer" : undefined}
             sx={{
-              fontFamily: "'Inter Tight', sans-serif",
+              fontFamily: tokens.typography.family.display,
               fontSize: "1.2rem",
               fontWeight: 600,
               letterSpacing: "-0.02em",
@@ -165,8 +165,8 @@ const ProjectCard = ({ data = {} }) => {
               border: "1px solid",
               borderColor: tokens.border,
               color: tokens.primaryInk,
-              borderRadius: 0.8,
-              transition: "all 0.25s ease"
+              borderRadius: tokens.layout.radius.sm,
+              transition: `all ${tokens.layout.motion.standard}`
             }}
           >
             <ArrowOutwardIcon sx={{ fontSize: 18 }} />
@@ -193,13 +193,13 @@ const ProjectCard = ({ data = {} }) => {
                 size="small"
                 variant="outlined"
                 sx={{
-                  borderRadius: 0.8,
+                  borderRadius: tokens.layout.radius.sm,
                   borderColor: tokens.border,
                   color: tokens.mutedInk,
                   bgcolor: tokens.washFill,
-                  fontSize: "0.7rem",
+                  fontSize: tokens.typography.size.micro,
                   height: 22,
-                  transition: "all 0.2s ease",
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
@@ -211,8 +211,8 @@ const ProjectCard = ({ data = {} }) => {
           ) : (
             <Typography
               sx={{
-                fontFamily: "'JetBrains Mono', monospace",
-                fontSize: "0.68rem",
+                fontFamily: tokens.typography.family.mono,
+                fontSize: tokens.typography.size.micro,
                 color: tokens.mutedInk,
                 letterSpacing: "0.06em",
                 textTransform: "none"
@@ -234,15 +234,15 @@ const ProjectCard = ({ data = {} }) => {
                 rel="noreferrer"
                 startIcon={<GitHubIcon sx={{ fontSize: 16 }} />}
                 sx={{
-                  fontSize: "0.75rem",
+                  fontSize: tokens.typography.size.micro,
                   py: 0.6,
                   px: 1.5,
                   minHeight: 36,
-                  borderRadius: 0.8,
+                  borderRadius: tokens.layout.radius.sm,
                   borderColor: tokens.border,
                   color: tokens.secondaryInk,
                   textTransform: "none",
-                  transition: "all 0.2s ease",
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     color: tokens.primaryInk,
@@ -263,11 +263,11 @@ const ProjectCard = ({ data = {} }) => {
                 rel="noreferrer"
                 endIcon={<ArrowOutwardIcon sx={{ fontSize: 14 }} />}
                 sx={{
-                  fontSize: "0.75rem",
+                  fontSize: tokens.typography.size.micro,
                   py: 0.6,
                   px: 1.5,
                   minHeight: 36,
-                  borderRadius: 0.8,
+                  borderRadius: tokens.layout.radius.sm,
                   bgcolor: tokens.accent.main,
                   color: tokens.accent.contrast,
                   textTransform: "none",

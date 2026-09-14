@@ -28,7 +28,7 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
           sx={{
             width: 6,
             height: 6,
-            borderRadius: "50%",
+            borderRadius: tokens.layout.radius.circular,
             bgcolor: tokens.mutedInk
           }}
         />
@@ -36,7 +36,7 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
           variant="overline"
           sx={{
             letterSpacing: "0.1em",
-            fontSize: "0.7rem",
+            fontSize: tokens.typography.size.caption,
             fontWeight: 600,
             color: tokens.mutedInk,
             textTransform: "none"
@@ -49,7 +49,11 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
       <Typography
         variant="h2"
         sx={{
-          fontSize: { xs: "2.25rem", sm: "2.75rem", md: "3.5rem" },
+          fontSize: {
+            xs: tokens.typography.size.section.sm,
+            sm: tokens.typography.size.section.tablet,
+            md: tokens.typography.size.section.md
+          },
           fontWeight: 500,
           letterSpacing: "-0.03em",
           color: tokens.primaryInk
@@ -61,7 +65,7 @@ const SectionHeader = ({ eyebrow, title, italicWord, align = "left" }) => {
           <Box
             component="span"
             sx={{
-              fontFamily: "'Instrument Serif', serif",
+              fontFamily: tokens.typography.family.editorial,
               fontStyle: "italic",
               fontWeight: 400,
               color: tokens.primaryInk,

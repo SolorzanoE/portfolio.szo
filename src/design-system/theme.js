@@ -1,88 +1,81 @@
 import { createTheme } from '@mui/material/styles'
-import { primitives, cssColorVariables } from './tokens/colors'
+import { colorTokens, cssColorVariables } from './tokens/colors'
+import { layoutTokens, typographyTokens } from './tokens'
 
-const display = "'Inter Tight', 'Inter', system-ui, sans-serif"
-const sans = "'Inter', system-ui, -apple-system, sans-serif"
-const mono = "'JetBrains Mono', ui-monospace, monospace"
+const { family, size, weight, tracking, leading } = typographyTokens
+
+const paletteFor = (mode) => {
+  const tokens = colorTokens[mode]
+
+  return {
+    mode,
+    primary: {
+      main: tokens.accent.main,
+      contrastText: tokens.accent.contrast
+    },
+    secondary: {
+      main: tokens.accent.main,
+      contrastText: tokens.accent.contrast
+    },
+    background: {
+      default: tokens.canvas,
+      paper: tokens.surface
+    },
+    text: {
+      primary: tokens.text.primary,
+      secondary: tokens.text.secondary
+    },
+    divider: tokens.border.default,
+    error: { main: tokens.status.error },
+    warning: { main: tokens.status.warning },
+    info: { main: tokens.status.info },
+    success: { main: tokens.status.success }
+  }
+}
 
 export const theme = createTheme({
   typography: {
-    fontFamily: sans,
-    h1: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.035em', lineHeight: 1.02 },
-    h2: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.03em', lineHeight: 1.05 },
-    h3: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.025em', lineHeight: 1.1 },
-    h4: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.15 },
-    h5: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.015em', lineHeight: 1.25 },
-    h6: { fontFamily: display, fontWeight: 500, letterSpacing: '-0.01em' },
-    subtitle1: { fontFamily: sans, fontWeight: 400, letterSpacing: '-0.005em' },
-    subtitle2: { fontFamily: mono, fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', fontSize: '0.72rem' },
-    body1: { lineHeight: 1.7, letterSpacing: '-0.005em' },
+    fontFamily: family.body,
+    h1: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: tracking.tight, lineHeight: leading.tight },
+    h2: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: '-0.03em', lineHeight: 1.05 },
+    h3: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: '-0.025em', lineHeight: leading.heading },
+    h4: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: tracking.compact, lineHeight: 1.15 },
+    h5: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: '-0.015em', lineHeight: 1.25 },
+    h6: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: '-0.01em' },
+    subtitle1: { fontFamily: family.body, fontWeight: weight.regular, letterSpacing: tracking.body },
+    subtitle2: { fontFamily: family.mono, fontWeight: weight.medium, letterSpacing: tracking.mono, textTransform: 'uppercase', fontSize: size.caption },
+    body1: { lineHeight: leading.body, letterSpacing: tracking.body },
     body2: { lineHeight: 1.65 },
-    overline: { fontFamily: mono, letterSpacing: '0.18em', fontWeight: 500, fontSize: '0.72rem', lineHeight: 1 },
-    button: { fontWeight: 500, letterSpacing: '-0.005em' },
-    caption: { fontFamily: mono, letterSpacing: '0.05em' }
+    overline: { fontFamily: family.mono, letterSpacing: tracking.overline, fontWeight: weight.medium, fontSize: size.caption, lineHeight: 1 },
+    button: { fontWeight: weight.medium, letterSpacing: tracking.body },
+    caption: { fontFamily: family.mono, letterSpacing: '0.05em' },
+    display: { fontFamily: family.display, fontWeight: weight.medium, letterSpacing: tracking.compact, lineHeight: leading.heading },
+    editorial: { fontFamily: family.editorial, fontStyle: 'italic', fontWeight: weight.regular, lineHeight: 1.25 },
+    eyebrow: { fontFamily: family.mono, fontSize: size.caption, fontWeight: weight.medium, letterSpacing: tracking.overline, lineHeight: 1 },
+    code: { fontFamily: family.mono, fontSize: size.caption, letterSpacing: tracking.mono, lineHeight: 1.4 }
   },
-  shape: { borderRadius: 10 },
-  colorSchemes: {
-    dark: {
-      palette: {
-        mode: 'dark',
-        primary: {
-          main: primitives.neutral.zinc[50],
-          contrastText: primitives.neutral.zinc[950]
-        },
-        secondary: {
-          main: primitives.brand.cyan[400],
-          contrastText: primitives.neutral.dark.canvas
-        },
-        background: {
-          default: primitives.neutral.zinc[950],
-          paper: primitives.neutral.dark.card
-        },
-        text: {
-          primary: primitives.neutral.zinc[50],
-          secondary: primitives.neutral.zinc[400]
-        },
-        divider: primitives.alpha.zincLight[80],
-        error: { main: primitives.status.error.dark },
-        warning: { main: primitives.status.warning.dark },
-        info: { main: primitives.status.info.dark },
-        success: { main: primitives.status.success.dark }
-      }
-    },
-    light: {
-      palette: {
-        mode: 'light',
-        primary: {
-          main: primitives.neutral.zinc[950],
-          contrastText: primitives.neutral.zinc[50]
-        },
-        secondary: {
-          main: primitives.brand.cyan[600],
-          contrastText: primitives.neutral.zinc[50]
-        },
-        background: {
-          default: primitives.neutral.zinc[50],
-          paper: primitives.neutral.white
-        },
-        text: {
-          primary: primitives.neutral.zinc[950],
-          secondary: primitives.neutral.zinc[600]
-        },
-        divider: primitives.alpha.zincDark[90],
-        error: { main: primitives.status.error.light },
-        warning: { main: primitives.status.warning.light },
-        info: { main: primitives.status.info.light },
-        success: { main: primitives.status.success.light }
-      }
+  shape: { borderRadius: layoutTokens.radius.base },
+  transitions: {
+    duration: {
+      shortest: 150,
+      shorter: 200,
+      short: 250,
+      standard: 300,
+      complex: 375,
+      enteringScreen: 225,
+      leavingScreen: 195
     }
+  },
+  colorSchemes: {
+    dark: { palette: paletteFor('dark') },
+    light: { palette: paletteFor('light') }
   },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
         ...cssColorVariables,
         body: {
-          transition: 'background-color 0.4s ease, color 0.4s ease'
+          transition: `background-color ${layoutTokens.motion.slow}, color ${layoutTokens.motion.slow}`
         }
       }
     },
@@ -90,7 +83,8 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
-          borderRadius: 999
+          borderRadius: layoutTokens.radius.control,
+          transition: `background-color ${layoutTokens.motion.fast}, border-color ${layoutTokens.motion.fast}, color ${layoutTokens.motion.fast}, opacity ${layoutTokens.motion.fast}, transform ${layoutTokens.motion.fast}`
         }
       }
     },
@@ -111,14 +105,14 @@ export const theme = createTheme({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          transition: 'color 0.25s ease, transform 0.25s ease, background-color 0.25s ease, border-color 0.25s ease'
+          transition: `color ${layoutTokens.motion.standard}, transform ${layoutTokens.motion.standard}, background-color ${layoutTokens.motion.standard}, border-color ${layoutTokens.motion.standard}`
         }
       }
     },
     MuiChip: {
       styleOverrides: {
         root: {
-          fontFamily: mono
+          fontFamily: family.mono
         }
       }
     }

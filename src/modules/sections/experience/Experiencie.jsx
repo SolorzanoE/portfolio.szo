@@ -55,7 +55,7 @@ function Experiencie() {
                     content: '""',
                     position: "absolute",
                     inset: 3,
-                    borderRadius: "50%",
+                    borderRadius: tokens.layout.radius.circular,
                     bgcolor: tokens.accent.main
                   }
                 }}

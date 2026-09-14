@@ -1,4 +1,4 @@
-import { motion as Motion } from "framer-motion"
+import { motion as Motion, useReducedMotion } from "framer-motion"
 
 export const MotionFade = ({
   children,
@@ -11,12 +11,14 @@ export const MotionFade = ({
   viewportMargin = "-50px",
   ...props
 }) => {
+  const prefersReducedMotion = useReducedMotion()
+
   return (
     <Motion.div
-      initial={{ opacity: 0, y, scale }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y, scale }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: viewportMargin }}
-      transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
       style={style}
       {...props}

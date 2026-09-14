@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography"
 import { EMAIL_ADDRESS, GITHUB_URL, LINKEDIN_URL } from "@root/config"
 import profile from "@/assets/profile.webp"
 import { useDesignSystem } from "@/context/DesignSystemContext"
-import { motion } from "framer-motion"
+import { motion, useReducedMotion } from "framer-motion"
 
 const links = [
   { icon: <GitHub fontSize="small" />, link: GITHUB_URL, label: "GitHub" },
@@ -20,8 +20,21 @@ const links = [
   { icon: <EmailOutlined fontSize="small" />, link: `mailto:${EMAIL_ADDRESS}`, label: "Email" }
 ]
 
+const getEntranceProps = (prefersReducedMotion, initial, transition) => {
+  if (prefersReducedMotion) {
+    return { initial: false }
+  }
+
+  return {
+    initial,
+    animate: { opacity: 1, y: 0, scale: 1 },
+    transition
+  }
+}
+
 function Home() {
   const { tokens } = useDesignSystem()
+  const prefersReducedMotion = useReducedMotion()
 
   return (
     <Stack
@@ -45,9 +58,7 @@ function Home() {
       >
         <Box
           component={motion.div}
-          initial={{ opacity: 0, y: 14 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          {...getEntranceProps(prefersReducedMotion, { opacity: 0, y: 14 }, { duration: 0.5, ease: [0.16, 1, 0.3, 1] })}
           sx={{
             display: "inline-flex",
             alignItems: "center",
@@ -55,7 +66,7 @@ function Home() {
             alignSelf: "flex-start",
             paddingInline: 1.5,
             paddingBlock: 0.75,
-            borderRadius: 1,
+            borderRadius: tokens.layout.radius.control,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: tokens.surface
@@ -65,15 +76,15 @@ function Home() {
             sx={{
               width: 7,
               height: 7,
-              borderRadius: "50%",
+              borderRadius: tokens.layout.radius.circular,
               bgcolor: tokens.badges.availableDot,
               animation: "pulseDot 2s ease-in-out infinite"
             }}
           />
           <Typography
             sx={{
-              fontFamily: "'JetBrains Mono', monospace",
-              fontSize: "0.72rem",
+              fontFamily: tokens.typography.family.mono,
+              fontSize: tokens.typography.size.caption,
               letterSpacing: "0.06em",
               color: tokens.mutedInk
             }}
@@ -85,11 +96,14 @@ function Home() {
         <Typography
           variant="h1"
           component={motion.h1}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          {...getEntranceProps(prefersReducedMotion, { opacity: 0, y: 20 }, { duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] })}
           sx={{
-            fontSize: { xs: "2.75rem", sm: "3.75rem", md: "5rem", lg: "5.75rem" },
+            fontSize: {
+              xs: tokens.typography.size.display.sm,
+              sm: tokens.typography.size.display.tablet,
+              md: tokens.typography.size.display.md,
+              lg: tokens.typography.size.display.lg
+            },
             fontWeight: 500,
             letterSpacing: "-0.035em",
             color: tokens.primaryInk
@@ -99,7 +113,7 @@ function Home() {
           <Box
             component="span"
             sx={{
-              fontFamily: "'Instrument Serif', serif",
+              fontFamily: tokens.typography.family.editorial,
               fontStyle: "italic",
               fontWeight: 400,
               color: tokens.primaryInk
@@ -111,12 +125,13 @@ function Home() {
 
         <Typography
           component={motion.p}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+          {...getEntranceProps(prefersReducedMotion, { opacity: 0, y: 16 }, { duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] })}
           sx={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: { xs: "0.78rem", md: "0.85rem" },
+            fontFamily: tokens.typography.family.mono,
+            fontSize: {
+              xs: tokens.typography.size.heroRole.mobile,
+              md: tokens.typography.size.heroRole.desktop
+            },
             letterSpacing: "0.08em",
             textTransform: "none",
             color: tokens.mutedInk
@@ -127,12 +142,10 @@ function Home() {
 
         <Typography
           component={motion.p}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          {...getEntranceProps(prefersReducedMotion, { opacity: 0, y: 16 }, { duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] })}
           sx={{
             color: tokens.secondaryInk,
-            fontSize: { xs: "1rem", md: "1.1rem" },
+            fontSize: { xs: tokens.typography.size.body, md: tokens.typography.size.bodyLarge },
             maxWidth: 560,
             lineHeight: 1.65
           }}
@@ -143,9 +156,7 @@ function Home() {
 
         <Stack
           component={motion.div}
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+          {...getEntranceProps(prefersReducedMotion, { opacity: 0, y: 16 }, { duration: 0.6, delay: 0.28, ease: [0.16, 1, 0.3, 1] })}
           direction={{ xs: "column", sm: "row" }}
           spacing={1.5}
           sx={{ paddingTop: 1, alignItems: { xs: "stretch", sm: "center" } }}
@@ -160,8 +171,8 @@ function Home() {
               color: tokens.accent.contrast,
               paddingInline: 2.5,
               paddingBlock: 1.25,
-              fontSize: "0.88rem",
-              borderRadius: 1,
+              fontSize: tokens.typography.size.label,
+              borderRadius: tokens.layout.radius.control,
               minHeight: 44,
               transition: "opacity 0.2s ease, background-color 0.2s ease",
               "&:hover": {
@@ -184,10 +195,10 @@ function Home() {
               color: tokens.primaryInk,
               paddingInline: 2.5,
               paddingBlock: 1.25,
-              fontSize: "0.88rem",
-              borderRadius: 1,
+              fontSize: tokens.typography.size.label,
+              borderRadius: tokens.layout.radius.control,
               minHeight: 44,
-              transition: "all 0.2s ease",
+              transition: `all ${tokens.layout.motion.fast}`,
               "&:hover": {
                 borderColor: tokens.strongBorder,
                 bgcolor: tokens.interactive.accentHover,
@@ -212,8 +223,8 @@ function Home() {
                   border: "1px solid",
                   borderColor: tokens.border,
                   color: tokens.primaryInk,
-                  borderRadius: 1,
-                  transition: "all 0.2s ease",
+                  borderRadius: tokens.layout.radius.control,
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     color: tokens.primaryInk,
                     borderColor: tokens.strongBorder,
@@ -234,9 +245,7 @@ function Home() {
 
       <Box
         component={motion.div}
-        initial={{ opacity: 0, scale: 0.94 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] }}
+        {...getEntranceProps(prefersReducedMotion, { opacity: 0, scale: 0.94 }, { duration: 0.8, delay: 0.14, ease: [0.16, 1, 0.3, 1] })}
         sx={{
           position: "relative",
           width: { xs: "72%", sm: "48%", md: "38%" },
@@ -253,12 +262,12 @@ function Home() {
             left: -14,
             paddingInline: 1.25,
             paddingBlock: 0.5,
-            borderRadius: 1,
+            borderRadius: tokens.layout.radius.control,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: tokens.surface,
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.7rem",
+            fontFamily: tokens.typography.family.mono,
+            fontSize: tokens.typography.size.caption,
             letterSpacing: "0.08em",
             color: tokens.secondaryInk,
             display: { xs: "none", sm: "inline-flex" },
@@ -276,7 +285,7 @@ function Home() {
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            borderRadius: "50%",
+            borderRadius: tokens.layout.radius.circular,
             border: "1px solid",
             borderColor: tokens.border,
             boxShadow: tokens.shadows.profile
@@ -300,8 +309,8 @@ function Home() {
       >
         <Typography
           sx={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: "0.7rem",
+            fontFamily: tokens.typography.family.mono,
+            fontSize: tokens.typography.size.caption,
             letterSpacing: "0.1em",
             textTransform: "none"
           }}

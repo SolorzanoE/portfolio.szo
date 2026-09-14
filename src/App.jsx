@@ -21,7 +21,7 @@ function App() {
         overflow: "hidden",
         bgcolor: tokens.canvas,
         color: tokens.primaryInk,
-        transition: "background-color 0.4s ease, color 0.4s ease",
+        transition: `background-color ${tokens.layout.motion.slow}, color ${tokens.layout.motion.slow}`,
       }}
     >
       <Header />
@@ -31,7 +31,11 @@ function App() {
           position: "relative",
           zIndex: 1,
           paddingBlock: { xs: 2, md: 4 },
-          paddingInline: { xs: 2.5, sm: 4, md: 6 }
+          paddingInline: {
+            xs: tokens.layout.spacing.content.mobile,
+            sm: tokens.layout.spacing.content.tablet,
+            md: tokens.layout.spacing.content.desktop
+          }
         }}
       >
         <Home />

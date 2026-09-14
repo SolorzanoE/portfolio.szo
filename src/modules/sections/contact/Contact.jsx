@@ -30,7 +30,7 @@ function Contact() {
           elevation={0}
           sx={{
             padding: { xs: 3.5, sm: 5, md: 6 },
-            borderRadius: 1.5,
+            borderRadius: tokens.layout.radius.lg,
             border: "1px solid",
             borderColor: tokens.border,
             bgcolor: tokens.surface,
@@ -48,7 +48,7 @@ function Contact() {
                   alignSelf: "flex-start",
                   paddingInline: 1.5,
                   paddingBlock: 0.6,
-                  borderRadius: 1,
+                  borderRadius: tokens.layout.radius.control,
                   border: "1px solid",
                   borderColor: tokens.border,
                   bgcolor: tokens.washFill
@@ -58,15 +58,15 @@ function Contact() {
                   sx={{
                     width: 7,
                     height: 7,
-                    borderRadius: "50%",
+                    borderRadius: tokens.layout.radius.circular,
                     bgcolor: tokens.badges.availableDot,
                     animation: "pulseDot 2s ease-in-out infinite"
                   }}
                 />
                 <Typography
                   sx={{
-                    fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "0.72rem",
+                    fontFamily: tokens.typography.family.mono,
+                    fontSize: tokens.typography.size.caption,
                     letterSpacing: "0.05em",
                     color: tokens.mutedInk
                   }}
@@ -78,8 +78,12 @@ function Contact() {
               <Typography
                 variant="h3"
                 sx={{
-                  fontFamily: "'Inter Tight', sans-serif",
-                  fontSize: { xs: "1.75rem", sm: "2.25rem", md: "2.75rem" },
+                  fontFamily: tokens.typography.family.display,
+                  fontSize: {
+                    xs: '1.75rem',
+                    sm: tokens.typography.size.section.sm,
+                    md: tokens.typography.size.section.tablet
+                  },
                   fontWeight: 500,
                   letterSpacing: "-0.03em",
                   lineHeight: 1.15,
@@ -119,7 +123,7 @@ function Contact() {
                   paddingInline: 3,
                   paddingBlock: 1.35,
                   fontSize: "0.9rem",
-                  borderRadius: 1,
+                  borderRadius: tokens.layout.radius.control,
                   minHeight: 44,
                   transition: "opacity 0.2s ease, background-color 0.2s ease",
                   "&:hover": {
@@ -146,9 +150,9 @@ function Contact() {
                   paddingInline: 2.5,
                   paddingBlock: 1.35,
                   fontSize: "0.88rem",
-                  borderRadius: 1,
+                  borderRadius: tokens.layout.radius.control,
                   minHeight: 44,
-                  transition: "all 0.2s ease",
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,
@@ -171,9 +175,9 @@ function Contact() {
                   paddingInline: 2.5,
                   paddingBlock: 1.35,
                   fontSize: "0.88rem",
-                  borderRadius: 1,
+                  borderRadius: tokens.layout.radius.control,
                   minHeight: 44,
-                  transition: "all 0.2s ease",
+                  transition: `all ${tokens.layout.motion.fast}`,
                   "&:hover": {
                     borderColor: tokens.strongBorder,
                     bgcolor: tokens.hoverFill,

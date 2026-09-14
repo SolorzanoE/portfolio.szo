@@ -11,18 +11,18 @@ const TechnologyChip = ({ label, onClick, selected }) => {
       onClick={onClick}
       variant="outlined"
       sx={{
-        borderRadius: 0.8,
+        borderRadius: tokens.layout.radius.sm,
         paddingInline: 0.75,
         minHeight: 34,
-        fontFamily: "'Inter Tight', sans-serif",
-        fontSize: "0.78rem",
+        fontFamily: tokens.typography.family.display,
+        fontSize: tokens.typography.size.label,
         fontWeight: selected ? 600 : 500,
         letterSpacing: "0.04em",
         borderColor: selected ? tokens.accent.main : tokens.border,
         color: selected ? tokens.accent.contrast : tokens.secondaryInk,
         bgcolor: selected ? tokens.accent.main : "transparent",
         cursor: "pointer",
-        transition: "all 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+        transition: `all ${tokens.layout.motion.fast}`,
         "&:hover, &.MuiChip-clickable:hover": {
           bgcolor: selected ? tokens.accent.main : tokens.interactive.chipHover,
           borderColor: selected ? tokens.accent.main : tokens.accent.main,
