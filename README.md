@@ -26,6 +26,8 @@
 
 Este repositorio contiene el portafolio profesional de **Eduardo Solórzano**, Ingeniero de Software Full Stack. La interfaz prioriza la sobriedad, la tipografía y la legibilidad.
 
+La documentación técnica detallada está disponible en [docs/README.md](./docs/README.md). Incluye la arquitectura, el flujo de ejecución, las decisiones técnicas, el sistema de diseño, seguridad, rendimiento y guía de mantenimiento.
+
 ---
 
 ## Sistema de Diseño: Scandinavian Editorial

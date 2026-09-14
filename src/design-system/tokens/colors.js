@@ -301,8 +301,9 @@ export const getColorTokens = (mode = 'dark') => {
     hoverFill: raw.interactive.hoverFill,
     pressedFill: raw.interactive.pressedFill,
     washFill: raw.interactive.washFill,
-    // Flat accent alias
-    accent: raw.accent.main
+    // Keep accent structured because consumers use accent.main/contrast.
+    // The flat alias has a distinct name so it cannot overwrite the semantic token.
+    accentColor: raw.accent.main
   }
 }
 
