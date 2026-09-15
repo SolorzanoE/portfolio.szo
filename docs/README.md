@@ -58,7 +58,6 @@ portfolio.szo/
 │   ├── brand-icon-dark.svg
 │   ├── brand-icon-light.svg
 │   ├── og-image.png
-│   └── vite.svg
 ├── scripts/
 │   └── generate-og-image.py      Generación de la imagen Open Graph
 ├── src/
