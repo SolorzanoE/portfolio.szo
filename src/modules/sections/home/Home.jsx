@@ -143,7 +143,7 @@ function Home() {
             color: tokens.mutedInk
           }}
         >
-          Full Stack Engineer
+          Software Engineer
         </Typography>
 
         <Typography
