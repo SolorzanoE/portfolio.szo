@@ -30,7 +30,7 @@ function App() {
         sx={{
           position: "relative",
           zIndex: 1,
-          paddingBlock: { xs: 2, md: 4 },
+          paddingBlock: { xs: "32px 16px", md: 4 },
           paddingInline: {
             xs: tokens.layout.spacing.content.mobile,
             sm: tokens.layout.spacing.content.tablet,
