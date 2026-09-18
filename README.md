@@ -1,6 +1,6 @@
 <div align="center">
 
-# Eduardo Solórzano — Portfolio
+# Eduardo Solórzano
 
 **Portafolio Web Profesional · Software Engineer**  
 *Diseñado bajo una estética Scandinavian Editorial.*
@@ -15,8 +15,6 @@
 [![Vista previa del portafolio](./public/og-image.png)](https://solorzanoszo.vercel.app)
 
 <br />
-
-[Ver Portafolio en Vivo](https://solorzanoszo.vercel.app)
 
 </div>
 
