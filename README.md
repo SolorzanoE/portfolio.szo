@@ -2,7 +2,7 @@
 
 # Eduardo Solórzano
 
-**Portafolio Web Profesional · Software Engineer**  
+**Portafolio Web Profesional**  
 *Diseñado bajo una estética Scandinavian Editorial.*
 
 [![React](https://img.shields.io/badge/React-19.2-20232A?style=flat&logo=react&logoColor=61DAFB)](https://react.dev/)
