@@ -97,9 +97,3 @@ La implementación mantiene una única fuente de verdad en `src/design-system/`:
 * **Correo**: [eduardo.solorzano.dev@gmail.com](mailto:eduardo.solorzano.dev@gmail.com)
 * **LinkedIn**: [in/szoss](https://www.linkedin.com/in/szoss/)
 * **GitHub**: [@SolorzanoE](https://github.com/SolorzanoE)
-
----
-
-<div align="center">
-  <sub>Desarrollado con dedicación y enfoque en ingeniería de software · © Eduardo Solórzano</sub>
-</div>
