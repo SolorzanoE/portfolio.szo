@@ -3,12 +3,10 @@
 # Eduardo Solórzano
 
 **Portafolio Web Profesional**  
-*Diseñado bajo una estética Scandinavian Editorial.*
 
 [![React](https://img.shields.io/badge/React-19.2-20232A?style=flat&logo=react&logoColor=61DAFB)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-7.2-646CFF?style=flat&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Material UI](https://img.shields.io/badge/Material_UI-7.3-007FFF?style=flat&logo=mui&logoColor=white)](https://mui.com/)
-[![Design System](https://img.shields.io/badge/Design_System-Scandinavian_Editorial-000000?style=flat)](https://github.com/SolorzanoE/portfolio.szo)
 
 <br />
 
